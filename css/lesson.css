@@ -168,9 +168,8 @@
 
 /* === BOTTOM NAV === */
 .lesson-nav-bottom {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: var(--sp-4);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   padding-top: var(--sp-8);
   border-top: 1px solid var(--border-light);
@@ -186,7 +185,7 @@
   padding: var(--sp-3) var(--sp-4);
   border-radius: var(--r-sm);
   transition: all var(--t-fast);
-  display: inline-block;
+  white-space: nowrap;
 }
 
 .lesson-nav-bottom a:hover {
@@ -194,9 +193,20 @@
   background: var(--bg-secondary);
 }
 
+.nav-prev,
+.nav-next {
+  min-width: 72px;
+}
+
 .nav-prev { text-align: left; }
 .nav-home { text-align: center; }
 .nav-next { text-align: right; }
+
+/* Empty span placeholders (no prev/next) */
+.lesson-nav-bottom span.nav-prev,
+.lesson-nav-bottom span.nav-next {
+  visibility: hidden;
+}
 
 /* === RESPONSIVE === */
 @media (max-width: 640px) {
@@ -209,12 +219,12 @@
   }
 
   .lesson-nav-bottom {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--sp-2);
+    gap: var(--sp-1);
   }
 
-  .nav-home {
-    grid-column: 1 / -1;
-    text-align: center;
+  .lesson-nav-bottom a,
+  .lesson-nav-bottom span {
+    font-size: 13px;
+    padding: var(--sp-2) var(--sp-2);
   }
 }
