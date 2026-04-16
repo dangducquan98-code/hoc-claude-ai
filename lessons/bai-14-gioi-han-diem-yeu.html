@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 14: Giới hạn &amp; điểm yếu của Claude — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p4">Giai đoạn 4</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 14</div>
+    <h1>Giới hạn &amp; điểm yếu của Claude</h1>
+    <div class="lesson-meta">
+      <span class="tag">Tư duy phê phán</span>
+      <span class="tag">45 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Nhận biết khi nào Claude "ảo giác" (hallucinate) — bịa ra thông tin không có thật</li>
+      <li>Hiểu những lĩnh vực <strong>không nên</strong> tin tưởng hoàn toàn vào Claude</li>
+      <li>Nắm vững cách kiểm chứng (verify) output của AI trước khi sử dụng</li>
+      <li>Hiểu giới hạn về kiến thức (knowledge cutoff) và các hạn chế kỹ thuật</li>
+      <li>Phát triển tư duy phê phán — kỹ năng quan trọng nhất khi sử dụng AI</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      Đây có thể là <strong>bài học quan trọng nhất</strong> trong toàn bộ khóa học. Biết Claude mạnh ở đâu giúp bạn làm việc hiệu quả. Nhưng biết Claude <em>yếu ở đâu</em> giúp bạn tránh những sai lầm nghiêm trọng. Đặc biệt nếu bạn dự định dạy người khác sử dụng AI — bạn <strong>phải</strong> hiểu rõ các giới hạn này.
+    </div>
+
+    <h2>Hallucination — Khi Claude bịa ra thông tin</h2>
+
+    <h3>Hallucination là gì?</h3>
+    <p><strong>Hallucination</strong> (ảo giác) là hiện tượng AI tạo ra thông tin nghe rất thuyết phục nhưng hoàn toàn sai sự thật. Claude không "cố ý" nói dối — vấn đề nằm ở cách LLM hoạt động: nó dự đoán token tiếp theo dựa trên xác suất, và đôi khi chuỗi token có xác suất cao lại không phản ánh sự thật.</p>
+
+    <h3>Những tình huống Claude hay hallucinate</h3>
+    <ul>
+      <li><strong>Trích dẫn nguồn:</strong> Claude có thể tạo ra tên bài báo, tên tác giả, đường link URL nghe rất thật nhưng không tồn tại. Đây là một trong những lỗi phổ biến nhất.</li>
+      <li><strong>Số liệu thống kê cụ thể:</strong> "Theo nghiên cứu năm 2023, 73% doanh nghiệp..." — con số này có thể hoàn toàn bịa ra.</li>
+      <li><strong>Thông tin về người thật:</strong> Claude có thể gán sai thành tựu, trích dẫn sai lời nói, hoặc nhầm lẫn giữa các nhân vật.</li>
+      <li><strong>Sự kiện lịch sử chi tiết:</strong> Các sự kiện lớn thường đúng, nhưng ngày tháng cụ thể, số liệu chi tiết có thể bị sai.</li>
+      <li><strong>Thông tin pháp luật:</strong> Claude có thể trích dẫn sai điều luật, hoặc tạo ra điều luật không tồn tại.</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <strong>Bạn hỏi:</strong> "Cho tôi 5 nghiên cứu về tác động của AI lên năng suất lao động, kèm link."<br><br>
+      <strong>Claude có thể trả lời:</strong> "Theo nghiên cứu của MIT Sloan (2023) — link: https://mitsloan.mit.edu/ai-productivity-2023..."<br><br>
+      <strong>Vấn đề:</strong> Đường link đó có thể <em>không tồn tại</em>. Tên nghiên cứu có thể không chính xác. Luôn copy link và kiểm tra trực tiếp trên trình duyệt trước khi sử dụng.
+    </div>
+
+    <h3>Tại sao Claude hallucinate?</h3>
+    <p>Có ba nguyên nhân chính:</p>
+    <ol>
+      <li><strong>Bản chất của LLM:</strong> Claude dự đoán từ tiếp theo, không "tra cứu cơ sở dữ liệu sự thật". Nó tạo ra text nghe hợp lý, nhưng "hợp lý" không đồng nghĩa "đúng".</li>
+      <li><strong>Áp lực phải trả lời:</strong> Khi bạn hỏi một câu hỏi cụ thể, Claude có xu hướng đưa ra câu trả lời thay vì nói "tôi không biết". Mặc dù Anthropic đã huấn luyện Claude để từ chối khi không chắc, nhưng điều này không hoàn hảo.</li>
+      <li><strong>Thiếu kiến thức:</strong> Claude không biết những gì xảy ra sau thời điểm huấn luyện (knowledge cutoff), nhưng đôi khi vẫn tự tin trả lời.</li>
+    </ol>
+
+    <h2>Những gì KHÔNG nên tin tưởng Claude</h2>
+
+    <h3>1. Tính toán phức tạp</h3>
+    <p>Claude là mô hình ngôn ngữ, <strong>không phải máy tính</strong>. Nó có thể sai khi:</p>
+    <ul>
+      <li>Phép tính nhiều chữ số (nhân chia số lớn)</li>
+      <li>Thống kê phức tạp (tính trung bình, độ lệch chuẩn từ bộ dữ liệu)</li>
+      <li>Logic phức tạp với nhiều điều kiện lồng nhau</li>
+    </ul>
+    <p><strong>Giải pháp:</strong> Yêu cầu Claude viết code Python/Excel để tính, sau đó bạn chạy code đó. Hoặc dùng công cụ tính toán chuyên dụng.</p>
+
+    <h3>2. Thông tin thời sự và dữ liệu real-time</h3>
+    <p>Claude có <strong>knowledge cutoff</strong> — nghĩa là kiến thức bị giới hạn đến thời điểm huấn luyện. Claude không biết:</p>
+    <ul>
+      <li>Tin tức mới nhất, sự kiện đang diễn ra</li>
+      <li>Giá cổ phiếu, tỷ giá ngoại tệ hiện tại</li>
+      <li>Kết quả thể thao, bầu cử gần đây</li>
+      <li>Sản phẩm hoặc dịch vụ mới ra mắt</li>
+    </ul>
+    <p><strong>Giải pháp:</strong> Bật tính năng Web Search khi cần thông tin mới. Hoặc upload nguồn tin mới nhất vào cuộc hội thoại.</p>
+
+    <h3>3. Lời khuyên y tế và pháp lý</h3>
+    <p>Claude <strong>không phải bác sĩ hay luật sư</strong>. Đừng dùng Claude để:</p>
+    <ul>
+      <li>Chẩn đoán bệnh dựa trên triệu chứng</li>
+      <li>Thay thế ý kiến bác sĩ chuyên môn</li>
+      <li>Đưa ra quyết định pháp lý quan trọng</li>
+      <li>Soạn hợp đồng pháp lý mà không có luật sư review</li>
+    </ul>
+    <p><strong>Giải pháp:</strong> Dùng Claude để <em>hiểu khái niệm</em> (ví dụ: "giải thích luật lao động cơ bản"), nhưng luôn xác nhận với chuyên gia trước khi hành động.</p>
+
+    <h3>4. Đánh giá chủ quan mang tính quyết định</h3>
+    <p>Claude không có kinh nghiệm sống, cảm xúc, hay hiểu biết về hoàn cảnh cụ thể của bạn:</p>
+    <ul>
+      <li>Nên nhận job offer A hay B?</li>
+      <li>Có nên chia tay/kết hôn?</li>
+      <li>Đánh giá hiệu suất nhân viên</li>
+      <li>Quyết định đạo đức phức tạp</li>
+    </ul>
+    <p><strong>Giải pháp:</strong> Claude có thể giúp bạn <em>phân tích các khía cạnh</em> của quyết định (liệt kê pros/cons, đặt câu hỏi giúp bạn suy nghĩ rõ hơn), nhưng quyết định cuối cùng phải là của bạn.</p>
+
+    <h3>5. Kiến thức chuyên ngành sâu và địa phương</h3>
+    <p>Claude có thể yếu trong những lĩnh vực sau:</p>
+    <ul>
+      <li><strong>Thông tin địa phương Việt Nam:</strong> Thủ tục hành chính cụ thể, quy định từng tỉnh thành, giá cả thị trường nội địa</li>
+      <li><strong>Tiếng lóng và văn hóa đương đại:</strong> Xu hướng mạng xã hội Việt, slang mới nhất</li>
+      <li><strong>Chuyên ngành hẹp:</strong> Y khoa chuyên sâu, luật Việt Nam chi tiết, kế toán thuế Việt Nam</li>
+    </ul>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Claude xử lý tiếng Việt tốt, nhưng dữ liệu huấn luyện bằng tiếng Anh nhiều hơn tiếng Việt rất nhiều. Do đó, với các chủ đề chuyên sâu, bạn có thể nhận được câu trả lời chính xác hơn khi hỏi bằng tiếng Anh rồi yêu cầu dịch lại.
+    </div>
+
+    <h2>Các dấu hiệu nhận biết output có vấn đề</h2>
+    <p>Hãy cảnh giác khi thấy những dấu hiệu sau:</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border-medium);text-align:left;">
+          <th style="padding:12px 16px;font-weight:600;">Dấu hiệu</th>
+          <th style="padding:12px 16px;font-weight:600;">Ví dụ</th>
+          <th style="padding:12px 16px;font-weight:600;">Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Số liệu quá cụ thể, quá tròn</td>
+          <td style="padding:10px 16px;">"Chính xác 67.3% doanh nghiệp..."</td>
+          <td style="padding:10px 16px;">Hỏi nguồn gốc số liệu, tự tra cứu</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Trích dẫn URL/tên sách cụ thể</td>
+          <td style="padding:10px 16px;">"Theo sách XYZ của tác giả ABC..."</td>
+          <td style="padding:10px 16px;">Copy URL, kiểm tra trên trình duyệt</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Trả lời quá tự tin về chủ đề mơ hồ</td>
+          <td style="padding:10px 16px;">Không hề đề cập đến sự không chắc chắn</td>
+          <td style="padding:10px 16px;">Hỏi "Bạn chắc chắn bao nhiêu phần trăm?"</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Thông tin không nhất quán</td>
+          <td style="padding:10px 16px;">Đầu bài nói A, cuối bài nói ngược lại</td>
+          <td style="padding:10px 16px;">Yêu cầu Claude review lại output</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px;">Kiến thức về sự kiện gần đây</td>
+          <td style="padding:10px 16px;">Bàn về sự kiện năm nay rất chi tiết</td>
+          <td style="padding:10px 16px;">Kiểm tra xem có nằm trong cutoff không</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Framework kiểm chứng output: VERIFY</h2>
+    <p>Áp dụng framework này mỗi khi sử dụng output của Claude cho việc quan trọng:</p>
+
+    <ul>
+      <li><strong>V — Validate sources (Kiểm tra nguồn):</strong> Mọi trích dẫn, số liệu, tên người đều cần được kiểm tra qua nguồn độc lập.</li>
+      <li><strong>E — Evaluate logic (Đánh giá logic):</strong> Lập luận của Claude có hợp lý không? Có lỗ hổng logic nào không?</li>
+      <li><strong>R — Review for bias (Kiểm tra thiên kiến):</strong> Claude có đang thiên về một phía không? Có bỏ qua quan điểm đối lập không?</li>
+      <li><strong>I — Identify gaps (Nhận diện thiếu sót):</strong> Có khía cạnh nào quan trọng mà Claude không đề cập?</li>
+      <li><strong>F — Fact-check key claims (Kiểm chứng tuyên bố chính):</strong> Chọn 2-3 tuyên bố quan trọng nhất và tự kiểm tra.</li>
+      <li><strong>Y — Yield judgment (Đưa ra phán đoán):</strong> Cuối cùng, bạn là người quyết định output đủ tin cậy hay cần chỉnh sửa.</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <strong>Trick hữu ích:</strong> Sau khi Claude trả lời, hãy hỏi: <em>"Trong câu trả lời vừa rồi, phần nào bạn chắc chắn nhất và phần nào bạn ít chắc chắn nhất?"</em> Claude thường sẽ tự chỉ ra những điểm yếu trong câu trả lời của mình.
+    </div>
+
+    <h2>Các giới hạn kỹ thuật cần biết</h2>
+
+    <h3>Context Window — Giới hạn ngữ cảnh</h3>
+    <p>Dù Claude có context window rất lớn (200K tokens), vẫn có hạn chế:</p>
+    <ul>
+      <li><strong>Lost in the middle:</strong> Thông tin ở giữa đoạn văn bản rất dài có thể bị "quên" hoặc xử lý kém hơn so với đầu và cuối.</li>
+      <li><strong>Hội thoại dài:</strong> Sau nhiều lượt trao đổi, chất lượng câu trả lời có thể giảm. Nên bắt đầu conversation mới khi chuyển chủ đề.</li>
+    </ul>
+
+    <h3>Knowledge Cutoff — Giới hạn kiến thức</h3>
+    <p>Claude được huấn luyện trên dữ liệu đến một thời điểm nhất định. Những gì xảy ra sau đó, Claude không biết trừ khi:</p>
+    <ul>
+      <li>Bạn cung cấp thông tin trong cuộc hội thoại</li>
+      <li>Bạn upload tài liệu cập nhật</li>
+      <li>Bạn bật tính năng Web Search</li>
+    </ul>
+
+    <h3>Không có bộ nhớ giữa các cuộc hội thoại</h3>
+    <p>Mỗi cuộc hội thoại mới, Claude bắt đầu từ đầu (trừ khi bạn dùng Projects với Custom Instructions). Claude không nhớ bạn đã nói gì tuần trước trong một conversation khác.</p>
+
+    <h3>Giới hạn đa phương tiện</h3>
+    <ul>
+      <li>Claude có thể đọc hình ảnh nhưng <strong>không tạo hình ảnh</strong> (tính đến thời điểm viết bài)</li>
+      <li>Không xử lý được audio hoặc video trực tiếp</li>
+      <li>Khả năng đọc chữ viết tay hoặc hình ảnh chất lượng thấp còn hạn chế</li>
+    </ul>
+
+    <h2>Tư duy phê phán khi sử dụng AI</h2>
+    <p>Kỹ năng quan trọng nhất không phải viết prompt giỏi, mà là <strong>đánh giá output một cách có phê phán</strong>. Dưới đây là các nguyên tắc:</p>
+
+    <h3>Nguyên tắc 1: "Trust but Verify" — Tin nhưng kiểm chứng</h3>
+    <p>Tin Claude ở mức nó giúp bạn đi nhanh hơn, nhưng luôn kiểm chứng trước khi sử dụng output cho việc quan trọng. Mức độ kiểm chứng tùy thuộc vào hậu quả của sai sót:</p>
+    <ul>
+      <li><strong>Hậu quả nhỏ</strong> (brainstorm, draft nội bộ): Kiểm tra sơ qua là đủ</li>
+      <li><strong>Hậu quả trung bình</strong> (email gửi khách, bài blog công khai): Đọc kỹ, kiểm tra facts</li>
+      <li><strong>Hậu quả lớn</strong> (hợp đồng, báo cáo tài chính, quyết định y tế): Kiểm chứng toàn diện, nhờ chuyên gia review</li>
+    </ul>
+
+    <h3>Nguyên tắc 2: "Claude là đồng nghiệp thông minh nhưng hay nhầm"</h3>
+    <p>Hãy đối xử với output của Claude giống như bạn đối xử với ý kiến của một đồng nghiệp mới: nghe, cân nhắc, nhưng không mặc định là đúng. Bạn là người chịu trách nhiệm cuối cùng.</p>
+
+    <h3>Nguyên tắc 3: Hỏi ngược lại Claude</h3>
+    <p>Sau khi nhận câu trả lời, hãy dùng chính Claude để kiểm tra:</p>
+    <pre><code>"Hãy đóng vai người phản biện và chỉ ra 3 điểm yếu nhất
+trong câu trả lời vừa rồi của bạn."
+
+"Trong câu trả lời trên, những phần nào có thể không chính xác
+và tôi nên tự kiểm chứng?"
+
+"Bạn có đang đưa ra giả định nào không? Liệt kê tất cả
+giả định trong câu trả lời vừa rồi."</code></pre>
+
+    <h3>Nguyên tắc 4: Cross-reference — So sánh nhiều nguồn</h3>
+    <p>Với thông tin quan trọng:</p>
+    <ul>
+      <li>Hỏi Claude cùng câu hỏi theo cách khác nhau, xem đáp án có nhất quán không</li>
+      <li>So sánh với Google Search, Wikipedia, nguồn chính thống</li>
+      <li>Hỏi thêm ChatGPT hoặc Gemini để so sánh (bạn sẽ học ở Bài 15)</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      <strong>Nếu bạn dạy người khác dùng AI:</strong> Đây là phần quan trọng nhất cần truyền đạt. Người mới dùng AI thường bị "wow effect" — ấn tượng bởi câu trả lời trôi chảy của Claude và mặc định tin hoàn toàn. Hãy luôn nhắc họ: <em>AI trả lời trôi chảy không có nghĩa AI trả lời đúng.</em>
+    </div>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Bắt hallucination:</strong> Hỏi Claude về một chủ đề bạn rất am hiểu. Tìm ít nhất 2 điểm không chính xác trong câu trả lời. Ghi lại những gì bạn phát hiện.</li>
+      <li><strong>Test knowledge cutoff:</strong> Hỏi Claude về 3 sự kiện gần đây (trong 1-2 tháng qua). Quan sát cách Claude xử lý — nó có thừa nhận không biết, hay cố bịa ra câu trả lời?</li>
+      <li><strong>Áp dụng VERIFY:</strong> Yêu cầu Claude viết một đoạn 200 từ về một chủ đề chuyên môn. Áp dụng framework VERIFY để đánh giá output. Ghi chú từng bước bạn đã kiểm tra.</li>
+      <li><strong>Hỏi ngược Claude:</strong> Sau khi nhận một câu trả lời dài từ Claude, thử 3 prompt phản biện đã học ở trên. Quan sát Claude tự chỉ ra điểm yếu nào trong câu trả lời trước đó.</li>
+      <li><strong>Phân loại rủi ro:</strong> Liệt kê 5 tác vụ bạn đang dùng Claude. Với mỗi tác vụ, xếp mức hậu quả (nhỏ/trung bình/lớn) và mức kiểm chứng tương ứng.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li><strong>Hallucination</strong> là vấn đề thực sự — Claude có thể bịa số liệu, trích dẫn, tên người, URL một cách rất thuyết phục</li>
+      <li>Không nên tin tưởng Claude hoàn toàn trong: tính toán phức tạp, thông tin thời sự, lời khuyên y tế/pháp lý, quyết định cá nhân quan trọng</li>
+      <li>Áp dụng framework <strong>VERIFY</strong> cho mọi output quan trọng: kiểm tra nguồn, đánh giá logic, nhận diện thiên kiến và thiếu sót</li>
+      <li>Giới hạn kỹ thuật: knowledge cutoff, context window, không có bộ nhớ xuyên conversation, không tạo hình ảnh</li>
+      <li><strong>Tư duy phê phán là kỹ năng AI quan trọng nhất</strong> — AI trả lời trôi chảy không có nghĩa AI trả lời đúng</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-13-he-thong-lam-viec.html" class="nav-prev">← Bài 13</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-15-so-sanh-chatgpt-gemini.html" class="nav-next">Bài 15 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

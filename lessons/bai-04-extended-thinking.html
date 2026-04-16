@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 04: Extended Thinking — khi nào dùng? — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p1">Giai đoạn 1</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 04</div>
+    <h1>Extended Thinking — khi nào dùng?</h1>
+    <div class="lesson-meta">
+      <span class="tag">Thực hành</span>
+      <span class="tag">30 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu Extended Thinking là gì và cơ chế hoạt động</li>
+      <li>Biết khi nào nên bật và khi nào không cần</li>
+      <li>So sánh kết quả có và không có Extended Thinking</li>
+      <li>Thực hành sử dụng trên claude.ai</li>
+    </ul>
+
+    <h2>Extended Thinking là gì?</h2>
+    <p>Extended Thinking (suy nghĩ mở rộng) là chế độ cho phép Claude <strong>"suy nghĩ" trước khi trả lời</strong>. Khi bật, Claude sẽ tạo ra một chuỗi suy luận nội bộ — giống như khi bạn nháp ra giấy trước khi đưa ra đáp án.</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Hình dung dễ hiểu</div>
+      <strong>Không có Extended Thinking:</strong> Claude như một học sinh trả lời miệng ngay lập tức — nhanh nhưng có thể thiếu suy nghĩ.<br><br>
+      <strong>Có Extended Thinking:</strong> Claude như một học sinh được phép nháp bài trên giấy trước khi nộp — chậm hơn nhưng chính xác hơn.
+    </div>
+
+    <h2>Cách hoạt động</h2>
+    <p>Khi Extended Thinking được bật:</p>
+    <ol>
+      <li>Claude nhận câu hỏi của bạn</li>
+      <li>Claude tạo ra một <strong>thinking block</strong> — chuỗi suy luận nội bộ (bạn có thể thấy hoặc không tùy giao diện)</li>
+      <li>Trong thinking block, Claude phân tích vấn đề, cân nhắc nhiều góc độ, kiểm tra logic</li>
+      <li>Sau khi "suy nghĩ xong", Claude đưa ra câu trả lời chính thức</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Trên claude.ai</div>
+      Bạn có thể thấy phần "thinking" hiển thị dưới dạng phần mở rộng (expandable) phía trên câu trả lời. Click vào để xem quá trình suy nghĩ của Claude.
+    </div>
+
+    <h2>Khi nào NÊN dùng Extended Thinking?</h2>
+    <ul>
+      <li><strong>Bài toán logic, toán học:</strong> Các phép tính phức tạp, bài toán đố, sudoku, logic puzzles</li>
+      <li><strong>Lập trình phức tạp:</strong> Debug lỗi khó, thiết kế kiến trúc, tối ưu thuật toán</li>
+      <li><strong>Phân tích nhiều khía cạnh:</strong> So sánh phương án, đánh giá ưu/nhược điểm, ra quyết định</li>
+      <li><strong>Viết nội dung chuyên sâu:</strong> Bài luận, nghiên cứu, phân tích case study</li>
+      <li><strong>Câu hỏi "tricky":</strong> Câu hỏi có bẫy, yêu cầu suy luận nhiều bước</li>
+    </ul>
+
+    <h2>Khi nào KHÔNG cần?</h2>
+    <ul>
+      <li><strong>Câu hỏi đơn giản:</strong> "Thủ đô Việt Nam là gì?" — không cần suy nghĩ sâu</li>
+      <li><strong>Tác vụ sáng tạo tự do:</strong> Brainstorm ý tưởng, viết thơ, kể chuyện — đôi khi suy nghĩ quá nhiều lại giảm sáng tạo</li>
+      <li><strong>Dịch thuật đơn giản:</strong> Dịch câu ngắn, paraphrase</li>
+      <li><strong>Cần phản hồi nhanh:</strong> Chat hỏi đáp thông thường, khi tốc độ quan trọng hơn độ sâu</li>
+    </ul>
+
+    <h2>So sánh kết quả thực tế</h2>
+
+    <h3>Ví dụ: Bài toán logic</h3>
+    <p><strong>Câu hỏi:</strong> <em>"Trong một phòng có 3 bóng đèn. Bên ngoài có 3 công tắc. Bạn chỉ được vào phòng 1 lần. Làm sao biết công tắc nào nối với đèn nào?"</em></p>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Không có Extended Thinking</div>
+      Claude có thể đưa ra một đáp án đúng nhưng giải thích sơ sài, hoặc bỏ qua một số trường hợp đặc biệt.
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Có Extended Thinking</div>
+      Claude sẽ suy nghĩ: "Tôi cần phân biệt 3 đèn chỉ với 1 lần vào... Tôi có thể dùng nhiệt để tạo thêm thông tin..." → Đưa ra đáp án chi tiết: bật đèn 1 một lúc → tắt → bật đèn 2 → vào phòng → đèn sáng = công tắc 2, đèn tắt nhưng nóng = công tắc 1, đèn tắt và lạnh = công tắc 3.
+    </div>
+
+    <h3>Ví dụ: Viết code</h3>
+    <p><strong>Yêu cầu:</strong> <em>"Viết hàm Python tìm tất cả palindrome substrings trong một chuỗi, tối ưu O(n²)"</em></p>
+    <p>Với Extended Thinking, Claude sẽ cân nhắc nhiều thuật toán (expand from center, Manacher's), phân tích complexity, rồi chọn phương án tối ưu nhất — thay vì chỉ đưa ra cách đầu tiên nghĩ được.</p>
+
+    <h2>Cách bật Extended Thinking</h2>
+
+    <h3>Trên claude.ai</h3>
+    <p>Trên giao diện claude.ai, Extended Thinking tự động được áp dụng khi Claude phát hiện câu hỏi phức tạp. Bạn sẽ thấy phần "thinking" xuất hiện trước câu trả lời.</p>
+
+    <h3>Qua API</h3>
+    <p>Khi dùng Anthropic API, bạn có thể bật Extended Thinking bằng cách thêm tham số:</p>
+    <pre><code>{
+  "thinking": {
+    "type": "enabled",
+    "budget_tokens": 10000
+  }
+}</code></pre>
+    <p><code>budget_tokens</code> kiểm soát Claude được "suy nghĩ" bao nhiêu — con số lớn hơn cho phép suy nghĩ sâu hơn nhưng tốn thêm thời gian và chi phí.</p>
+
+    <h2>Mẹo sử dụng hiệu quả</h2>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <ul>
+        <li>Khi kết quả Claude trả lời sai hoặc nông, thử bật Extended Thinking và gửi lại</li>
+        <li>Thêm cụm <strong>"Hãy suy nghĩ kỹ trước khi trả lời"</strong> trong prompt cũng giúp Claude suy luận sâu hơn</li>
+        <li>Đọc phần "thinking" để hiểu cách Claude suy luận — đây là cách tốt nhất để học cách Claude "nghĩ"</li>
+        <li>Với API, bắt đầu với <code>budget_tokens: 5000</code> rồi tăng dần nếu cần</li>
+      </ul>
+    </div>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li>Gửi bài toán logic phía trên cho Claude — quan sát phần thinking</li>
+      <li>Hỏi Claude cùng một câu hỏi phức tạp 2 lần: một lần bình thường, một lần thêm "Hãy suy nghĩ thật kỹ từng bước". So sánh kết quả.</li>
+      <li>Thử yêu cầu Claude giải một câu đố mà bạn biết đáp án — xem Claude có suy luận đúng không</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li>Extended Thinking = Claude "nháp bài" trước khi trả lời → chính xác hơn cho vấn đề phức tạp</li>
+      <li>Nên dùng cho: logic, toán, code phức tạp, phân tích đa chiều</li>
+      <li>Không cần cho: câu hỏi đơn giản, sáng tạo tự do, cần phản hồi nhanh</li>
+      <li>Đọc phần "thinking" để hiểu cách Claude suy luận — rất có giá trị học hỏi</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-03-system-prompt.html" class="nav-prev">← Bài 3</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-05-projects-la-gi.html" class="nav-next">Bài 5 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

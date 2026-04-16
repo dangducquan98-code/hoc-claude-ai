@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/roadmap.css">
+</head>
+<body>
+
+<main class="roadmap-page">
+
+  <!-- Hero -->
+  <div class="hero animate-in animate-in-1">
+    <div class="hero-eyebrow">&#10024; Lộ trình miễn phí</div>
+    <h1>Học Claude AI<br>từ zero đến thành thạo</h1>
+    <p class="hero-subtitle">16 bài học · 4 giai đoạn · ~6 tuần<br>Từ người mới bắt đầu đến xây dựng hệ thống làm việc thật sự</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="overview animate-in animate-in-2">
+    <div class="stat-card">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Giai đoạn</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">16</div>
+      <div class="stat-label">Bài học</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">~6</div>
+      <div class="stat-label">Tuần</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="done-count">0</div>
+      <div class="stat-label">Hoàn thành</div>
+    </div>
+  </div>
+
+  <!-- Phase 1 -->
+  <div class="phase-card p1 animate-in animate-in-3">
+    <div class="phase-header" onclick="toggle('p1')">
+      <span class="phase-badge p1">Giai đoạn 1</span>
+      <span class="phase-title">Nền tảng — Hiểu Claude thật sự là gì</span>
+      <span class="phase-meta">4 bài · ~1–2 tuần</span>
+      <span class="chevron open" id="chev-p1">&#8250;</span>
+    </div>
+    <div class="phase-body open" id="body-p1">
+      <div class="progress-bar"><div class="progress-fill" id="prog-p1" style="width:0%"></div></div>
+
+      <div class="lesson">
+        <span class="lesson-num">1</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-01-claude-khong-phai-chatbot.html" class="lesson-title">Claude không phải chatbot thông thường</a>
+          <div class="lesson-desc">Tìm hiểu Claude là LLM gì, tại sao nó khác GPT, và cách nó "suy nghĩ". Đọc trang About Claude của Anthropic.</div>
+          <div class="tags"><span class="tag">Khái niệm</span><span class="tag">30 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p1',1)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">2</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-02-prompt-co-ban.html" class="lesson-title">Prompt cơ bản — cách ra lệnh đúng</a>
+          <div class="lesson-desc">Phân biệt prompt tệ vs tốt. Học 4 yếu tố: vai trò, bối cảnh, yêu cầu, định dạng. Luyện tập với 10 ví dụ thực tế.</div>
+          <div class="tags"><span class="tag">Thực hành</span><span class="tag">45 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p1',2)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">3</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-03-system-prompt.html" class="lesson-title">System prompt &amp; vai trò người dùng</a>
+          <div class="lesson-desc">Hiểu sự khác biệt giữa system prompt và user message. Cách "đặt tính cách" cho Claude trong một cuộc trò chuyện.</div>
+          <div class="tags"><span class="tag">Khái niệm</span><span class="tag">30 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p1',3)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">4</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-04-extended-thinking.html" class="lesson-title">Extended Thinking — khi nào dùng?</a>
+          <div class="lesson-desc">Chế độ suy nghĩ sâu của Claude. Khi nào bật, khi nào không cần. So sánh kết quả có và không có Extended Thinking.</div>
+          <div class="tags"><span class="tag">Thực hành</span><span class="tag">30 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p1',4)">Xong &#10003;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="phase-card p2 animate-in animate-in-4">
+    <div class="phase-header" onclick="toggle('p2')">
+      <span class="phase-badge p2">Giai đoạn 2</span>
+      <span class="phase-title">Không gian làm việc — Projects &amp; Memory</span>
+      <span class="phase-meta">4 bài · ~1–2 tuần</span>
+      <span class="chevron" id="chev-p2">&#8250;</span>
+    </div>
+    <div class="phase-body" id="body-p2">
+      <div class="progress-bar"><div class="progress-fill" id="prog-p2" style="width:0%"></div></div>
+
+      <div class="lesson">
+        <span class="lesson-num">5</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-05-projects-la-gi.html" class="lesson-title">Projects là gì và tại sao quan trọng</a>
+          <div class="lesson-desc">Claude không nhớ giữa các cuộc trò chuyện trừ khi dùng Projects. Tạo project đầu tiên, upload tài liệu, đặt system prompt riêng.</div>
+          <div class="tags"><span class="tag">Thực hành</span><span class="tag">45 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p2',1)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-06-thiet-ke-project.html" class="lesson-title">Thiết kế Project cho một mục đích cụ thể</a>
+          <div class="lesson-desc">Thực hành tạo 3 loại project: nghiên cứu cá nhân, viết content, hỗ trợ học tập. Cách tổ chức tài liệu nền.</div>
+          <div class="tags"><span class="tag">Thực hành</span><span class="tag">60 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p2',2)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">7</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-07-memory.html" class="lesson-title">Memory — Claude nhớ gì về bạn</a>
+          <div class="lesson-desc">Tính năng Memory tự động của Claude.ai. Cách kiểm tra, chỉnh sửa, xóa ký ức. Khác biệt giữa memory và project context.</div>
+          <div class="tags"><span class="tag">Khái niệm</span><span class="tag">30 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p2',3)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">8</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-08-artifacts.html" class="lesson-title">Artifacts — tạo output có thể tương tác</a>
+          <div class="lesson-desc">Claude tạo được code, HTML, SVG, React app ngay trong chat. Thực hành tạo 5 loại artifact khác nhau từ yêu cầu thực tế.</div>
+          <div class="tags"><span class="tag">Thực hành</span><span class="tag">60 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p2',4)">Xong &#10003;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="phase-card p3 animate-in animate-in-5">
+    <div class="phase-header" onclick="toggle('p3')">
+      <span class="phase-badge p3">Giai đoạn 3</span>
+      <span class="phase-title">Nâng cao — Skills, Tools &amp; Kết nối</span>
+      <span class="phase-meta">4 bài · ~1–2 tuần</span>
+      <span class="chevron" id="chev-p3">&#8250;</span>
+    </div>
+    <div class="phase-body" id="body-p3">
+      <div class="progress-bar"><div class="progress-fill" id="prog-p3" style="width:0%"></div></div>
+
+      <div class="lesson">
+        <span class="lesson-num">9</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-09-skills.html" class="lesson-title">Skills — dạy Claude làm việc theo cách của bạn</a>
+          <div class="lesson-desc">Skills là hướng dẫn chi tiết nhúng vào Project. Viết skill đầu tiên: phong cách viết của bạn, quy trình review, hoặc tiêu chuẩn output.</div>
+          <div class="tags"><span class="tag">Nâng cao</span><span class="tag">60 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p3',1)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">10</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-10-web-search-deep-research.html" class="lesson-title">Web search &amp; Deep Research</a>
+          <div class="lesson-desc">Claude tìm kiếm web real-time. Khi nào dùng web search, khi nào dùng Deep Research. Thực hành nghiên cứu một chủ đề phức tạp.</div>
+          <div class="tags"><span class="tag">Thực hành</span><span class="tag">45 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p3',2)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">11</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-11-tich-hop-cong-cu.html" class="lesson-title">Tích hợp công cụ — Google Drive, Notion, v.v.</a>
+          <div class="lesson-desc">Kết nối Claude với các công cụ bạn dùng hàng ngày qua MCP connectors. Thực hành luồng: đọc Notion → phân tích → tạo draft.</div>
+          <div class="tags"><span class="tag">Thực hành</span><span class="tag">60 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p3',3)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">12</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-12-claude-cowork.html" class="lesson-title">Claude Cowork — tự động hóa trên máy tính</a>
+          <div class="lesson-desc">Cowork cho phép Claude thao tác trực tiếp với file, app trên máy tính. Cài đặt, thử 3 use case thực tế, hiểu giới hạn.</div>
+          <div class="tags"><span class="tag">Nâng cao</span><span class="tag">60 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p3',4)">Xong &#10003;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 4 -->
+  <div class="phase-card p4 animate-in animate-in-6">
+    <div class="phase-header" onclick="toggle('p4')">
+      <span class="phase-badge p4">Giai đoạn 4</span>
+      <span class="phase-title">Tổng hợp — Hệ thống làm việc &amp; Chia sẻ</span>
+      <span class="phase-meta">4 bài · ~1 tuần</span>
+      <span class="chevron" id="chev-p4">&#8250;</span>
+    </div>
+    <div class="phase-body" id="body-p4">
+      <div class="progress-bar"><div class="progress-fill" id="prog-p4" style="width:0%"></div></div>
+
+      <div class="lesson">
+        <span class="lesson-num">13</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-13-he-thong-lam-viec.html" class="lesson-title">Thiết kế hệ thống làm việc cá nhân với Claude</a>
+          <div class="lesson-desc">Ghép tất cả lại: Projects + Skills + Tools = workflow. Thiết kế workflow cho 1 công việc thực tế của bạn từ đầu đến cuối.</div>
+          <div class="tags"><span class="tag">Tổng hợp</span><span class="tag">90 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p4',1)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">14</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-14-gioi-han-diem-yeu.html" class="lesson-title">Giới hạn &amp; điểm yếu của Claude</a>
+          <div class="lesson-desc">Claude ảo giác khi nào? Không nên tin vào Claude ở việc gì? Cách verify output trước khi dùng. Quan trọng nếu bạn dạy lại.</div>
+          <div class="tags"><span class="tag">Tư duy phê phán</span><span class="tag">45 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p4',2)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">15</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-15-so-sanh-chatgpt-gemini.html" class="lesson-title">So sánh Claude với ChatGPT, Gemini</a>
+          <div class="lesson-desc">Điểm mạnh/yếu của từng AI. Khi nào dùng Claude thay vì GPT-4o? Bảng so sánh chi tiết cho người muốn chia sẻ lại.</div>
+          <div class="tags"><span class="tag">Nghiên cứu</span><span class="tag">45 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p4',3)">Xong &#10003;</button>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">16</span>
+        <div class="lesson-content">
+          <a href="lessons/bai-16-dong-goi-kien-thuc.html" class="lesson-title">Đóng gói kiến thức để dạy lại</a>
+          <div class="lesson-desc">Xây dựng bộ tài liệu hướng dẫn của riêng bạn: checklist, ví dụ thực tế, template prompt. Dùng chính Claude để tạo nội dung dạy.</div>
+          <div class="tags"><span class="tag">Tổng hợp</span><span class="tag">90 phút</span></div>
+        </div>
+        <button class="btn btn-done" onclick="markDone(this,'p4',4)">Xong &#10003;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="roadmap-footer animate-in animate-in-7">
+    Được xây dựng với &#10084;&#65039; bằng Claude AI
+  </footer>
+
+</main>
+
+<script src="js/roadmap.js"></script>
+</body>
+</html>

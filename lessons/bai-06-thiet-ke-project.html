@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 06: Thiết kế Project cho một mục đích cụ thể — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p2">Giai đoạn 2</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 06</div>
+    <h1>Thiết kế Project cho một mục đích cụ thể</h1>
+    <div class="lesson-meta">
+      <span class="tag">Thực hành</span>
+      <span class="tag">60 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Biết cách thiết kế Project phù hợp cho 3 mục đích phổ biến: nghiên cứu cá nhân, trợ lý viết nội dung, hỗ trợ học tập</li>
+      <li>Nắm nguyên tắc tổ chức tài liệu nền (background documents) sao cho hiệu quả</li>
+      <li>Viết được Project Instructions chất lượng cao, cụ thể và rõ ràng</li>
+      <li>Áp dụng các best practices để Project hoạt động tối ưu</li>
+    </ul>
+
+    <h2>Nguyên tắc thiết kế Project</h2>
+    <p>Trước khi đi vào ví dụ cụ thể, hãy nắm 4 nguyên tắc vàng:</p>
+
+    <h3>1. Một Project = Một mục đích</h3>
+    <p>Đừng tạo Project "Mọi thứ về công việc" rồi hỏi Claude đủ loại từ viết email đến phân tích dữ liệu. Hãy tách ra:</p>
+    <ul>
+      <li>"Viết email công ty" — một Project</li>
+      <li>"Phân tích dữ liệu bán hàng Q1" — một Project khác</li>
+      <li>"Lên kế hoạch marketing tháng 4" — một Project khác nữa</li>
+    </ul>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      <p>Tại sao? Vì khi Project quá rộng, tài liệu nền bị loãng, Custom Instructions phải cố gắng bao quát mọi tình huống — Claude khó hiểu bạn cần gì. Project càng tập trung, Claude càng trả lời đúng.</p>
+    </div>
+
+    <h3>2. Tài liệu nền phải có chọn lọc</h3>
+    <p>Không phải cứ tải nhiều tài liệu lên là tốt. Claude có giới hạn context — nếu bạn tải 500 trang, Claude có thể bỏ sót thông tin quan trọng ở giữa. Hãy chọn lọc:</p>
+    <ul>
+      <li><strong>Ưu tiên tài liệu trực tiếp liên quan</strong> đến mục đích Project</li>
+      <li><strong>Tóm tắt</strong> tài liệu dài thành phiên bản ngắn trước khi tải</li>
+      <li><strong>Loại bỏ</strong> phần thừa: mục lục dài, phụ lục, header/footer lặp lại</li>
+    </ul>
+
+    <h3>3. Custom Instructions phải cụ thể</h3>
+    <p>Sự khác biệt giữa một Project tốt và một Project tuyệt vời nằm ở Custom Instructions. So sánh:</p>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Quá chung chung</div>
+      <pre><code>Hãy giúp tôi viết nội dung tốt. Viết hay và chính xác.</code></pre>
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Cụ thể và hiệu quả</div>
+      <pre><code>Bạn là content writer cho blog về dinh dưỡng và sức khỏe, nhắm đến phụ nữ Việt Nam 25-40 tuổi.
+
+Giọng văn: thân thiện, gần gũi như chị em tâm sự. Tránh giọng bác sĩ quá chuyên môn.
+Độ dài mỗi bài: 1200-1800 từ.
+Cấu trúc bài viết: hook mở đầu hấp dẫn → vấn đề → giải pháp → kết luận kêu gọi hành động.
+Luôn đề xuất 3 tiêu đề để tôi chọn trước khi viết bài đầy đủ.
+Khi nhắc đến thực phẩm, ưu tiên nguyên liệu dễ mua ở Việt Nam.</code></pre>
+    </div>
+
+    <h3>4. Lặp lại và cải thiện</h3>
+    <p>Project không phải "tạo một lần rồi quên". Hãy quan sát cách Claude phản hồi, và liên tục tinh chỉnh Custom Instructions cùng tài liệu nền.</p>
+
+    <h2>Mẫu 1: Project Nghiên cứu cá nhân</h2>
+    <p><strong>Tình huống:</strong> Bạn đang nghiên cứu về xu hướng AI tại Việt Nam để viết báo cáo cho công ty.</p>
+
+    <h3>Cách thiết lập</h3>
+    <p><strong>Tên Project:</strong> Nghiên cứu AI tại Việt Nam 2025-2026</p>
+
+    <p><strong>Tài liệu nền nên tải:</strong></p>
+    <ul>
+      <li>Báo cáo "Vietnam AI Readiness" của Oxford Insights (PDF)</li>
+      <li>Chiến lược quốc gia về AI của Bộ KH&amp;CN (tóm tắt các điểm chính)</li>
+      <li>3-5 bài báo tiêu biểu về ứng dụng AI tại doanh nghiệp Việt Nam</li>
+      <li>Danh sách startup AI nổi bật tại Việt Nam (bạn tự soạn hoặc tìm online)</li>
+      <li>Ghi chú cá nhân về những gì bạn đã biết và những câu hỏi cần trả lời</li>
+    </ul>
+
+    <p><strong>Custom Instructions:</strong></p>
+    <pre><code>Bạn là trợ lý nghiên cứu giúp tôi viết báo cáo về hiện trạng và xu hướng ứng dụng AI tại Việt Nam (2025-2026).
+
+Vai trò của bạn:
+- Phân tích và tổng hợp thông tin từ tài liệu tôi cung cấp
+- Khi tôi hỏi, ưu tiên trích dẫn từ tài liệu trong Project trước
+- Nếu cần bổ sung kiến thức ngoài tài liệu, nói rõ "đây là thông tin từ kiến thức chung của tôi, không có trong tài liệu bạn cung cấp"
+- Đưa ra phân tích có góc nhìn, không chỉ tóm tắt
+
+Định dạng output:
+- Báo cáo bằng tiếng Việt, văn phong chuyên nghiệp
+- Sử dụng bullet points cho dễ đọc
+- Mỗi luận điểm cần có source (nếu có)
+- Khi tôi nói "viết section", viết đoạn văn hoàn chỉnh 300-500 từ
+
+Báo cáo gồm 4 phần:
+1. Bối cảnh: AI trên thế giới và vị trí của Việt Nam
+2. Hiện trạng: Doanh nghiệp Việt đang dùng AI như thế nào
+3. Thách thức: Rào cản về nhân lực, hạ tầng, pháp lý
+4. Dự báo: Xu hướng 2-3 năm tới</code></pre>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <p>Khi nghiên cứu, hãy tạo một file "running notes" trong Project Knowledge — ghi lại những insight quan trọng sau mỗi cuộc chat. Cập nhật file này thường xuyên để Claude luôn có ngữ cảnh mới nhất.</p>
+    </div>
+
+    <h3>Cách sử dụng</h3>
+    <p>Mỗi phiên làm việc, bạn mở chat mới trong Project và có thể:</p>
+    <ul>
+      <li><em>"Tóm tắt những điểm chính từ báo cáo Oxford Insights mà tôi tải lên"</em></li>
+      <li><em>"So sánh chiến lược AI của Việt Nam với Thái Lan và Indonesia"</em></li>
+      <li><em>"Viết section 2 của báo cáo: Hiện trạng ứng dụng AI tại doanh nghiệp Việt"</em></li>
+      <li><em>"Dựa trên tài liệu, 3 rào cản lớn nhất cho AI tại Việt Nam là gì?"</em></li>
+    </ul>
+
+    <h2>Mẫu 2: Project Trợ lý viết nội dung</h2>
+    <p><strong>Tình huống:</strong> Bạn là freelancer viết content cho một thương hiệu mỹ phẩm Việt Nam.</p>
+
+    <h3>Cách thiết lập</h3>
+    <p><strong>Tên Project:</strong> Content cho Mỹ phẩm Hoa Sen</p>
+
+    <p><strong>Tài liệu nền nên tải:</strong></p>
+    <ul>
+      <li>Brand guidelines: giọng văn, màu sắc, giá trị cốt lõi</li>
+      <li>Catalogue sản phẩm: tên, thành phần, công dụng, giá</li>
+      <li>5-10 bài content mẫu đã đăng (để Claude học phong cách)</li>
+      <li>Chân dung khách hàng mục tiêu (customer persona)</li>
+      <li>Danh sách hashtag và từ khóa SEO thường dùng</li>
+    </ul>
+
+    <p><strong>Custom Instructions:</strong></p>
+    <pre><code>Bạn là content writer cho thương hiệu mỹ phẩm thiên nhiên "Hoa Sen" — thương hiệu Việt Nam, sản phẩm chiết xuất từ thảo dược.
+
+Đối tượng: phụ nữ Việt 22-35 tuổi, quan tâm làm đẹp tự nhiên, thu nhập trung bình khá.
+
+Giọng văn: nhẹ nhàng, nữ tính, gần gũi. Dùng "bạn" và "mình". Tránh quá hàn lâm hoặc quá trẻ trung (không dùng teen code, không quá nhiều emoji).
+
+Quy tắc:
+- Luôn nhắc đến thành phần thiên nhiên khi nói về sản phẩm
+- Không cam kết hiệu quả tuyệt đối (tránh "chắc chắn trắng trong 7 ngày")
+- Tuân thủ quy định quảng cáo mỹ phẩm tại Việt Nam
+- Mỗi bài caption Facebook: 150-300 từ, có CTA cuối bài
+- Mỗi bài blog: 800-1200 từ, chia nhỏ thành heading
+- Đề xuất 3 tiêu đề/hook trước khi viết bài đầy đủ
+
+Khi tôi nói "caption [tên sản phẩm]", viết caption Facebook.
+Khi tôi nói "blog [chủ đề]", viết bài blog.
+Khi tôi nói "ideas [dịp]", đưa ra 5 ý tưởng content cho dịp đó.</code></pre>
+
+    <h3>Cách sử dụng</h3>
+    <ul>
+      <li><em>"caption Serum Vitamin C Hoa Sen"</em> — Claude viết caption Facebook đúng giọng, đúng thông tin sản phẩm</li>
+      <li><em>"blog 5 bước chăm sóc da mùa hè"</em> — Bài blog có nhắc đến sản phẩm Hoa Sen tự nhiên</li>
+      <li><em>"ideas Ngày Phụ nữ Việt Nam 20/10"</em> — 5 ý tưởng content phù hợp thương hiệu</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ kết quả</div>
+      <p>Bạn gõ: <em>"caption Kem dưỡng trà xanh"</em></p>
+      <p>Claude viết (ví dụ):</p>
+      <p><em>"Da bạn mệt mỏi sau cả ngày dài? Hãy để trà xanh Thái Nguyên chăm sóc bạn nhé. Kem Dưỡng Trà Xanh Hoa Sen với chiết xuất trà xanh nguyên chất giúp da được thư giãn, phục hồi và sáng mịn tự nhiên mỗi sáng thức dậy. Thành phần lành tính, không paraben — vì mình tin rằng làn da đẹp nhất là làn da được yêu thương đúng cách..."</em></p>
+    </div>
+
+    <h2>Mẫu 3: Project Hỗ trợ học tập</h2>
+    <p><strong>Tình huống:</strong> Bạn đang tự học Data Analysis bằng Python và muốn Claude làm gia sư.</p>
+
+    <h3>Cách thiết lập</h3>
+    <p><strong>Tên Project:</strong> Tự học Data Analysis với Python</p>
+
+    <p><strong>Tài liệu nền nên tải:</strong></p>
+    <ul>
+      <li>Lộ trình học bạn đã lên (hoặc lộ trình từ một khóa học online)</li>
+      <li>Ghi chú những gì đã học (cập nhật hàng tuần)</li>
+      <li>Dataset bạn đang dùng để thực hành (CSV nhỏ)</li>
+      <li>Danh sách lỗi thường gặp và cách giải quyết (bạn ghi dần)</li>
+      <li>Mục tiêu cá nhân: ví dụ "Tháng 6 xin được việc Data Analyst junior"</li>
+    </ul>
+
+    <p><strong>Custom Instructions:</strong></p>
+    <pre><code>Bạn là gia sư dạy Data Analysis bằng Python cho một người mới bắt đầu tự học.
+
+Về tôi:
+- Trình độ: đã biết Python cơ bản (biến, vòng lặp, hàm), đang học pandas và matplotlib
+- Mục tiêu: xin việc Data Analyst junior trong 6 tháng
+- Thời gian học: 2 tiếng/ngày sau giờ làm
+- Phong cách học: thích thực hành hơn lý thuyết, cần ví dụ cụ thể
+
+Cách dạy:
+1. Giải thích khái niệm bằng tiếng Việt, ngắn gọn và dễ hiểu
+2. Luôn kèm code ví dụ chạy được — dùng dataset thực tế nếu có thể
+3. Khi tôi gửi code bị lỗi, ĐỪNG sửa ngay. Hãy đưa ra 2-3 gợi ý để tôi tự tìm lỗi trước
+4. Cuối mỗi buổi học, đưa ra 1-2 bài tập nhỏ để tôi thực hành
+5. Định kỳ nhắc tôi cập nhật ghi chú học tập trong Project
+
+Khi tôi nói "quiz", cho 5 câu hỏi trắc nghiệm về chủ đề gần nhất.
+Khi tôi nói "review tuần", tóm tắt những gì đã học trong tuần dựa trên các chat gần đây.
+Khi tôi nói "roadmap", cho tôi xem tôi đang ở đâu trong lộ trình và cần làm gì tiếp.</code></pre>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <p>Với Project học tập, hãy tạo một tài liệu "Nhật ký học tập" trong Project Knowledge và cập nhật sau mỗi tuần. Ghi lại: tuần này học gì, hiểu gì, chưa hiểu gì. Claude sẽ đọc file này và điều chỉnh cách dạy phù hợp.</p>
+    </div>
+
+    <h2>Best Practices khi thiết kế Project</h2>
+
+    <h3>Về tài liệu nền</h3>
+    <ul>
+      <li><strong>Đặt tên file rõ ràng:</strong> <code>brand-guidelines-hoa-sen.pdf</code> thay vì <code>doc1.pdf</code></li>
+      <li><strong>Thêm file "README":</strong> Tạo một text content giải thích mỗi file là gì, giúp Claude hiểu cấu trúc tài liệu</li>
+      <li><strong>Cập nhật thường xuyên:</strong> Xóa tài liệu cũ, thêm tài liệu mới khi tình hình thay đổi</li>
+      <li><strong>Kiểm tra dung lượng:</strong> Nếu thấy Claude bỏ sót thông tin, có thể tài liệu quá nhiều — hãy cắt bớt</li>
+    </ul>
+
+    <h3>Về Custom Instructions</h3>
+    <ul>
+      <li><strong>Mở đầu bằng vai trò:</strong> "Bạn là [vai trò] giúp tôi [mục đích]"</li>
+      <li><strong>Định nghĩa giọng văn:</strong> Chuyên nghiệp? Thân thiện? Hàn lâm? Cho ví dụ nếu cần</li>
+      <li><strong>Đặt quy tắc cụ thể:</strong> Độ dài, định dạng, ngôn ngữ, những gì NÊN và KHÔNG NÊN làm</li>
+      <li><strong>Tạo "phím tắt":</strong> "Khi tôi nói X, hãy làm Y" — giúp bạn ra lệnh nhanh hơn</li>
+      <li><strong>Nêu rõ thông tin về bạn:</strong> Trình độ, sở thích, mục tiêu — giúp Claude cá nhân hóa</li>
+    </ul>
+
+    <h3>Về việc sử dụng hàng ngày</h3>
+    <ul>
+      <li><strong>Mỗi chủ đề con = một chat mới:</strong> Trong cùng Project, mở chat riêng cho từng task. Ví dụ: "Viết caption sản phẩm A" và "Viết caption sản phẩm B" là 2 chat riêng</li>
+      <li><strong>Đánh giá định kỳ:</strong> Mỗi tuần, xem lại Project — Custom Instructions còn phù hợp không? Tài liệu cần cập nhật không?</li>
+      <li><strong>Ghi chú lại những gì hiệu quả:</strong> Khi Claude trả lời xuất sắc, ghi lại prompt đó để dùng lại</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      <p><strong>Sai lầm phổ biến:</strong> Tạo Project xong rồi không bao giờ cập nhật Custom Instructions. Hãy nghĩ Custom Instructions như một tài liệu sống — bạn sẽ cần sửa đổi nhiều lần trong tuần đầu tiên cho đến khi Claude phản hồi đúng ý.</p>
+    </div>
+
+    <h2>Template Custom Instructions tổng quát</h2>
+    <p>Bạn có thể dùng template sau và điều chỉnh cho Project của mình:</p>
+    <pre><code>## Vai trò
+Bạn là [vai trò] giúp tôi [mục đích chính].
+
+## Về tôi
+- [Thông tin liên quan: trình độ, ngành nghề, mục tiêu]
+
+## Giọng văn và ngôn ngữ
+- Ngôn ngữ: [tiếng Việt / tiếng Anh / cả hai]
+- Giọng văn: [mô tả giọng văn mong muốn]
+
+## Quy tắc
+- [Quy tắc 1]
+- [Quy tắc 2]
+- [Quy tắc 3: những gì KHÔNG được làm]
+
+## Định dạng output
+- [Độ dài, cấu trúc, format]
+
+## Phím tắt
+- Khi tôi nói "[từ khóa 1]", hãy [hành động 1]
+- Khi tôi nói "[từ khóa 2]", hãy [hành động 2]
+
+## Tài liệu đã tải
+- [Mô tả ngắn mỗi file để Claude biết khi nào cần tham khảo file nào]</code></pre>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Thiết kế Project nghiên cứu:</strong> Chọn một chủ đề bạn đang quan tâm (có thể liên quan đến công việc hoặc sở thích). Tạo Project với ít nhất 3 tài liệu và Custom Instructions đầy đủ. Thử hỏi Claude 3 câu hỏi khác nhau.</li>
+      <li><strong>Thiết kế Project viết nội dung:</strong> Tạo Project cho một loại nội dung bạn thường viết (email, bài blog, báo cáo). Tải mẫu viết cũ lên và viết Custom Instructions. Yêu cầu Claude viết 2 bài, so sánh với bài bạn tự viết.</li>
+      <li><strong>Thiết kế Project học tập:</strong> Chọn kỹ năng bạn đang muốn học. Tạo Project với lộ trình và ghi chú. Thực hành một buổi học 30 phút với Claude.</li>
+      <li><strong>Tinh chỉnh:</strong> Sau khi dùng mỗi Project ở trên, quay lại sửa Custom Instructions dựa trên những gì Claude chưa làm tốt. Ghi chú bạn đã thay đổi gì và vì sao.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li>Một Project tốt = <strong>mục đích rõ</strong> + <strong>tài liệu có chọn lọc</strong> + <strong>Custom Instructions cụ thể</strong></li>
+      <li>Mỗi Project nên phục vụ <strong>một mục đích duy nhất</strong> — đừng tạo Project "làm mọi thứ"</li>
+      <li>Custom Instructions hiệu quả khi: nêu rõ vai trò, giọng văn, quy tắc, định dạng, và phím tắt</li>
+      <li>Tài liệu nền nên được đặt tên rõ, tóm tắt gọn, và cập nhật thường xuyên</li>
+      <li>Project cần được <strong>tinh chỉnh liên tục</strong> — đặc biệt trong tuần đầu sử dụng</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-05-projects-la-gi.html" class="nav-prev">← Bài 5</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-07-memory.html" class="nav-next">Bài 7 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

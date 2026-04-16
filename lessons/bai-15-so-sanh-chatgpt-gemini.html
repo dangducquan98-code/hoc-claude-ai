@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 15: So sánh Claude với ChatGPT, Gemini — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p4">Giai đoạn 4</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 15</div>
+    <h1>So sánh Claude với ChatGPT, Gemini</h1>
+    <div class="lesson-meta">
+      <span class="tag">Nghiên cứu</span>
+      <span class="tag">45 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu điểm mạnh và điểm yếu của từng AI: Claude, ChatGPT (GPT-4o), Gemini</li>
+      <li>Biết khi nào nên dùng Claude, khi nào nên dùng GPT-4o hoặc Gemini</li>
+      <li>Nắm rõ bảng so sánh chi tiết về tính năng, giá cả, và trải nghiệm</li>
+      <li>Xây dựng chiến lược sử dụng đa công cụ AI hiệu quả</li>
+    </ul>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Thị trường AI thay đổi rất nhanh. Những so sánh trong bài này phản ánh tình hình tại thời điểm viết. Tuy nhiên, <strong>framework so sánh</strong> (cách bạn đánh giá các AI) sẽ luôn hữu ích bất kể các model mới ra mắt.
+    </div>
+
+    <h2>Tổng quan ba nền tảng AI lớn</h2>
+
+    <h3>Claude (Anthropic)</h3>
+    <ul>
+      <li><strong>Công ty:</strong> Anthropic — thành lập 2021, trụ sở San Francisco, tập trung vào AI Safety</li>
+      <li><strong>Models chính:</strong> Claude Opus (mạnh nhất), Claude Sonnet (cân bằng), Claude Haiku (nhanh nhất)</li>
+      <li><strong>Triết lý:</strong> "AI an toàn, trung thực, và hữu ích" — ưu tiên an toàn trước hết</li>
+      <li><strong>Truy cập:</strong> claude.ai, API, Claude app (desktop/mobile)</li>
+    </ul>
+
+    <h3>ChatGPT / GPT-4o (OpenAI)</h3>
+    <ul>
+      <li><strong>Công ty:</strong> OpenAI — thành lập 2015, tiên phong trong lĩnh vực LLM</li>
+      <li><strong>Models chính:</strong> GPT-4o (đa phương tiện), GPT-4o mini (nhanh), o1/o3 (reasoning)</li>
+      <li><strong>Triết lý:</strong> "AI phổ cập cho mọi người" — hệ sinh thái rộng, nhiều tích hợp</li>
+      <li><strong>Truy cập:</strong> chat.openai.com, API, ChatGPT app, tích hợp trong Bing, Microsoft 365</li>
+    </ul>
+
+    <h3>Gemini (Google)</h3>
+    <ul>
+      <li><strong>Công ty:</strong> Google DeepMind — sức mạnh hạ tầng của Google</li>
+      <li><strong>Models chính:</strong> Gemini Ultra (mạnh nhất), Gemini Pro, Gemini Flash (nhanh nhất)</li>
+      <li><strong>Triết lý:</strong> "AI tích hợp sâu vào hệ sinh thái Google" — tận dụng Search, YouTube, Maps</li>
+      <li><strong>Truy cập:</strong> gemini.google.com, API, tích hợp trong Google Workspace</li>
+    </ul>
+
+    <h2>Bảng so sánh chi tiết</h2>
+
+    <table style="width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border-medium);text-align:left;">
+          <th style="padding:12px 16px;font-weight:600;">Tiêu chí</th>
+          <th style="padding:12px 16px;font-weight:600;">Claude</th>
+          <th style="padding:12px 16px;font-weight:600;">ChatGPT (GPT-4o)</th>
+          <th style="padding:12px 16px;font-weight:600;">Gemini</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Viết dài, sáng tạo</strong></td>
+          <td style="padding:10px 16px;">Rất mạnh — văn phong tự nhiên, sắc thái tốt</td>
+          <td style="padding:10px 16px;">Tốt — đôi khi hơi "template"</td>
+          <td style="padding:10px 16px;">Khá — đang cải thiện</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Lập trình / Code</strong></td>
+          <td style="padding:10px 16px;">Rất mạnh — code sạch, giải thích rõ</td>
+          <td style="padding:10px 16px;">Rất mạnh — hệ sinh thái plugin lớn</td>
+          <td style="padding:10px 16px;">Tốt — mạnh với code Google tech</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Phân tích tài liệu dài</strong></td>
+          <td style="padding:10px 16px;">Xuất sắc — context 200K tokens</td>
+          <td style="padding:10px 16px;">Tốt — context 128K tokens</td>
+          <td style="padding:10px 16px;">Rất tốt — context lên đến 1M tokens</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Tạo hình ảnh</strong></td>
+          <td style="padding:10px 16px;">Chưa hỗ trợ trực tiếp</td>
+          <td style="padding:10px 16px;">Có — DALL-E 3 tích hợp</td>
+          <td style="padding:10px 16px;">Có — Imagen tích hợp</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Xử lý hình ảnh đầu vào</strong></td>
+          <td style="padding:10px 16px;">Tốt — đọc ảnh, chart, screenshot</td>
+          <td style="padding:10px 16px;">Rất tốt — OCR mạnh</td>
+          <td style="padding:10px 16px;">Rất tốt — tận dụng Google Lens</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Tìm kiếm web</strong></td>
+          <td style="padding:10px 16px;">Có — web search tích hợp</td>
+          <td style="padding:10px 16px;">Có — Bing search tích hợp</td>
+          <td style="padding:10px 16px;">Rất mạnh — Google Search trực tiếp</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>An toàn, từ chối nội dung có hại</strong></td>
+          <td style="padding:10px 16px;">Rất cao — ưu tiên an toàn</td>
+          <td style="padding:10px 16px;">Cao</td>
+          <td style="padding:10px 16px;">Cao</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Thừa nhận "không biết"</strong></td>
+          <td style="padding:10px 16px;">Tốt nhất — ít bịa hơn</td>
+          <td style="padding:10px 16px;">Khá — đôi khi vẫn tự tin quá mức</td>
+          <td style="padding:10px 16px;">Khá — đang cải thiện</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Tiếng Việt</strong></td>
+          <td style="padding:10px 16px;">Tốt — ngữ pháp tự nhiên</td>
+          <td style="padding:10px 16px;">Tốt — cộng đồng Việt lớn</td>
+          <td style="padding:10px 16px;">Khá — đang cải thiện</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px;"><strong>Hệ sinh thái / tích hợp</strong></td>
+          <td style="padding:10px 16px;">Đang mở rộng — Projects, Artifacts, API</td>
+          <td style="padding:10px 16px;">Rất rộng — GPTs, plugins, Microsoft 365</td>
+          <td style="padding:10px 16px;">Rộng — Google Workspace, Android</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Điểm mạnh nổi bật của từng AI</h2>
+
+    <h3>Claude nổi trội khi nào?</h3>
+    <ul>
+      <li><strong>Viết nội dung dài, chất lượng cao:</strong> Blog, báo cáo, tài liệu kỹ thuật — Claude viết mượt, ít lặp, có chiều sâu</li>
+      <li><strong>Phân tích tài liệu phức tạp:</strong> Upload một PDF 100 trang và hỏi chi tiết — Claude xử lý context dài rất tốt</li>
+      <li><strong>Tác vụ cần sự cẩn thận, nuance:</strong> Chủ đề nhạy cảm, phân tích đa chiều, chỉnh sửa văn bản tinh tế</li>
+      <li><strong>Coding với giải thích:</strong> Claude không chỉ viết code mà giải thích rõ tại sao chọn cách tiếp cận đó</li>
+      <li><strong>Projects và workflow có hệ thống:</strong> Tính năng Projects của Claude giúp quản lý ngữ cảnh dài hạn rất hiệu quả</li>
+      <li><strong>Extended Thinking:</strong> Chế độ suy nghĩ sâu cho các bài toán phức tạp, cần lập luận nhiều bước</li>
+    </ul>
+
+    <h3>ChatGPT / GPT-4o nổi trội khi nào?</h3>
+    <ul>
+      <li><strong>Tạo hình ảnh:</strong> DALL-E 3 tích hợp trực tiếp — Claude chưa có tính năng này</li>
+      <li><strong>Hệ sinh thái plugin:</strong> Hàng nghìn GPTs và plugins cho đủ loại tác vụ chuyên biệt</li>
+      <li><strong>Xử lý đa phương tiện:</strong> Voice mode (nói chuyện bằng giọng nói), xử lý audio tốt</li>
+      <li><strong>Cộng đồng người dùng lớn:</strong> Dễ tìm prompt templates, tutorials, và hỗ trợ</li>
+      <li><strong>Tích hợp Microsoft 365:</strong> Copilot trong Word, Excel, PowerPoint, Outlook</li>
+      <li><strong>Custom GPTs:</strong> Tạo chatbot chuyên biệt không cần code</li>
+    </ul>
+
+    <h3>Gemini nổi trội khi nào?</h3>
+    <ul>
+      <li><strong>Tìm kiếm thông tin mới nhất:</strong> Tích hợp trực tiếp Google Search — thông tin real-time</li>
+      <li><strong>Context window cực lớn:</strong> Lên đến 1 triệu tokens — xử lý tài liệu cực dài</li>
+      <li><strong>Hệ sinh thái Google:</strong> Tích hợp Gmail, Docs, Drive, Sheets, Maps, YouTube</li>
+      <li><strong>Phân tích video:</strong> Có thể xử lý video YouTube trực tiếp</li>
+      <li><strong>Miễn phí hào phóng:</strong> Gemini Pro miễn phí với tài khoản Google</li>
+      <li><strong>Android:</strong> Tích hợp sâu vào hệ điều hành Android như trợ lý ảo</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <strong>Cùng một tác vụ, nên dùng AI nào?</strong><br><br>
+      <strong>Viết báo cáo 20 trang từ 5 tài liệu tham khảo</strong> → Claude (phân tích tài liệu dài + viết dài chất lượng)<br><br>
+      <strong>Tạo 10 hình minh họa cho presentation</strong> → ChatGPT (DALL-E tích hợp)<br><br>
+      <strong>Tóm tắt một video YouTube 2 tiếng</strong> → Gemini (xử lý video trực tiếp)<br><br>
+      <strong>Debug code phức tạp + giải thích</strong> → Claude hoặc ChatGPT (cả hai đều mạnh, Claude giải thích tốt hơn)<br><br>
+      <strong>Tìm tin tức hôm nay về một chủ đề</strong> → Gemini (Google Search trực tiếp)
+    </div>
+
+    <h2>So sánh giá cả cho người dùng Việt Nam</h2>
+
+    <table style="width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border-medium);text-align:left;">
+          <th style="padding:12px 16px;font-weight:600;">Gói dịch vụ</th>
+          <th style="padding:12px 16px;font-weight:600;">Claude</th>
+          <th style="padding:12px 16px;font-weight:600;">ChatGPT</th>
+          <th style="padding:12px 16px;font-weight:600;">Gemini</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Miễn phí</strong></td>
+          <td style="padding:10px 16px;">Có — giới hạn lượt dùng/ngày, Sonnet</td>
+          <td style="padding:10px 16px;">Có — GPT-4o mini, giới hạn GPT-4o</td>
+          <td style="padding:10px 16px;">Có — Gemini Pro, khá hào phóng</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Gói Pro/Plus</strong></td>
+          <td style="padding:10px 16px;">~$20/tháng (Claude Pro)</td>
+          <td style="padding:10px 16px;">~$20/tháng (ChatGPT Plus)</td>
+          <td style="padding:10px 16px;">~$20/tháng (Gemini Advanced)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;"><strong>Gói nào đáng đầu tư?</strong></td>
+          <td style="padding:10px 16px;">Nếu chủ yếu viết + phân tích</td>
+          <td style="padding:10px 16px;">Nếu cần hệ sinh thái đa dạng + tạo ảnh</td>
+          <td style="padding:10px 16px;">Nếu dùng nhiều Google Workspace</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px;"><strong>Thanh toán từ VN</strong></td>
+          <td style="padding:10px 16px;">Visa/Mastercard quốc tế</td>
+          <td style="padding:10px 16px;">Visa/Mastercard quốc tế, Apple Pay</td>
+          <td style="padding:10px 16px;">Visa/Mastercard, Google Pay</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <strong>Chiến lược tiết kiệm cho người dùng Việt Nam:</strong> Bắt đầu với gói miễn phí của cả 3 nền tảng. Dùng thử 2-3 tuần, xem bạn dùng AI nào nhiều nhất và cho tác vụ gì. Sau đó chỉ mua Pro/Plus cho 1 nền tảng bạn dùng nhiều nhất. Các AI còn lại dùng gói miễn phí bổ sung khi cần.
+    </div>
+
+    <h2>Chiến lược sử dụng đa công cụ</h2>
+    <p>Người dùng AI hiệu quả nhất không trung thành với một nền tảng duy nhất. Họ biết <strong>chọn đúng công cụ cho đúng tác vụ</strong>:</p>
+
+    <h3>Chiến lược "Primary + Secondary"</h3>
+    <ul>
+      <li><strong>Primary AI (dùng chính, mua Pro):</strong> Chọn AI phù hợp nhất với công việc chính của bạn. Đây là nơi bạn đầu tư thời gian thiết lập Projects, Custom Instructions, workflow.</li>
+      <li><strong>Secondary AI (dùng phụ, gói miễn phí):</strong> Dùng cho các tác vụ mà Primary AI yếu, hoặc để cross-check thông tin quan trọng.</li>
+    </ul>
+
+    <h3>Gợi ý theo nghề nghiệp</h3>
+    <ul>
+      <li><strong>Content Creator / Writer:</strong> Primary: Claude (viết tốt nhất) | Secondary: ChatGPT (tạo ảnh) + Gemini (research)</li>
+      <li><strong>Developer:</strong> Primary: Claude hoặc ChatGPT (cả hai mạnh code) | Secondary: Gemini (tra cứu nhanh)</li>
+      <li><strong>Marketer:</strong> Primary: ChatGPT (đa năng, tạo ảnh, plugins) | Secondary: Claude (viết content chất lượng) + Gemini (analytics)</li>
+      <li><strong>Researcher / Sinh viên:</strong> Primary: Claude (phân tích tài liệu dài) | Secondary: Gemini (search + context lớn)</li>
+      <li><strong>Người dùng Google Workspace:</strong> Primary: Gemini (tích hợp sâu) | Secondary: Claude (viết và phân tích)</li>
+    </ul>
+
+    <h3>Khi nào nên cross-check giữa các AI?</h3>
+    <ul>
+      <li>Thông tin factual quan trọng — hỏi cả Claude và ChatGPT, so sánh đáp án</li>
+      <li>Quan điểm về chủ đề gây tranh cãi — mỗi AI có "tính cách" khác nhau</li>
+      <li>Code review — paste code vào AI thứ hai để xem có phát hiện lỗi bổ sung không</li>
+      <li>Khi một AI cho kết quả không thuyết phục — thử AI khác xem có tốt hơn không</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      <strong>Đừng nhầm "cross-check giữa các AI" với "kiểm chứng sự thật".</strong> Nếu cả 3 AI đều nói cùng một thông tin sai, điều đó không làm thông tin trở thành đúng. Với thông tin quan trọng, luôn cần nguồn chính thống (nghiên cứu gốc, website chính thức, chuyên gia thực sự).
+    </div>
+
+    <h2>Xu hướng tương lai</h2>
+    <p>Thị trường AI đang phát triển rất nhanh. Một số xu hướng đáng theo dõi:</p>
+    <ul>
+      <li><strong>Convergence (hội tụ):</strong> Các AI đang ngày càng giống nhau về tính năng. Claude sẽ thêm tạo ảnh, ChatGPT sẽ cải thiện viết dài, Gemini sẽ mạnh hơn về reasoning.</li>
+      <li><strong>Agentic AI:</strong> AI không chỉ trả lời câu hỏi mà tự thực hiện tác vụ: đặt lịch, gửi email, phân tích dữ liệu, viết code và chạy luôn.</li>
+      <li><strong>Chuyên biệt hóa:</strong> Sẽ xuất hiện nhiều AI chuyên ngành (y tế, pháp luật, tài chính) thay vì chỉ AI đa năng.</li>
+      <li><strong>Giá sẽ giảm:</strong> Cuộc đua giữa các công ty sẽ khiến AI ngày càng rẻ và dễ tiếp cận hơn.</li>
+    </ul>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>So sánh trực tiếp:</strong> Gửi cùng một prompt cho Claude, ChatGPT (bản miễn phí), và Gemini. So sánh: độ chính xác, chất lượng viết, tốc độ, và format trình bày. Ghi nhận AI nào tốt hơn cho prompt đó.</li>
+      <li><strong>Test viết dài:</strong> Yêu cầu cả 3 AI viết một bài blog 800 từ về cùng chủ đề. Đánh giá: văn phong tự nhiên hay không, có lặp ý không, chiều sâu nội dung.</li>
+      <li><strong>Test phân tích:</strong> Upload cùng một tài liệu (PDF hoặc hình ảnh) cho cả 3, yêu cầu tóm tắt. So sánh mức độ chi tiết và chính xác.</li>
+      <li><strong>Lên chiến lược cá nhân:</strong> Dựa trên công việc của bạn, viết ra: Primary AI là gì và tại sao, Secondary AI cho tác vụ nào, khi nào cần cross-check.</li>
+      <li><strong>Test tiếng Việt:</strong> Hỏi cả 3 AI một câu hỏi phức tạp bằng tiếng Việt (ví dụ: giải thích một khái niệm kinh tế). So sánh chất lượng tiếng Việt: ngữ pháp, dùng từ, có tự nhiên không.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li><strong>Claude</strong> nổi bật: viết dài chất lượng, phân tích tài liệu, an toàn, Extended Thinking, Projects</li>
+      <li><strong>ChatGPT</strong> nổi bật: hệ sinh thái plugin rộng, tạo ảnh DALL-E, voice mode, tích hợp Microsoft</li>
+      <li><strong>Gemini</strong> nổi bật: Google Search trực tiếp, context cực lớn, tích hợp Google Workspace, miễn phí hào phóng</li>
+      <li>Không có AI "tốt nhất cho mọi việc" — chiến lược đúng là <strong>chọn đúng AI cho đúng tác vụ</strong></li>
+      <li>Áp dụng mô hình <strong>Primary + Secondary</strong>: đầu tư Pro cho AI dùng nhiều nhất, dùng miễn phí AI còn lại</li>
+      <li>Cross-check giữa các AI là tốt, nhưng <strong>không thay thế việc kiểm chứng từ nguồn chính thống</strong></li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-14-gioi-han-diem-yeu.html" class="nav-prev">← Bài 14</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-16-dong-goi-kien-thuc.html" class="nav-next">Bài 16 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Colors — warm neutral palette */
+  --bg-primary: #faf9f6;
+  --bg-secondary: #f2f0ec;
+  --bg-tertiary: #e8e5df;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fdfcfa;
+  --bg-elevated: #ffffff;
+
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-tertiary: #a8a29e;
+  --text-inverse: #fafaf9;
+
+  --border-light: rgba(28,25,23,0.08);
+  --border-medium: rgba(28,25,23,0.14);
+  --border-strong: rgba(28,25,23,0.22);
+
+  /* Accent — warm coral-orange inspired by Anthropic */
+  --accent: #c2410c;
+  --accent-light: #fb923c;
+  --accent-bg: #fff7ed;
+  --accent-glow: rgba(194,65,12,0.08);
+
+  /* Phase colors */
+  --phase1: #7c3aed;  --phase1-bg: #f5f3ff;  --phase1-light: #c4b5fd;
+  --phase2: #059669;  --phase2-bg: #ecfdf5;  --phase2-light: #6ee7b7;
+  --phase3: #d97706;  --phase3-bg: #fffbeb;  --phase3-light: #fcd34d;
+  --phase4: #dc2626;  --phase4-bg: #fef2f2;  --phase4-light: #fca5a5;
+
+  /* Semantic */
+  --success: #059669;
+  --success-bg: #ecfdf5;
+
+  /* Typography */
+  --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  /* Spacing */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px;  --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px;
+
+  /* Radius */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 100px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(28,25,23,0.04), 0 1px 3px rgba(28,25,23,0.06);
+  --shadow-md: 0 4px 6px rgba(28,25,23,0.04), 0 2px 4px rgba(28,25,23,0.06);
+  --shadow-lg: 0 10px 25px rgba(28,25,23,0.06), 0 4px 10px rgba(28,25,23,0.04);
+  --shadow-glow: 0 0 0 3px var(--accent-glow);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 0.15s var(--ease-out);
+  --t-normal: 0.25s var(--ease-out);
+  --t-slow: 0.4s var(--ease-out);
+}
+
+/* === DARK MODE === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0c0a09;
+    --bg-secondary: #1c1917;
+    --bg-tertiary: #292524;
+    --bg-card: #1c1917;
+    --bg-card-hover: #211f1d;
+    --bg-elevated: #292524;
+
+    --text-primary: #fafaf9;
+    --text-secondary: #a8a29e;
+    --text-tertiary: #57534e;
+    --text-inverse: #1c1917;
+
+    --border-light: rgba(250,250,249,0.06);
+    --border-medium: rgba(250,250,249,0.1);
+    --border-strong: rgba(250,250,249,0.18);
+
+    --accent: #fb923c;
+    --accent-light: #fdba74;
+    --accent-bg: rgba(251,146,60,0.08);
+    --accent-glow: rgba(251,146,60,0.12);
+
+    --phase1-bg: rgba(124,58,237,0.1);   --phase1-light: #a78bfa;
+    --phase2-bg: rgba(5,150,105,0.1);    --phase2-light: #34d399;
+    --phase3-bg: rgba(217,119,6,0.1);    --phase3-light: #fbbf24;
+    --phase4-bg: rgba(220,38,38,0.1);    --phase4-light: #f87171;
+
+    --success-bg: rgba(5,150,105,0.1);
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.25);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.3);
+  }
+}
+
+/* === BASE === */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-display);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* === SELECTION === */
+::selection {
+  background: var(--accent);
+  color: var(--text-inverse);
+}
+
+/* === FOCUS === */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+/* === STAGGER ANIMATION === */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-in {
+  animation: slideUp 0.5s var(--ease-out) both;
+}
+
+.animate-in-1 { animation-delay: 0s; }
+.animate-in-2 { animation-delay: 0.06s; }
+.animate-in-3 { animation-delay: 0.12s; }
+.animate-in-4 { animation-delay: 0.18s; }
+.animate-in-5 { animation-delay: 0.24s; }
+.animate-in-6 { animation-delay: 0.3s; }
+.animate-in-7 { animation-delay: 0.36s; }

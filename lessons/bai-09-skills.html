@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 09: Skills — dạy Claude làm việc theo cách của bạn — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p3">Giai đoạn 3</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 09</div>
+    <h1>Skills — dạy Claude làm việc theo cách của bạn</h1>
+    <div class="lesson-meta">
+      <span class="tag">Nâng cao</span>
+      <span class="tag">60 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu Custom Skills (hướng dẫn chi tiết trong Projects) là gì và tại sao chúng mạnh mẽ</li>
+      <li>Biết cách viết Skill đầu tiên của bạn — từ cấu trúc đến nội dung</li>
+      <li>Nắm được các nguyên tắc thiết kế Skill hiệu quả</li>
+      <li>Xây dựng được bộ Skills cho công việc thực tế hàng ngày</li>
+    </ul>
+
+    <h2>Custom Skills là gì?</h2>
+    <p>Trong các bài trước, bạn đã biết về <strong>Projects</strong> và <strong>System Prompt</strong>. Custom Skills là bước tiến tiếp theo: đó là những <strong>bộ hướng dẫn chi tiết</strong> được nhúng vào Project Instructions, giúp Claude thực hiện một nhiệm vụ cụ thể theo đúng cách bạn muốn — mỗi lần, mọi lần.</p>
+
+    <p>Hãy tưởng tượng bạn có một nhân viên mới. Bạn không chỉ nói "hãy viết email" mà còn đưa cho họ một <strong>quy trình chuẩn (SOP)</strong>: viết email theo tone nào, dài bao nhiêu, cần có những phần gì, kiểm tra gì trước khi gửi. Skill chính là SOP cho Claude.</p>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Custom Skills không phải là tính năng riêng biệt trong giao diện Claude — chúng là <strong>cách bạn cấu trúc Project Instructions</strong> để Claude có thể thực hiện các tác vụ lặp lại một cách nhất quán và chất lượng cao.
+    </div>
+
+    <h2>Tại sao cần Skills thay vì chỉ dùng prompt?</h2>
+    <p>Bạn có thể hỏi: "Tôi viết prompt tốt là đủ rồi, sao cần Skill?" Hãy so sánh:</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border-medium);text-align:left;">
+          <th style="padding:12px 16px;font-weight:600;">Tiêu chí</th>
+          <th style="padding:12px 16px;font-weight:600;">Prompt thông thường</th>
+          <th style="padding:12px 16px;font-weight:600;">Custom Skill</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Tính nhất quán</td>
+          <td style="padding:10px 16px;">Kết quả thay đổi mỗi lần</td>
+          <td style="padding:10px 16px;">Kết quả nhất quán theo chuẩn</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Tái sử dụng</td>
+          <td style="padding:10px 16px;">Phải copy-paste mỗi lần</td>
+          <td style="padding:10px 16px;">Luôn có sẵn trong Project</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Độ phức tạp</td>
+          <td style="padding:10px 16px;">Khó nhớ hết các yêu cầu</td>
+          <td style="padding:10px 16px;">Mọi yêu cầu được ghi rõ</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px;">Chia sẻ team</td>
+          <td style="padding:10px 16px;">Mỗi người viết một kiểu</td>
+          <td style="padding:10px 16px;">Cả team dùng chung chuẩn</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Cấu trúc một Skill hiệu quả</h2>
+    <p>Một Skill tốt thường có 5 phần chính:</p>
+
+    <h3>1. Tên và mô tả ngắn</h3>
+    <p>Đặt tên rõ ràng để Claude (và bạn) biết khi nào nên dùng Skill này.</p>
+
+    <h3>2. Ngữ cảnh và vai trò</h3>
+    <p>Mô tả Claude đóng vai gì khi thực hiện Skill này, và bối cảnh sử dụng.</p>
+
+    <h3>3. Quy trình từng bước</h3>
+    <p>Liệt kê chính xác các bước Claude cần thực hiện, theo đúng thứ tự.</p>
+
+    <h3>4. Tiêu chuẩn đầu ra</h3>
+    <p>Mô tả output phải trông như thế nào: format, độ dài, tone, cấu trúc.</p>
+
+    <h3>5. Quy tắc và ràng buộc</h3>
+    <p>Những điều Claude nên làm và không nên làm khi thực hiện Skill.</p>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      Hãy viết Skill như thể bạn đang hướng dẫn một người thông minh nhưng chưa biết gì về quy trình làm việc của bạn. Càng cụ thể, Claude càng làm đúng ý bạn.
+    </div>
+
+    <h2>Viết Skill đầu tiên: Hướng dẫn phong cách viết</h2>
+    <p>Hãy bắt đầu với một Skill phổ biến nhất — <strong>Writing Style Guide</strong>. Đây là Skill dạy Claude viết đúng phong cách mà bạn hoặc tổ chức mong muốn.</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <p><strong>Skill: Viết bài blog cho công ty</strong></p>
+      <p>Đặt nội dung sau vào Project Instructions:</p>
+<pre><code>## SKILL: Viết bài blog công ty
+
+### Vai trò
+Bạn là content writer chuyên nghiệp cho một công ty công nghệ
+Việt Nam. Đối tượng đọc: chủ doanh nghiệp SME, 30-50 tuổi,
+ít kiến thức kỹ thuật.
+
+### Quy trình
+1. Đọc chủ đề được yêu cầu
+2. Đề xuất 3 góc tiếp cận khác nhau, chờ người dùng chọn
+3. Viết outline trước, chờ duyệt
+4. Viết bài hoàn chỉnh theo outline đã duyệt
+
+### Tiêu chuẩn đầu ra
+- Độ dài: 1.200 - 1.800 từ
+- Tone: Chuyên nghiệp nhưng dễ hiểu, tránh thuật ngữ kỹ thuật
+- Cấu trúc: Tiêu đề hấp dẫn → Mở bài (vấn đề) → 3-5 phần
+  chính → Kết luận + CTA
+- Mỗi đoạn không quá 4 câu
+- Dùng ví dụ thực tế từ thị trường Việt Nam
+
+### Quy tắc
+- KHÔNG dùng từ "đột phá", "cách mạng", "game-changer"
+- KHÔNG bắt đầu bài bằng "Trong thời đại..."
+- LUÔN kiểm tra: bài viết có giải quyết được pain point
+  cụ thể không?
+- Kết thúc bằng CTA rõ ràng (đăng ký, liên hệ, tải tài liệu)</code></pre>
+    </div>
+
+    <h2>Skill mẫu: Quy trình review tài liệu</h2>
+    <p>Đây là Skill giúp Claude đánh giá và góp ý cho bất kỳ tài liệu nào theo tiêu chuẩn nhất quán.</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+<pre><code>## SKILL: Review tài liệu
+
+### Vai trò
+Bạn là editor chuyên nghiệp. Mục tiêu: giúp tác giả cải thiện
+tài liệu, không phải phê bình.
+
+### Quy trình review
+1. Đọc toàn bộ tài liệu một lần trước khi nhận xét
+2. Đánh giá theo 4 tiêu chí (cho điểm 1-10 mỗi tiêu chí):
+   a. Rõ ràng (Clarity): Người đọc có hiểu ngay không?
+   b. Cấu trúc (Structure): Luồng thông tin có logic không?
+   c. Đầy đủ (Completeness): Có thiếu thông tin quan trọng?
+   d. Hấp dẫn (Engagement): Có muốn đọc tiếp không?
+3. Liệt kê 3 điểm mạnh cụ thể (trích dẫn từ bài)
+4. Liệt kê 3-5 điểm cần cải thiện (kèm gợi ý sửa cụ thể)
+5. Kết luận: 1-2 câu đánh giá tổng thể
+
+### Format đầu ra
+Sử dụng bảng điểm ở đầu, sau đó các phần chi tiết.
+Tone: Xây dựng, tích cực, cụ thể.
+
+### Quy tắc
+- KHÔNG nói chung chung như "bài viết tốt" — luôn dẫn chứng cụ thể
+- KHÔNG sửa trực tiếp — chỉ gợi ý cách sửa
+- Nếu tài liệu quá ngắn để đánh giá, yêu cầu thêm context</code></pre>
+    </div>
+
+    <h2>Skill mẫu: Chuẩn hóa output</h2>
+    <p>Skill này đặc biệt hữu ích khi bạn cần Claude tạo ra output theo đúng format mỗi lần.</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+<pre><code>## SKILL: Tạo báo cáo tuần
+
+### Mục đích
+Tạo báo cáo tuần cho quản lý từ các ghi chú rời rạc của nhân viên.
+
+### Input cần có
+Người dùng sẽ cung cấp: ghi chú công việc trong tuần
+(có thể lộn xộn, viết tắt, không cấu trúc).
+
+### Output format
+**[Tuần XX/2026] Báo cáo tuần — [Tên team]**
+
+1. Tóm tắt (3 bullet, mỗi bullet 1 dòng)
+2. Công việc đã hoàn thành (bảng: Task | Trạng thái | Ghi chú)
+3. Công việc đang tiến hành (tương tự)
+4. Vấn đề cần escalate (nếu có)
+5. Kế hoạch tuần tới (3-5 bullet)
+
+### Quy tắc xử lý
+- Nếu ghi chú không rõ ràng → đánh dấu [Cần xác nhận] và hỏi
+- Tự phân loại task vào đúng mục (hoàn thành / đang làm)
+- Giữ nguyên các con số, deadline cụ thể — KHÔNG đoán
+- Tone: Ngắn gọn, chuyên nghiệp, dễ scan</code></pre>
+    </div>
+
+    <h2>Các loại Skill hữu ích</h2>
+    <p>Dưới đây là các nhóm Skill phổ biến mà bạn nên cân nhắc xây dựng:</p>
+
+    <h3>Nhóm 1: Skills về viết lách</h3>
+    <ul>
+      <li><strong>Hướng dẫn phong cách viết</strong> — tone, từ vựng, cấu trúc câu</li>
+      <li><strong>Viết email chuyên nghiệp</strong> — format, cách mở đầu, cách kết thúc</li>
+      <li><strong>Viết nội dung mạng xã hội</strong> — độ dài, hashtag, call-to-action</li>
+      <li><strong>Dịch thuật có kiểm soát</strong> — giữ thuật ngữ gốc, dịch theo ngữ cảnh ngành</li>
+    </ul>
+
+    <h3>Nhóm 2: Skills về phân tích</h3>
+    <ul>
+      <li><strong>Phân tích dữ liệu bán hàng</strong> — chỉ số cần tính, cách trình bày</li>
+      <li><strong>Đánh giá đề xuất kinh doanh</strong> — tiêu chí, thang điểm, format phản hồi</li>
+      <li><strong>Nghiên cứu đối thủ</strong> — các khía cạnh cần xem xét, cách so sánh</li>
+    </ul>
+
+    <h3>Nhóm 3: Skills về quy trình</h3>
+    <ul>
+      <li><strong>Onboarding nhân viên mới</strong> — checklist, tài liệu, timeline</li>
+      <li><strong>Chuẩn bị cuộc họp</strong> — agenda template, câu hỏi cần chuẩn bị</li>
+      <li><strong>Xử lý khiếu nại khách hàng</strong> — phân loại, quy trình phản hồi, escalation</li>
+    </ul>
+
+    <h2>Nguyên tắc viết Skill tốt</h2>
+
+    <h3>Nguyên tắc 1: Cụ thể hơn trừu tượng</h3>
+    <p>Thay vì viết "viết hay", hãy viết "mỗi đoạn mở bằng câu chủ đề, không quá 4 câu/đoạn, dùng ví dụ cụ thể cho mỗi luận điểm".</p>
+
+    <h3>Nguyên tắc 2: Cho ví dụ cụ thể</h3>
+    <p>Nếu bạn muốn Claude viết theo phong cách nhất định, hãy đưa 1-2 đoạn mẫu vào Skill. Ví dụ tốt hơn ngàn lời mô tả.</p>
+
+    <h3>Nguyên tắc 3: Định nghĩa rõ "không nên làm"</h3>
+    <p>Liệt kê các lỗi thường gặp mà bạn muốn Claude tránh. Điều này thường hiệu quả hơn việc chỉ nói Claude "nên" làm gì.</p>
+
+    <h3>Nguyên tắc 4: Xây dựng quy trình đa bước</h3>
+    <p>Thay vì để Claude làm tất cả trong một lần, hãy chia thành các bước: bước 1 đề xuất → chờ duyệt → bước 2 thực hiện → chờ phản hồi → bước 3 hoàn thiện. Điều này giúp bạn kiểm soát chất lượng tốt hơn.</p>
+
+    <h3>Nguyên tắc 5: Cập nhật liên tục</h3>
+    <p>Skill không phải viết một lần rồi xong. Mỗi khi Claude làm sai hoặc thiếu, hãy bổ sung vào Skill. Sau vài tuần, bạn sẽ có một Skill cực kỳ chính xác.</p>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      Tránh viết Skill quá dài và cố gắng bao quát mọi thứ. Mỗi Skill nên tập trung vào <strong>một nhiệm vụ cụ thể</strong>. Nếu Skill dài hơn ~500 từ, hãy cân nhắc tách thành 2-3 Skills nhỏ hơn.
+    </div>
+
+    <h2>Cách tổ chức nhiều Skills trong một Project</h2>
+    <p>Khi Project của bạn có nhiều Skills, hãy tổ chức chúng rõ ràng trong Project Instructions:</p>
+
+<pre><code>## Hướng dẫn chung
+[System prompt ngắn gọn - vai trò tổng thể, context]
+
+## SKILL 1: Viết email khách hàng
+[Chi tiết Skill 1]
+
+## SKILL 2: Tạo báo cáo tuần
+[Chi tiết Skill 2]
+
+## SKILL 3: Phân tích yêu cầu khách hàng
+[Chi tiết Skill 3]
+
+## Quy tắc chung
+[Các quy tắc áp dụng cho tất cả Skills]</code></pre>
+
+    <p>Khi chat với Claude trong Project này, bạn chỉ cần nói: <code>"Viết email khách hàng cho anh Minh về việc delay dự án 2 tuần"</code> — Claude sẽ tự nhận diện và áp dụng đúng Skill.</p>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      Đặt tên Skill bằng các từ khóa dễ nhận diện. Khi bạn dùng những từ khóa đó trong prompt, Claude sẽ tự động kích hoạt đúng Skill mà không cần bạn chỉ định.
+    </div>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Viết Writing Style Skill:</strong> Tạo một Project mới. Trong Project Instructions, viết Skill hướng dẫn phong cách viết cho công việc của bạn (email, báo cáo, bài blog — chọn một). Bao gồm: tone, độ dài, cấu trúc, từ cần tránh, ví dụ mẫu.</li>
+      <li><strong>Viết Process Skill:</strong> Chọn một quy trình bạn làm lặp đi lặp lại trong công việc (ví dụ: review CV ứng viên, phân tích yêu cầu khách hàng, tóm tắt cuộc họp). Viết Skill với đầy đủ các bước, tiêu chí đánh giá, và format đầu ra.</li>
+      <li><strong>Kiểm tra Skill:</strong> Sử dụng Project vừa tạo, gửi 3 yêu cầu khác nhau cho cùng một Skill. Kiểm tra xem kết quả có nhất quán không. Nếu chưa, điều chỉnh Skill và thử lại.</li>
+      <li><strong>Tối ưu Skill:</strong> Dựa trên kết quả bài 3, bổ sung vào Skill: thêm ví dụ mẫu, thêm quy tắc "không nên", điều chỉnh format output. Thử lại và so sánh.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li>Custom Skills là bộ hướng dẫn chi tiết trong Project Instructions, giúp Claude thực hiện tác vụ cụ thể theo đúng chuẩn của bạn</li>
+      <li>Một Skill tốt gồm 5 phần: tên, ngữ cảnh/vai trò, quy trình, tiêu chuẩn đầu ra, quy tắc</li>
+      <li>Viết Skill cụ thể, cho ví dụ, định nghĩa rõ "không nên", và chia thành bước nhỏ</li>
+      <li>Skills nên được cập nhật liên tục — mỗi lần Claude làm sai là cơ hội cải thiện Skill</li>
+      <li>Tổ chức nhiều Skills rõ ràng trong Project để Claude tự nhận diện và áp dụng</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-08-artifacts.html" class="nav-prev">← Bài 8</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-10-web-search-deep-research.html" class="nav-next">Bài 10 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

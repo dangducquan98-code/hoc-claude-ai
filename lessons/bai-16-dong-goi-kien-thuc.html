@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 16: Đóng gói kiến thức để dạy lại — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p4">Giai đoạn 4</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 16</div>
+    <h1>Đóng gói kiến thức để dạy lại</h1>
+    <div class="lesson-meta">
+      <span class="tag">Tổng hợp</span>
+      <span class="tag">90 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Biết cách xây dựng tài liệu hướng dẫn sử dụng Claude cho người khác</li>
+      <li>Tạo được checklist, ví dụ thực tế, và prompt templates có thể chia sẻ</li>
+      <li>Sử dụng chính Claude để tạo nội dung giảng dạy</li>
+      <li>Cấu trúc kiến thức một cách hệ thống để người học dễ tiếp thu</li>
+      <li>Hoàn thành dự án cuối khóa: Tạo "Claude Guide" cá nhân</li>
+    </ul>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Đây là <strong>bài học cuối cùng</strong> — bài capstone của toàn bộ lộ trình. Mục tiêu không chỉ là học thêm kiến thức mới, mà là <strong>tổng hợp mọi thứ bạn đã học</strong> thành sản phẩm cụ thể có thể chia sẻ với người khác. Cách tốt nhất để nắm vững một kỹ năng là dạy lại nó.
+    </div>
+
+    <h2>Tại sao "dạy lại" là bước quan trọng nhất?</h2>
+    <p>Trong lý thuyết giáo dục, <strong>Bloom's Taxonomy</strong> xếp "tạo ra" (create) là mức tư duy cao nhất. Khi bạn dạy lại một kiến thức, bạn phải:</p>
+    <ul>
+      <li><strong>Hiểu sâu:</strong> Không thể dạy cái mình không hiểu rõ</li>
+      <li><strong>Sắp xếp logic:</strong> Phải cấu trúc kiến thức theo thứ tự người khác có thể theo được</li>
+      <li><strong>Đơn giản hóa:</strong> Chuyển khái niệm phức tạp thành ngôn ngữ dễ hiểu</li>
+      <li><strong>Tạo ví dụ:</strong> Cần ví dụ thực tế, cụ thể, gần gũi với người học</li>
+    </ul>
+    <p>Nếu bạn có thể dạy đồng nghiệp, bạn bè, hoặc gia đình cách sử dụng Claude hiệu quả — bạn đã thực sự nắm vững kiến thức.</p>
+
+    <h2>Bốn loại tài liệu bạn có thể tạo</h2>
+
+    <h3>1. Checklist nhanh — "Claude trong 10 phút"</h3>
+    <p>Đây là tài liệu ngắn nhất, dành cho người không có thời gian. Mục tiêu: giúp ai đó bắt đầu dùng Claude <em>ngay lập tức</em>.</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <strong>Checklist: Bắt đầu dùng Claude trong 10 phút</strong>
+      <ol>
+        <li>Truy cập <strong>claude.ai</strong> → Tạo tài khoản miễn phí</li>
+        <li>Thử prompt đầu tiên: <code>"Giúp tôi viết email xin phép nghỉ phép 3 ngày, tone lịch sự"</code></li>
+        <li>Nguyên tắc vàng: <strong>Càng chi tiết, càng tốt</strong>. Thêm ngữ cảnh, format mong muốn, ví dụ</li>
+        <li>Nếu kết quả chưa ưng → đừng nhắn lại từ đầu, hãy <strong>nói cụ thể cần sửa gì</strong></li>
+        <li>Cảnh báo: <strong>Luôn kiểm tra lại thông tin</strong> trước khi sử dụng — Claude có thể sai</li>
+      </ol>
+    </div>
+
+    <h3>2. Bộ prompt templates — "Copy và dùng ngay"</h3>
+    <p>Tạo bộ sưu tập prompt mẫu cho các tác vụ phổ biến trong ngành của bạn. Format mỗi prompt template:</p>
+    <ul>
+      <li><strong>Tên tác vụ:</strong> Mô tả ngắn gọn dùng để làm gì</li>
+      <li><strong>Prompt mẫu:</strong> Có chỗ trống [...] để người dùng điền vào</li>
+      <li><strong>Ví dụ đã điền:</strong> Một bản hoàn chỉnh để tham khảo</li>
+      <li><strong>Mẹo sử dụng:</strong> 1-2 dòng ghi chú giúp kết quả tốt hơn</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <strong>Prompt Template: Tóm tắt cuộc họp</strong>
+      <pre><code>--- PROMPT MẪU ---
+Tóm tắt nội dung cuộc họp dưới đây thành format:
+1. Các quyết định đã đưa ra
+2. Action items (ai làm gì, deadline)
+3. Vấn đề chưa giải quyết
+4. Điểm chính cần chia sẻ cho người vắng mặt
+
+Nội dung cuộc họp:
+[Dán ghi chú cuộc họp vào đây]
+
+--- VÍ DỤ ĐÃ ĐIỀN ---
+Tóm tắt nội dung cuộc họp dưới đây thành format:
+1. Các quyết định đã đưa ra
+2. Action items (ai làm gì, deadline)
+3. Vấn đề chưa giải quyết
+4. Điểm chính cần chia sẻ cho người vắng mặt
+
+Nội dung cuộc họp:
+"Họp team marketing sáng thứ 2. Minh trình bày báo cáo
+Q1: doanh số tăng 15%. Quyết định tăng ngân sách Facebook
+Ads thêm 20%. Linh sẽ chuẩn bị bản creative mới trước thứ 5.
+Chưa thống nhất được về chiến lược TikTok — cần họp lại..."
+
+--- MẸO ---
+Ghi chú càng chi tiết, tóm tắt càng chính xác. Nếu cuộc họp
+dùng tiếng Anh lẫn tiếng Việt, cứ dán nguyên văn — Claude
+xử lý song ngữ tốt.</code></pre>
+    </div>
+
+    <h3>3. Hướng dẫn theo vai trò — "Claude cho [nghề của bạn]"</h3>
+    <p>Tài liệu chuyên sâu hơn, dành riêng cho một vai trò hoặc phòng ban. Cấu trúc gợi ý:</p>
+    <ol>
+      <li><strong>Giới thiệu:</strong> Claude là gì, tại sao hữu ích cho vai trò này (2-3 đoạn)</li>
+      <li><strong>5 tác vụ hàng đầu:</strong> Liệt kê 5 việc cụ thể Claude giúp được, kèm ví dụ thực tế</li>
+      <li><strong>Prompt templates:</strong> 5-10 prompt mẫu cho vai trò cụ thể</li>
+      <li><strong>Cảnh báo quan trọng:</strong> Những gì KHÔNG nên tin Claude trong ngành này</li>
+      <li><strong>Mẹo nâng cao:</strong> Projects setup, Custom Instructions gợi ý</li>
+    </ol>
+
+    <h3>4. Workshop/Training deck — Tài liệu đào tạo</h3>
+    <p>Dành cho trường hợp bạn cần đào tạo cả nhóm. Cấu trúc workshop 60-90 phút:</p>
+    <ul>
+      <li><strong>15 phút — Demo ấn tượng:</strong> Cho mọi người thấy Claude giải quyết một bài toán thực tế ngay tại chỗ</li>
+      <li><strong>15 phút — Lý thuyết cốt lõi:</strong> 3 nguyên tắc prompt (rõ ràng, cụ thể, có ngữ cảnh) + cảnh báo hallucination</li>
+      <li><strong>30 phút — Thực hành có hướng dẫn:</strong> Mỗi người thử 3 prompt templates với dữ liệu thật của mình</li>
+      <li><strong>15 phút — Q&amp;A và chia sẻ:</strong> Ai làm được gì hay, ai gặp vấn đề gì, giải đáp thắc mắc</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <strong>Bí quyết đào tạo AI hiệu quả:</strong> Đừng bắt đầu bằng lý thuyết. Hãy bắt đầu bằng <strong>demo một tác vụ quen thuộc</strong> mà người học đang phải làm thủ công. Khi họ thấy Claude giải quyết nó trong 30 giây, họ sẽ tự muốn học thêm.
+    </div>
+
+    <h2>Sử dụng Claude để tạo nội dung giảng dạy</h2>
+    <p>Đây là điều tuyệt vời: bạn có thể dùng chính Claude để tạo ra tài liệu dạy người khác dùng Claude. Dưới đây là các prompt hiệu quả:</p>
+
+    <h3>Tạo checklist</h3>
+    <pre><code>Tôi muốn tạo một checklist hướng dẫn [đối tượng cụ thể]
+bắt đầu sử dụng Claude cho [lĩnh vực cụ thể].
+
+Yêu cầu:
+- Tối đa 10 bước
+- Mỗi bước không quá 2 câu
+- Ngôn ngữ đơn giản, không thuật ngữ kỹ thuật
+- Có ít nhất 2 ví dụ prompt cụ thể liên quan đến [lĩnh vực]
+- Kết thúc bằng 1 cảnh báo quan trọng nhất</code></pre>
+
+    <h3>Tạo prompt templates</h3>
+    <pre><code>Tôi là [vai trò] và thường xuyên phải làm [liệt kê tác vụ].
+Hãy tạo cho tôi 5 prompt templates, mỗi cái gồm:
+1. Tên tác vụ
+2. Prompt mẫu với chỗ trống [...]
+3. Một ví dụ đã điền đầy đủ
+4. 1-2 dòng mẹo sử dụng
+
+Format: dễ copy-paste, mỗi template cách nhau bằng đường kẻ.</code></pre>
+
+    <h3>Tạo slide đào tạo</h3>
+    <pre><code>Giúp tôi tạo outline cho một buổi training 60 phút về
+"Sử dụng Claude AI cho [phòng ban/vai trò]".
+
+Đối tượng: [mô tả — biết dùng máy tính nhưng chưa dùng AI]
+Mục tiêu: Sau buổi training, mỗi người có thể tự dùng Claude
+cho ít nhất 3 tác vụ thường ngày.
+
+Với mỗi slide, viết:
+- Tiêu đề slide
+- 3-5 bullet points nội dung
+- Ghi chú cho người trình bày (speaker notes)
+- Nếu là slide thực hành: prompt mẫu cho người tham gia thử</code></pre>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      Khi dùng Claude tạo nội dung đào tạo, hãy <strong>luôn review và tùy chỉnh</strong> trước khi sử dụng. Thêm ví dụ thực tế từ công việc của bạn — không gì thuyết phục bằng: <em>"Tuần trước tôi dùng Claude làm việc X, tiết kiệm được 2 tiếng".</em> Kinh nghiệm cá nhân luôn mạnh hơn ví dụ generic.
+    </div>
+
+    <h2>Cấu trúc kiến thức hiệu quả</h2>
+    <p>Khi tổ chức tài liệu hướng dẫn, hãy áp dụng các nguyên tắc sau:</p>
+
+    <h3>Nguyên tắc "Pyramidal" — Kim tự tháp thông tin</h3>
+    <p>Đặt thông tin quan trọng nhất lên đầu, chi tiết bổ sung ở dưới:</p>
+    <ul>
+      <li><strong>Đỉnh (30 giây):</strong> Claude là gì, dùng để làm gì — 1 câu duy nhất</li>
+      <li><strong>Giữa (5 phút):</strong> 3 cách dùng chính + 1 cảnh báo quan trọng</li>
+      <li><strong>Đáy (30 phút+):</strong> Chi tiết đầy đủ, prompt mẫu, mẹo nâng cao</li>
+    </ul>
+    <p>Người đọc có thể dừng ở bất kỳ tầng nào và vẫn nhận được giá trị.</p>
+
+    <h3>Nguyên tắc "Show, Don't Tell" — Cho xem, đừng chỉ nói</h3>
+    <p>Thay vì nói "Claude viết email tốt", hãy:</p>
+    <ul>
+      <li>Cho xem prompt thực tế</li>
+      <li>Cho xem kết quả Claude trả về</li>
+      <li>Cho xem bạn chỉnh sửa kết quả thế nào</li>
+      <li>Cho xem email sau khi hoàn thiện</li>
+    </ul>
+
+    <h3>Nguyên tắc "Problem First" — Bài toán trước, công cụ sau</h3>
+    <p>Đừng bắt đầu bằng "Claude có tính năng X". Hãy bắt đầu bằng "Bạn có gặp vấn đề Y không? Claude giải quyết nó như thế này."</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <strong>Cách sai:</strong> "Claude có tính năng Projects cho phép bạn upload tài liệu và thiết lập Custom Instructions..."<br><br>
+      <strong>Cách đúng:</strong> "Bạn có thấy khó chịu khi phải giải thích lại cho Claude mỗi lần mở conversation mới không? Có một cách để Claude nhớ phong cách viết, quy tắc, và tài liệu tham khảo của bạn — đó là tính năng Projects..."
+    </div>
+
+    <h2>Dự án cuối khóa: Tạo "Claude Guide" cá nhân</h2>
+    <p>Đây là sản phẩm bạn sẽ hoàn thành trong bài học này — một tài liệu hướng dẫn hoàn chỉnh mà bạn có thể chia sẻ.</p>
+
+    <h3>Yêu cầu tối thiểu</h3>
+    <p>Claude Guide của bạn cần bao gồm ít nhất:</p>
+    <ol>
+      <li><strong>Giới thiệu ngắn gọn</strong> (5-10 câu): Claude là gì, tại sao nên dùng, dành cho ai</li>
+      <li><strong>Hướng dẫn bắt đầu</strong> (checklist 5-7 bước): Từ tạo tài khoản đến prompt đầu tiên</li>
+      <li><strong>5 prompt templates</strong> phù hợp với đối tượng người đọc của bạn</li>
+      <li><strong>3 ví dụ thực tế</strong> từ kinh nghiệm cá nhân: trước khi dùng Claude vs. sau khi dùng Claude</li>
+      <li><strong>Phần cảnh báo</strong>: 3-5 điều quan trọng nhất về giới hạn của Claude</li>
+      <li><strong>Tài nguyên bổ sung</strong>: Link đến claude.ai, gợi ý bài học tiếp theo</li>
+    </ol>
+
+    <h3>Các bước thực hiện</h3>
+
+    <h3>Bước 1: Xác định đối tượng</h3>
+    <p>Bạn viết guide này cho ai? Hãy cụ thể:</p>
+    <ul>
+      <li>Đồng nghiệp phòng marketing? Đội developer? Ban giám đốc?</li>
+      <li>Sinh viên trong lớp? Bạn bè chưa dùng AI bao giờ?</li>
+      <li>Họ có trình độ công nghệ như thế nào?</li>
+      <li>Họ cần giải quyết vấn đề gì cụ thể?</li>
+    </ul>
+
+    <h3>Bước 2: Thu thập ví dụ thực tế</h3>
+    <p>Nhìn lại lịch sử sử dụng Claude của bạn. Chọn ra:</p>
+    <ul>
+      <li>3 lần Claude giúp bạn hiệu quả nhất → Biến thành case study</li>
+      <li>2 lần Claude sai hoặc không hữu ích → Biến thành cảnh báo</li>
+      <li>5 prompt bạn dùng nhiều nhất → Biến thành templates</li>
+    </ul>
+
+    <h3>Bước 3: Viết draft với Claude</h3>
+    <p>Sử dụng prompt sau:</p>
+    <pre><code>Tôi muốn viết một guide hướng dẫn sử dụng Claude AI cho
+[đối tượng cụ thể]. Họ [mô tả trình độ và nhu cầu].
+
+Dưới đây là raw materials tôi đã chuẩn bị:
+- Ví dụ thực tế: [dán vào]
+- Prompt templates: [dán vào]
+- Cảnh báo: [dán vào]
+
+Giúp tôi tổ chức thành một guide hoàn chỉnh theo cấu trúc:
+1. Giới thiệu (ngắn gọn, hấp dẫn)
+2. Bắt đầu nhanh (checklist)
+3. Các tác vụ chính + prompt templates
+4. Ví dụ thực tế (before/after)
+5. Cảnh báo quan trọng
+6. Tài nguyên tiếp theo
+
+Tone: thân thiện, thực tế, không học thuật.
+Độ dài: khoảng 2000-3000 từ.</code></pre>
+
+    <h3>Bước 4: Cá nhân hóa và hoàn thiện</h3>
+    <p>Claude sẽ cho bạn một draft tốt, nhưng bạn cần:</p>
+    <ul>
+      <li>Thay thế ví dụ generic bằng <strong>ví dụ thực tế của chính bạn</strong></li>
+      <li>Thêm giọng văn cá nhân — guide hay là guide có "hồn"</li>
+      <li>Kiểm tra tất cả thông tin factual (đặc biệt về tính năng và giá cả)</li>
+      <li>Đọc lại từ góc nhìn người mới hoàn toàn — có chỗ nào khó hiểu không?</li>
+    </ul>
+
+    <h3>Bước 5: Test với người thật</h3>
+    <p>Gửi guide cho 1-2 người thuộc đối tượng mục tiêu. Quan sát:</p>
+    <ul>
+      <li>Họ có tự làm theo được không? Kẹt ở bước nào?</li>
+      <li>Họ có hỏi câu nào mà guide chưa trả lời?</li>
+      <li>Họ thấy phần nào hữu ích nhất? Phần nào bỏ qua?</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <strong>Format chia sẻ:</strong> Google Docs là lựa chọn tốt nhất để chia sẻ guide — dễ truy cập, dễ cập nhật, có thể bật comment cho người đọc phản hồi. Nếu muốn chuyên nghiệp hơn, dùng Notion hoặc tạo website đơn giản.
+    </div>
+
+    <h2>Template: Claude Guide cá nhân</h2>
+    <p>Dưới đây là khung hoàn chỉnh để bạn điền vào:</p>
+
+    <pre><code>========================================
+HƯỚNG DẪN SỬ DỤNG CLAUDE AI
+Dành cho: [đối tượng]
+Tác giả: [tên bạn]
+Cập nhật: [ngày]
+========================================
+
+1. CLAUDE LÀ GÌ?
+[2-3 câu giới thiệu, tập trung vào lợi ích cho đối tượng]
+
+2. BẮT ĐẦU TRONG 5 PHÚT
+[ ] Bước 1: Truy cập claude.ai
+[ ] Bước 2: Tạo tài khoản
+[ ] Bước 3: Thử prompt đầu tiên: [prompt cụ thể]
+[ ] Bước 4: Thử chỉnh sửa kết quả
+[ ] Bước 5: Thử prompt thứ hai: [prompt khác]
+
+3. TOP 5 VIỆC CLAUDE LÀM TỐT CHO [VAI TRÒ]
+Việc 1: [tên] — Prompt: [prompt mẫu]
+Việc 2: [tên] — Prompt: [prompt mẫu]
+Việc 3: [tên] — Prompt: [prompt mẫu]
+Việc 4: [tên] — Prompt: [prompt mẫu]
+Việc 5: [tên] — Prompt: [prompt mẫu]
+
+4. VÍ DỤ THỰC TẾ
+Trước khi dùng Claude: [mô tả]
+Sau khi dùng Claude: [mô tả]
+Tiết kiệm: [thời gian/công sức]
+
+5. CẢNH BÁO QUAN TRỌNG
+[!] Claude có thể sai — luôn kiểm tra trước khi dùng
+[!] Không dùng cho: [liệt kê]
+[!] [cảnh báo cụ thể cho ngành]
+
+6. BƯỚC TIẾP THEO
+- Tạo Project đầu tiên: [hướng dẫn ngắn]
+- Thử tính năng nâng cao: [gợi ý]
+- Học thêm tại: [links]
+========================================</code></pre>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Tạo Quick Checklist:</strong> Viết một checklist "Claude trong 10 phút" cho một đồng nghiệp hoặc bạn bè cụ thể. Giới hạn tối đa 10 bước. Gửi cho họ thử và ghi nhận phản hồi.</li>
+      <li><strong>Xây dựng bộ Prompt Templates:</strong> Tạo ít nhất 5 prompt templates cho công việc hoặc lĩnh vực của bạn. Mỗi template có: tên, prompt mẫu với chỗ trống, ví dụ đã điền, và mẹo sử dụng.</li>
+      <li><strong>Viết Claude Guide hoàn chỉnh:</strong> Sử dụng template ở trên, hoàn thành một Claude Guide đầy đủ cho đối tượng bạn chọn. Mục tiêu: 2000-3000 từ, bao gồm ví dụ thực tế từ kinh nghiệm cá nhân.</li>
+      <li><strong>Test với người thật:</strong> Gửi guide cho ít nhất 1 người thuộc đối tượng mục tiêu. Quan sát họ sử dụng và ghi lại: phần nào dễ hiểu, phần nào cần cải thiện, câu hỏi nào guide chưa trả lời được.</li>
+      <li><strong>Reflection — Nhìn lại hành trình:</strong> Viết một đoạn 200-300 từ tổng kết:
+        <ul>
+          <li>Bạn đã học được gì quan trọng nhất từ 16 bài học?</li>
+          <li>Kỹ năng nào thay đổi cách bạn làm việc nhiều nhất?</li>
+          <li>Bạn sẽ tiếp tục phát triển kỹ năng AI như thế nào?</li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <strong>Bài tập 3 và 4 là bài tập quan trọng nhất.</strong> Nếu bạn chỉ có thời gian cho một bài tập, hãy chọn viết Claude Guide. Đây là sản phẩm cụ thể mà bạn có thể tự hào chia sẻ — và mỗi lần có ai hỏi bạn "Claude là gì, dùng sao?", bạn chỉ cần gửi link.
+    </div>
+
+    <h2>Tổng kết bài học</h2>
+    <ul>
+      <li>"Dạy lại" là cách tốt nhất để nắm vững kiến thức — nó buộc bạn hiểu sâu, sắp xếp logic, và tạo ví dụ thực tế</li>
+      <li>Bốn loại tài liệu: Checklist nhanh, Prompt Templates, Hướng dẫn theo vai trò, và Workshop deck</li>
+      <li>Dùng Claude để tạo draft, nhưng <strong>luôn cá nhân hóa</strong> bằng ví dụ thực tế và kinh nghiệm của chính bạn</li>
+      <li>Nguyên tắc cấu trúc: Kim tự tháp (quan trọng nhất lên đầu), Show don't tell, Problem first</li>
+      <li>Test với người thật là bước không thể bỏ qua — feedback thực tế giúp guide tốt hơn</li>
+    </ul>
+
+    <h2>Tổng kết toàn bộ lộ trình</h2>
+    <p>Xin chúc mừng! Bạn đã hoàn thành <strong>16 bài học</strong> của lộ trình học Claude AI. Hãy nhìn lại những gì bạn đã đi qua:</p>
+
+    <ul>
+      <li><strong>Giai đoạn 1 — Nền tảng:</strong> Hiểu Claude là gì, viết prompt cơ bản, nắm vững prompt engineering, và biết cách dùng Extended Thinking</li>
+      <li><strong>Giai đoạn 2 — Ứng dụng:</strong> Sử dụng Claude cho viết lách, phân tích dữ liệu, lập trình, và Projects + Memory</li>
+      <li><strong>Giai đoạn 3 — Nâng cao:</strong> Prompt nâng cao, Artifacts, tích hợp công cụ, và Claude Cowork</li>
+      <li><strong>Giai đoạn 4 — Tổng hợp:</strong> Thiết kế hệ thống làm việc, hiểu giới hạn, so sánh AI, và đóng gói kiến thức</li>
+    </ul>
+
+    <p>Nhưng đây không phải điểm kết thúc — đây là điểm bắt đầu. AI đang thay đổi rất nhanh, và kỹ năng quan trọng nhất không phải biết dùng Claude ngày hôm nay, mà là <strong>khả năng thích ứng và học hỏi liên tục</strong>.</p>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      <strong>Bước tiếp theo của bạn:</strong>
+      <ul>
+        <li>Hoàn thành Claude Guide cá nhân và chia sẻ với ít nhất 1 người</li>
+        <li>Áp dụng workflow đã thiết kế ở Bài 13 trong ít nhất 2 tuần liên tục</li>
+        <li>Theo dõi blog.anthropic.com để cập nhật tính năng mới của Claude</li>
+        <li>Thử nghiệm và tinh chỉnh — kỹ năng AI tốt lên qua thực hành, không qua đọc lý thuyết</li>
+      </ul>
+    </div>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-15-so-sanh-chatgpt-gemini.html" class="nav-prev">← Bài 15</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <span class="nav-next"></span>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

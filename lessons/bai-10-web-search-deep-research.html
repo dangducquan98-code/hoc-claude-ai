@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 10: Web search &amp; Deep Research — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p3">Giai đoạn 3</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 10</div>
+    <h1>Web search &amp; Deep Research</h1>
+    <div class="lesson-meta">
+      <span class="tag">Thực hành</span>
+      <span class="tag">45 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu tính năng Web Search của Claude — khi nào Claude có thể truy cập internet</li>
+      <li>Hiểu Deep Research — chế độ nghiên cứu chuyên sâu của Claude</li>
+      <li>Phân biệt khi nào nên dùng Web Search và khi nào nên dùng Deep Research</li>
+      <li>Thực hành nghiên cứu một chủ đề phức tạp với cả hai tính năng</li>
+    </ul>
+
+    <h2>Vấn đề: Kiến thức của Claude có giới hạn</h2>
+    <p>Như bạn đã biết từ Bài 1, Claude được huấn luyện trên dữ liệu có <strong>thời điểm cắt (knowledge cutoff)</strong>. Điều này có nghĩa là Claude có thể không biết về:</p>
+    <ul>
+      <li>Tin tức và sự kiện mới nhất</li>
+      <li>Giá cả, thống kê mới được cập nhật</li>
+      <li>Sản phẩm hoặc dịch vụ mới ra mắt</li>
+      <li>Thay đổi về chính sách, luật pháp gần đây</li>
+    </ul>
+    <p>Web Search và Deep Research giải quyết vấn đề này bằng cách cho phép Claude <strong>truy cập internet trong thời gian thực</strong>.</p>
+
+    <h2>Web Search — tìm kiếm nhanh trên web</h2>
+    <p>Web Search là tính năng cho phép Claude tìm kiếm thông tin trên internet ngay trong cuộc trò chuyện. Khi được kích hoạt, Claude sẽ:</p>
+    <ol>
+      <li>Phân tích câu hỏi của bạn để xác định cần tìm gì</li>
+      <li>Thực hiện tìm kiếm trên web (bạn sẽ thấy biểu tượng tìm kiếm)</li>
+      <li>Đọc và tổng hợp thông tin từ các kết quả</li>
+      <li>Trả lời dựa trên thông tin tìm được, <strong>kèm trích dẫn nguồn</strong></li>
+    </ol>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Web Search có sẵn trên Claude.ai cho cả gói miễn phí và Pro. Claude sẽ tự quyết định khi nào cần tìm kiếm web dựa trên câu hỏi của bạn. Bạn cũng có thể yêu cầu rõ: <em>"Hãy tìm kiếm trên web về..."</em>
+    </div>
+
+    <h3>Khi nào Web Search hữu ích nhất?</h3>
+    <ul>
+      <li><strong>Thông tin thời sự:</strong> "Tin tức mới nhất về AI regulation ở Việt Nam?"</li>
+      <li><strong>Dữ liệu cập nhật:</strong> "Tỷ giá USD/VND hôm nay là bao nhiêu?"</li>
+      <li><strong>Kiểm tra sự kiện:</strong> "Hội nghị AI nào sẽ diễn ra ở Đông Nam Á trong quý tới?"</li>
+      <li><strong>Sản phẩm/dịch vụ mới:</strong> "So sánh các gói Claude Pro và ChatGPT Plus hiện tại"</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <p><strong>Prompt:</strong> "Tìm kiếm trên web: các startup AI Việt Nam vừa gọi vốn thành công trong 6 tháng gần đây. Liệt kê tên, số vốn, và lĩnh vực."</p>
+      <p>Claude sẽ tìm kiếm, đọc nhiều nguồn, rồi tổng hợp thành bảng kèm link tham khảo.</p>
+    </div>
+
+    <h3>Hạn chế của Web Search</h3>
+    <ul>
+      <li>Chỉ tìm thông tin có sẵn trên web công khai — không truy cập được nội dung trả phí hoặc đăng nhập</li>
+      <li>Không phải lúc nào cũng tìm được thông tin bằng tiếng Việt đầy đủ</li>
+      <li>Kết quả phụ thuộc vào chất lượng nguồn trên web — cần kiểm chứng thông tin quan trọng</li>
+      <li>Không phù hợp cho nghiên cứu sâu đòi hỏi tổng hợp từ rất nhiều nguồn</li>
+    </ul>
+
+    <h2>Deep Research — nghiên cứu chuyên sâu</h2>
+    <p>Deep Research là chế độ nâng cao, trong đó Claude sẽ dành <strong>nhiều phút</strong> (thay vì vài giây) để nghiên cứu một chủ đề. Quá trình này bao gồm:</p>
+    <ol>
+      <li><strong>Lập kế hoạch nghiên cứu:</strong> Claude phân tích câu hỏi và xác định các khía cạnh cần tìm hiểu</li>
+      <li><strong>Tìm kiếm nhiều lần:</strong> Claude thực hiện hàng chục lượt tìm kiếm web với các truy vấn khác nhau</li>
+      <li><strong>Đọc và phân tích sâu:</strong> Claude đọc nhiều trang web, trích xuất thông tin quan trọng</li>
+      <li><strong>Tổng hợp và viết báo cáo:</strong> Kết quả là một báo cáo chi tiết, có cấu trúc, kèm trích dẫn</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Deep Research có trên gói Claude Pro. Quá trình nghiên cứu có thể mất từ 3-15 phút tùy độ phức tạp. Bạn sẽ thấy Claude hiển thị tiến trình: đang tìm kiếm, đang đọc nguồn nào, đang phân tích gì.
+    </div>
+
+    <h3>Khi nào dùng Deep Research?</h3>
+    <ul>
+      <li><strong>Nghiên cứu thị trường:</strong> "Phân tích thị trường thương mại điện tử Đông Nam Á: quy mô, xu hướng, cơ hội cho doanh nghiệp Việt Nam"</li>
+      <li><strong>Tổng hợp kiến thức:</strong> "Tổng hợp các nghiên cứu gần đây về tác động của AI đến thị trường lao động"</li>
+      <li><strong>So sánh chuyên sâu:</strong> "So sánh chi tiết các framework phát triển mobile app: React Native, Flutter, Kotlin Multiplatform — ưu nhược điểm, cộng đồng, hiệu năng, phù hợp với team Việt Nam"</li>
+      <li><strong>Tìm hiểu chủ đề mới:</strong> "Giải thích blockchain layer 2 — các giải pháp chính, ưu nhược điểm, dự án nổi bật, tiềm năng áp dụng"</li>
+    </ul>
+
+    <h2>So sánh Web Search và Deep Research</h2>
+
+    <table style="width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border-medium);text-align:left;">
+          <th style="padding:12px 16px;font-weight:600;">Tiêu chí</th>
+          <th style="padding:12px 16px;font-weight:600;">Web Search</th>
+          <th style="padding:12px 16px;font-weight:600;">Deep Research</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Thời gian</td>
+          <td style="padding:10px 16px;">Vài giây</td>
+          <td style="padding:10px 16px;">3-15 phút</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Số nguồn tham khảo</td>
+          <td style="padding:10px 16px;">Vài nguồn</td>
+          <td style="padding:10px 16px;">Hàng chục nguồn</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Độ sâu phân tích</td>
+          <td style="padding:10px 16px;">Bề mặt, tóm tắt nhanh</td>
+          <td style="padding:10px 16px;">Chuyên sâu, đa chiều</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Format kết quả</td>
+          <td style="padding:10px 16px;">Trả lời ngắn gọn</td>
+          <td style="padding:10px 16px;">Báo cáo chi tiết có cấu trúc</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Phù hợp cho</td>
+          <td style="padding:10px 16px;">Câu hỏi cụ thể, check fact</td>
+          <td style="padding:10px 16px;">Nghiên cứu, phân tích, tổng hợp</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px;">Gói cần có</td>
+          <td style="padding:10px 16px;">Miễn phí + Pro</td>
+          <td style="padding:10px 16px;">Pro</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <strong>Quy tắc ngón tay cái:</strong> Nếu câu hỏi của bạn có thể trả lời bằng 1-2 đoạn văn → dùng Web Search. Nếu bạn cần kết quả chi tiết như một bài nghiên cứu mini → dùng Deep Research.
+    </div>
+
+    <h2>Cách viết prompt hiệu quả cho Deep Research</h2>
+    <p>Deep Research cho kết quả tốt nhất khi bạn cung cấp đủ ngữ cảnh. Hãy trả lời các câu hỏi sau trong prompt:</p>
+
+    <h3>1. Mục đích nghiên cứu</h3>
+    <p>Bạn nghiên cứu để làm gì? Ra quyết định? Viết báo cáo? Thuyết trình?</p>
+
+    <h3>2. Phạm vi cụ thể</h3>
+    <p>Giới hạn địa lý, thời gian, ngành nghề, đối tượng.</p>
+
+    <h3>3. Các khía cạnh quan tâm</h3>
+    <p>Liệt kê cụ thể những gì bạn muốn biết.</p>
+
+    <h3>4. Format mong muốn</h3>
+    <p>Báo cáo dài, bảng so sánh, bullet points, slide content...</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <p><strong>Prompt yếu:</strong></p>
+      <p><code>"Nghiên cứu về AI ở Việt Nam"</code></p>
+      <p><strong>Prompt mạnh:</strong></p>
+<pre><code>Deep Research: Phân tích hiện trạng ứng dụng AI trong doanh nghiệp
+Việt Nam năm 2025-2026.
+
+Mục đích: Tôi cần chuẩn bị bài thuyết trình cho ban giám đốc
+về chiến lược AI của công ty.
+
+Các khía cạnh cần nghiên cứu:
+1. Tỷ lệ doanh nghiệp VN đang dùng AI (có số liệu nếu có)
+2. Các lĩnh vực ứng dụng AI phổ biến nhất
+3. Chi phí triển khai AI cho SME
+4. Rào cản chính khi áp dụng AI
+5. Case study thành công của doanh nghiệp VN
+
+Format: Báo cáo có cấu trúc, mỗi phần có dữ liệu/số liệu cụ thể,
+kèm nguồn tham khảo. Kết luận nêu 3-5 khuyến nghị hành động.</code></pre>
+    </div>
+
+    <h2>Thực hành: Quy trình nghiên cứu kết hợp</h2>
+    <p>Trong thực tế, bạn thường kết hợp cả Web Search và Deep Research. Dưới đây là quy trình 3 bước:</p>
+
+    <h3>Bước 1: Khảo sát nhanh bằng Web Search</h3>
+    <p>Dùng Web Search để nắm bức tranh tổng thể:</p>
+    <p><code>"Tìm trên web: xu hướng AI đáng chú ý nhất ở Đông Nam Á năm 2026"</code></p>
+    <p>Kết quả giúp bạn xác định <strong>hướng nghiên cứu sâu</strong> nào đáng đầu tư thời gian.</p>
+
+    <h3>Bước 2: Nghiên cứu sâu bằng Deep Research</h3>
+    <p>Dựa trên kết quả bước 1, yêu cầu Deep Research cho khía cạnh bạn quan tâm nhất:</p>
+    <p><code>"Deep Research: Phân tích chi tiết về ứng dụng generative AI trong ngành bán lẻ Đông Nam Á — case study, ROI, rào cản triển khai"</code></p>
+
+    <h3>Bước 3: Xác minh và bổ sung bằng Web Search</h3>
+    <p>Sau khi có báo cáo Deep Research, dùng Web Search để kiểm tra các số liệu cụ thể hoặc tìm thông tin bổ sung:</p>
+    <p><code>"Tìm trên web: báo cáo mới nhất của Bain &amp; Company về digital economy ở Đông Nam Á"</code></p>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      Dù có Web Search và Deep Research, bạn vẫn nên <strong>kiểm chứng các thông tin quan trọng</strong> — đặc biệt là số liệu thống kê, dữ liệu tài chính, và trích dẫn pháp luật. AI có thể tổng hợp sai hoặc hiểu nhầm từ nguồn gốc.
+    </div>
+
+    <h2>Mẹo sử dụng nâng cao</h2>
+
+    <h3>Kết hợp với Projects</h3>
+    <p>Tạo một Project "Nghiên cứu" với System Prompt yêu cầu Claude luôn trích dẫn nguồn, đánh giá độ tin cậy của nguồn, và phân biệt rõ giữa sự kiện (fact) và nhận định (opinion).</p>
+
+    <h3>Yêu cầu đánh giá nguồn</h3>
+    <p>Thêm vào prompt: <code>"Với mỗi nguồn, đánh giá độ tin cậy: cao/trung bình/thấp, và lý do"</code></p>
+
+    <h3>Nghiên cứu đa ngôn ngữ</h3>
+    <p>Claude có thể tìm kiếm bằng cả tiếng Anh và tiếng Việt. Hãy chỉ định: <code>"Tìm cả nguồn tiếng Anh và tiếng Việt để có góc nhìn đa chiều"</code></p>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Web Search cơ bản:</strong> Hỏi Claude (với web search) 3 câu hỏi cần thông tin mới nhất liên quan đến lĩnh vực của bạn. Kiểm tra xem kết quả có trích dẫn nguồn không và nguồn có đáng tin cậy không.</li>
+      <li><strong>Deep Research thực tế:</strong> Chọn một chủ đề bạn thực sự cần nghiên cứu cho công việc. Viết prompt Deep Research theo cấu trúc 4 phần (mục đích, phạm vi, khía cạnh, format). Đánh giá kết quả.</li>
+      <li><strong>Quy trình kết hợp:</strong> Thực hiện đầy đủ quy trình 3 bước (khảo sát → nghiên cứu sâu → xác minh) cho một chủ đề. So sánh kết quả cuối cùng với khi bạn chỉ dùng một bước.</li>
+      <li><strong>So sánh:</strong> Gửi cùng một câu hỏi cho Claude thường (không web) và Claude có Web Search. So sánh câu trả lời — đâu là điểm khác biệt chính?</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li>Web Search cho phép Claude tìm kiếm thông tin trên internet theo thời gian thực, kèm trích dẫn nguồn</li>
+      <li>Deep Research là chế độ nghiên cứu chuyên sâu, mất nhiều phút nhưng cho kết quả toàn diện từ hàng chục nguồn</li>
+      <li>Web Search phù hợp cho câu hỏi nhanh, cụ thể; Deep Research phù hợp cho nghiên cứu đa chiều</li>
+      <li>Viết prompt Deep Research hiệu quả bằng cách nêu rõ: mục đích, phạm vi, khía cạnh, format</li>
+      <li>Luôn kiểm chứng thông tin quan trọng — AI tìm kiếm giỏi nhưng không phải lúc nào cũng chính xác 100%</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-09-skills.html" class="nav-prev">← Bài 9</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-11-tich-hop-cong-cu.html" class="nav-next">Bài 11 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 05: Projects là gì và tại sao quan trọng — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p2">Giai đoạn 2</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 05</div>
+    <h1>Projects là gì và tại sao quan trọng</h1>
+    <div class="lesson-meta">
+      <span class="tag">Thực hành</span>
+      <span class="tag">45 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu Projects trên claude.ai là gì và vì sao đây là tính năng quan trọng nhất để dùng Claude hiệu quả</li>
+      <li>Nắm được vấn đề cốt lõi: Claude không nhớ gì giữa các cuộc hội thoại nếu không có Project</li>
+      <li>Biết cách tạo Project đầu tiên, tải tài liệu, viết system prompt cho Project</li>
+      <li>Hiểu cơ chế Project context hoạt động như thế nào</li>
+    </ul>
+
+    <h2>Vấn đề: Claude không nhớ gì giữa các cuộc hội thoại</h2>
+    <p>Đây là điều mà rất nhiều người mới dùng Claude không nhận ra: <strong>mỗi cuộc hội thoại (chat) trên claude.ai là hoàn toàn độc lập</strong>. Khi bạn mở một chat mới, Claude không biết gì về những cuộc trò chuyện trước đó.</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ thực tế</div>
+      <p>Bạn dành 30 phút giải thích cho Claude về dự án startup của bạn — lĩnh vực edtech, đối tượng học sinh cấp 3, mô hình kinh doanh freemium. Claude hiểu rất rõ và đưa ra lời khuyên tuyệt vời.</p>
+      <p>Hôm sau bạn mở chat mới và hỏi: <em>"Viết email gửi nhà đầu tư cho dự án của mình"</em></p>
+      <p><strong>Kết quả:</strong> Claude sẽ hỏi lại: "Dự án của bạn là gì? Lĩnh vực nào? Đối tượng khách hàng là ai?" — như thể chưa từng gặp bạn.</p>
+    </div>
+
+    <p>Điều này có nghĩa là nếu bạn có một dự án dài hạn — viết sách, phát triển sản phẩm, học một kỹ năng mới — bạn phải <strong>lặp lại ngữ cảnh</strong> mỗi lần mở chat mới. Rất mất thời gian và không hiệu quả.</p>
+
+    <h2>Giải pháp: Projects</h2>
+    <p><strong>Projects</strong> (Dự án) là tính năng trên claude.ai cho phép bạn tạo một "không gian làm việc" riêng, trong đó Claude luôn có sẵn ngữ cảnh mà bạn cung cấp — bất kể bạn mở bao nhiêu chat mới bên trong Project đó.</p>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Projects hiện có trên gói Claude Pro, Team và Enterprise. Gói miễn phí có thể bị hạn chế. Kiểm tra tài khoản của bạn để xem tính năng này có sẵn không.
+    </div>
+
+    <h3>Projects giải quyết 3 vấn đề lớn</h3>
+    <ol>
+      <li><strong>Không cần lặp lại ngữ cảnh:</strong> Tải tài liệu một lần, Claude nhớ mãi trong phạm vi Project</li>
+      <li><strong>Claude hiểu vai trò của mình:</strong> Bạn viết hướng dẫn (custom instructions) để Claude biết phải phản hồi theo cách nào</li>
+      <li><strong>Tổ chức công việc gọn gàng:</strong> Mỗi mục đích khác nhau có một Project riêng, không bị lẫn lộn</li>
+    </ol>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Hình dung dễ hiểu</div>
+      <p>Nếu chat thường giống như gọi một tổng đài viên ngẫu nhiên mỗi lần — họ không biết gì về bạn, bạn phải giải thích từ đầu.</p>
+      <p>Thì <strong>Project</strong> giống như có một trợ lý riêng — người đã đọc hết tài liệu của bạn, hiểu bạn cần gì, và luôn sẵn sàng hỗ trợ đúng theo cách bạn muốn.</p>
+    </div>
+
+    <h2>Cách tạo Project đầu tiên</h2>
+
+    <h3>Bước 1: Vào trang Projects</h3>
+    <p>Trên claude.ai, nhìn thanh bên trái (sidebar). Bạn sẽ thấy mục <strong>"Projects"</strong>. Click vào đó, sau đó chọn <strong>"Create Project"</strong> (hoặc nút <strong>"+"</strong>).</p>
+
+    <h3>Bước 2: Đặt tên và mô tả</h3>
+    <p>Đặt tên rõ ràng, mô tả ngắn gọn mục đích. Ví dụ:</p>
+    <ul>
+      <li><strong>Tên:</strong> Luận văn thạc sĩ Marketing</li>
+      <li><strong>Mô tả:</strong> Hỗ trợ nghiên cứu và viết luận văn về digital marketing cho SME tại Việt Nam</li>
+    </ul>
+
+    <h3>Bước 3: Tải tài liệu nền (Project Knowledge)</h3>
+    <p>Đây là phần quan trọng nhất. Bạn có thể tải lên các file để Claude đọc và sử dụng làm ngữ cảnh. Các loại file được hỗ trợ:</p>
+    <ul>
+      <li><strong>PDF:</strong> Báo cáo, bài nghiên cứu, sách, tài liệu tham khảo</li>
+      <li><strong>Văn bản:</strong> .txt, .md, .csv</li>
+      <li><strong>Code:</strong> .py, .js, .html, .css và nhiều ngôn ngữ khác</li>
+      <li><strong>Hình ảnh:</strong> .png, .jpg, .gif (Claude có thể "đọc" hình)</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <p>Bạn cũng có thể thêm nội dung trực tiếp dưới dạng văn bản (text content) thay vì tải file. Điều này rất tiện khi bạn muốn paste một đoạn thông tin ngắn — ví dụ: thông tin công ty, danh sách sản phẩm, bảng giá.</p>
+    </div>
+
+    <h3>Bước 4: Viết Custom Instructions (hướng dẫn tùy chỉnh)</h3>
+    <p>Đây chính là <strong>system prompt cho Project</strong>. Mọi cuộc chat trong Project đều tuân theo hướng dẫn này. Bạn viết ở phần <strong>"Project Instructions"</strong> hoặc <strong>"Custom Instructions"</strong>.</p>
+
+    <p>Ví dụ cho Project "Luận văn thạc sĩ Marketing":</p>
+    <pre><code>Bạn là trợ lý nghiên cứu giúp tôi viết luận văn thạc sĩ về digital marketing cho doanh nghiệp vừa và nhỏ (SME) tại Việt Nam.
+
+Quy tắc:
+- Luôn viết bằng tiếng Việt, văn phong học thuật
+- Khi trích dẫn, ghi rõ nguồn theo chuẩn APA
+- Nếu thông tin trong tài liệu tôi tải lên, ưu tiên dùng trước
+- Khi không chắc chắn, nói rõ thay vì đoán
+- Mỗi luận điểm cần có ít nhất một dẫn chứng cụ thể
+
+Luận văn của tôi gồm 5 chương:
+1. Tổng quan nghiên cứu
+2. Cơ sở lý thuyết
+3. Phương pháp nghiên cứu
+4. Kết quả và phân tích
+5. Kết luận và kiến nghị
+
+Hiện tôi đang ở chương 2.</code></pre>
+
+    <h2>Cách Project Context hoạt động</h2>
+    <p>Khi bạn mở một chat mới trong Project, Claude sẽ tự động nhận được:</p>
+    <ol>
+      <li><strong>Custom Instructions:</strong> Hướng dẫn bạn viết — Claude đọc đầu tiên, như một "briefing"</li>
+      <li><strong>Project Knowledge:</strong> Nội dung tất cả tài liệu bạn tải lên — Claude có thể truy cập bất cứ lúc nào</li>
+      <li><strong>Nội dung chat hiện tại:</strong> Tin nhắn qua lại trong cuộc hội thoại đang diễn ra</li>
+    </ol>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      <p><strong>Project Knowledge có giới hạn dung lượng.</strong> Tổng nội dung tải lên (cộng với custom instructions) không được vượt quá context window của Claude. Nếu tải quá nhiều tài liệu, Claude có thể không đọc hết hoặc bỏ sót thông tin ở cuối.</p>
+      <p>Thực tế: nên giữ tổng tài liệu dưới 100-150 trang để đảm bảo Claude xử lý tốt.</p>
+    </div>
+
+    <h3>Project context khác gì với việc paste vào chat?</h3>
+    <table>
+      <tr>
+        <th>Paste vào chat</th>
+        <th>Project Knowledge</th>
+      </tr>
+      <tr>
+        <td>Phải paste lại mỗi chat mới</td>
+        <td>Tải một lần, dùng cho mọi chat trong Project</td>
+      </tr>
+      <tr>
+        <td>Chiếm chỗ trong lịch sử chat</td>
+        <td>Nằm riêng, không chiếm lịch sử chat</td>
+      </tr>
+      <tr>
+        <td>Không thể tổ chức theo chủ đề</td>
+        <td>Mỗi file là một tài liệu riêng, dễ quản lý</td>
+      </tr>
+    </table>
+
+    <h2>Ví dụ thực tế: Tạo Project cho công việc</h2>
+
+    <h3>Project: Trợ lý viết email công ty</h3>
+    <p><strong>Tài liệu tải lên:</strong></p>
+    <ul>
+      <li>Bản giới thiệu công ty (company profile)</li>
+      <li>Danh sách sản phẩm/dịch vụ chính</li>
+      <li>10 email mẫu mà sếp bạn đã viết (để Claude học giọng văn)</li>
+      <li>Danh sách đối tác/khách hàng quan trọng</li>
+    </ul>
+    <p><strong>Custom Instructions:</strong></p>
+    <pre><code>Bạn là trợ lý viết email cho công ty ABC Solutions, lĩnh vực phần mềm và outsourcing IT.
+
+Giọng văn: chuyên nghiệp, lịch sự nhưng thân thiện. Tránh quá hình thức.
+Ngôn ngữ: tiếng Việt cho đối tác trong nước, tiếng Anh cho đối tác nước ngoài.
+Luôn ký tên cuối email theo mẫu trong tài liệu.
+Khi viết email cho khách hàng mới, nhắc đến portfolio trong tài liệu đã tải.</code></pre>
+
+    <p>Giờ đây, mỗi khi bạn cần viết email, chỉ cần mở chat mới trong Project này và nói: <em>"Viết email follow-up cho anh Minh bên FPT về dự án tích hợp API"</em>. Claude đã biết công ty bạn là ai, viết theo giọng nào, và có sẵn thông tin cần thiết.</p>
+
+    <h3>Project: Gia sư tiếng Anh cho con</h3>
+    <p><strong>Tài liệu tải lên:</strong></p>
+    <ul>
+      <li>Sách giáo khoa tiếng Anh lớp 8 (mục lục hoặc nội dung chính)</li>
+      <li>Danh sách từ vựng con đã học</li>
+      <li>Kết quả bài kiểm tra gần nhất</li>
+    </ul>
+    <p><strong>Custom Instructions:</strong></p>
+    <pre><code>Bạn là gia sư tiếng Anh cho học sinh lớp 8 tên Minh Anh.
+- Trình độ: trung bình khá, yếu phần ngữ pháp thì quá khứ
+- Giải thích bằng tiếng Việt, ví dụ gần gũi với đời sống học sinh
+- Mỗi bài học nên có: giải thích ngắn → ví dụ → bài tập (3-5 câu)
+- Khen khi làm đúng, nhẹ nhàng sửa khi sai
+- Tránh dùng thuật ngữ ngữ pháp phức tạp</code></pre>
+
+    <h2>Quản lý và chỉnh sửa Project</h2>
+    <p>Sau khi tạo, bạn có thể:</p>
+    <ul>
+      <li><strong>Thêm/xóa tài liệu:</strong> Cập nhật Project Knowledge bất cứ lúc nào</li>
+      <li><strong>Sửa Custom Instructions:</strong> Tinh chỉnh hướng dẫn khi thấy Claude chưa phản hồi đúng ý</li>
+      <li><strong>Xem lại tất cả chat:</strong> Mọi cuộc hội thoại trong Project được lưu gọn gàng</li>
+      <li><strong>Chia sẻ Project:</strong> Trên gói Team/Enterprise, bạn có thể chia sẻ Project cho đồng nghiệp</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <p>Khi Claude trả lời không đúng ý trong Project, đừng vội sửa prompt trong chat. Hãy quay lại sửa <strong>Custom Instructions</strong> — vì thay đổi đó sẽ áp dụng cho <strong>tất cả</strong> các chat tương lai, không chỉ chat hiện tại.</p>
+    </div>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Tạo Project đầu tiên:</strong> Chọn một mục đích cụ thể (công việc, học tập, hoặc cá nhân). Đặt tên rõ ràng và viết mô tả ngắn.</li>
+      <li><strong>Tải ít nhất 2 tài liệu:</strong> Có thể là file PDF, đoạn văn bản, hoặc hình ảnh liên quan đến mục đích của Project.</li>
+      <li><strong>Viết Custom Instructions:</strong> Mô tả vai trò Claude, quy tắc phản hồi, và giọng văn mong muốn (ít nhất 5 dòng).</li>
+      <li><strong>Mở 2 chat khác nhau trong Project:</strong> Hỏi 2 câu hỏi khác nhau và kiểm tra xem Claude có sử dụng đúng ngữ cảnh từ tài liệu không.</li>
+      <li><strong>So sánh:</strong> Mở một chat thường (ngoài Project) và hỏi cùng câu hỏi. Nhận thấy sự khác biệt về chất lượng câu trả lời.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li><strong>Projects</strong> là tính năng giúp Claude có ngữ cảnh xuyên suốt nhiều cuộc hội thoại — giải quyết vấn đề "Claude quên hết khi mở chat mới"</li>
+      <li>Một Project gồm 3 phần: <strong>tên/mô tả</strong>, <strong>tài liệu nền</strong> (Project Knowledge), và <strong>hướng dẫn tùy chỉnh</strong> (Custom Instructions)</li>
+      <li>Mọi chat trong Project đều được Claude đọc kèm tài liệu và hướng dẫn — không cần nhắc lại</li>
+      <li>Nên tạo Project riêng cho mỗi mục đích khác nhau thay vì nhồi tất cả vào một chỗ</li>
+      <li>Custom Instructions là nơi mạnh nhất để điều khiển cách Claude phản hồi trong Project</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-04-extended-thinking.html" class="nav-prev">← Bài 4</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-06-thiet-ke-project.html" class="nav-next">Bài 6 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

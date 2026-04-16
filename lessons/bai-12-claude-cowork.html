@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 12: Claude Cowork — tự động hóa trên máy tính — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p3">Giai đoạn 3</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 12</div>
+    <h1>Claude Cowork — tự động hóa trên máy tính</h1>
+    <div class="lesson-meta">
+      <span class="tag">Nâng cao</span>
+      <span class="tag">60 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu Claude Cowork (Computer Use) là gì và nó hoạt động như thế nào</li>
+      <li>Biết quy trình thiết lập và kích hoạt Cowork</li>
+      <li>Nắm được 3 trường hợp sử dụng thực tế</li>
+      <li>Hiểu rõ giới hạn và nguyên tắc an toàn khi sử dụng</li>
+    </ul>
+
+    <h2>Claude Cowork là gì?</h2>
+    <p>Ở các bài trước, bạn đã dùng Claude trong cửa sổ chat — bạn gõ, Claude trả lời bằng văn bản. <strong>Claude Cowork</strong> (còn gọi là Computer Use) đưa Claude ra khỏi cửa sổ chat và cho phép nó <strong>tương tác trực tiếp với máy tính của bạn</strong>.</p>
+
+    <p>Cụ thể, Claude Cowork có thể:</p>
+    <ul>
+      <li><strong>Nhìn màn hình:</strong> Claude chụp ảnh màn hình để hiểu bạn đang làm gì</li>
+      <li><strong>Di chuột và click:</strong> Claude có thể click vào các nút, link, menu</li>
+      <li><strong>Gõ bàn phím:</strong> Claude có thể nhập text vào ô tìm kiếm, form, editor</li>
+      <li><strong>Thao tác file:</strong> Mở, đọc, tạo, chỉnh sửa file trên máy tính</li>
+      <li><strong>Sử dụng ứng dụng:</strong> Mở trình duyệt, ứng dụng văn phòng, terminal</li>
+    </ul>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Hãy hình dung Claude Cowork như một <strong>đồng nghiệp ngồi cạnh bạn và thao tác trên máy tính</strong>. Bạn mô tả công việc cần làm, Claude thực hiện từng bước — và bạn có thể quan sát mọi thao tác.
+    </div>
+
+    <h2>Cowork hoạt động như thế nào?</h2>
+    <p>Quá trình làm việc của Claude Cowork gồm các bước lặp:</p>
+
+    <ol>
+      <li><strong>Chụp ảnh màn hình (Screenshot):</strong> Claude chụp ảnh toàn bộ màn hình để "nhìn" giao diện hiện tại</li>
+      <li><strong>Phân tích hình ảnh:</strong> Sử dụng khả năng vision (nhìn ảnh) của mình, Claude nhận diện các thành phần: nút bấm, ô nhập liệu, menu, nội dung text</li>
+      <li><strong>Quyết định hành động:</strong> Dựa trên mục tiêu bạn đặt ra, Claude quyết định bước tiếp theo: click đâu, gõ gì</li>
+      <li><strong>Thực hiện hành động:</strong> Claude điều khiển chuột/bàn phím để thực hiện</li>
+      <li><strong>Lặp lại:</strong> Claude chụp lại màn hình để kiểm tra kết quả, rồi tiếp tục cho đến khi hoàn thành</li>
+    </ol>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <p>Bạn yêu cầu: "Mở Google Sheets, tìm file Báo cáo tháng 3, copy bảng doanh số vào email mới cho team."</p>
+      <p>Claude sẽ:</p>
+      <ol>
+        <li>Mở trình duyệt → vào Google Sheets</li>
+        <li>Tìm file "Báo cáo tháng 3" trong danh sách</li>
+        <li>Mở file, chọn vùng bảng doanh số, copy</li>
+        <li>Mở Gmail, tạo email mới</li>
+        <li>Paste bảng, viết nội dung email, điền người nhận</li>
+        <li>Chờ bạn xác nhận trước khi gửi</li>
+      </ol>
+    </div>
+
+    <h2>Thiết lập Claude Cowork</h2>
+    <p>Claude Cowork hiện khả dụng thông qua Claude Desktop app và trong một số môi trường được hỗ trợ.</p>
+
+    <h3>Yêu cầu hệ thống</h3>
+    <ul>
+      <li>Máy tính chạy macOS hoặc Windows</li>
+      <li>Cài đặt <strong>Claude Desktop app</strong> phiên bản mới nhất</li>
+      <li>Tài khoản Claude Pro (hoặc cao hơn)</li>
+      <li>Kết nối internet ổn định</li>
+    </ul>
+
+    <h3>Bước kích hoạt</h3>
+    <ol>
+      <li>Mở <strong>Claude Desktop app</strong></li>
+      <li>Bắt đầu cuộc trò chuyện mới</li>
+      <li>Nhấn vào biểu tượng <strong>Cowork</strong> hoặc chọn chế độ Computer Use</li>
+      <li>Claude sẽ yêu cầu quyền truy cập màn hình và điều khiển — hãy cấp quyền</li>
+      <li>Bây giờ bạn có thể mô tả công việc và Claude sẽ bắt đầu thực hiện</li>
+    </ol>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      Khi Claude Cowork đang hoạt động, nó sẽ điều khiển chuột và bàn phím của bạn. <strong>Không nên thao tác chuột/bàn phím</strong> trong lúc Claude đang làm việc — điều này có thể làm gián đoạn quy trình. Hãy để Claude hoàn thành hoặc nhấn nút dừng (stop) nếu cần can thiệp.
+    </div>
+
+    <h2>Trường hợp sử dụng 1: Thu thập và tổng hợp thông tin</h2>
+    <p>Một trong những ứng dụng mạnh nhất của Cowork là thu thập thông tin từ nhiều nguồn khác nhau trên máy tính.</p>
+
+    <h3>Tình huống</h3>
+    <p>Bạn cần tổng hợp thông tin từ 5 trang web đối thủ cạnh tranh: giá cả, tính năng, đánh giá. Thay vì mở từng tab và copy-paste thủ công:</p>
+
+    <h3>Prompt</h3>
+<pre><code>Giúp tôi thu thập thông tin so sánh 5 công ty sau:
+[Công ty A], [Công ty B], [Công ty C], [Công ty D], [Công ty E]
+
+Với mỗi công ty, vào website chính thức và ghi lại:
+1. Gói dịch vụ và giá (trang Pricing)
+2. Tính năng nổi bật (trang Features)
+3. Đánh giá trên Google (tìm kiếm "[tên công ty] reviews")
+
+Tổng hợp tất cả vào một bảng so sánh.</code></pre>
+
+    <h3>Claude sẽ thực hiện</h3>
+    <ul>
+      <li>Mở trình duyệt, truy cập từng website</li>
+      <li>Đọc trang Pricing, ghi nhận thông tin</li>
+      <li>Chuyển sang trang Features, ghi nhận</li>
+      <li>Tìm kiếm review trên Google</li>
+      <li>Lặp lại cho từng công ty</li>
+      <li>Tổng hợp thành bảng so sánh hoàn chỉnh</li>
+    </ul>
+
+    <h2>Trường hợp sử dụng 2: Xử lý tác vụ lặp trên ứng dụng</h2>
+    <p>Cowork đặc biệt hữu ích khi bạn phải lặp lại cùng một thao tác nhiều lần trên các ứng dụng không có API.</p>
+
+    <h3>Tình huống</h3>
+    <p>Bạn có danh sách 30 liên hệ cần nhập vào CRM (phần mềm quản lý khách hàng) mà CRM không hỗ trợ import file.</p>
+
+    <h3>Prompt</h3>
+<pre><code>Tôi có file Excel "Contacts.xlsx" trên Desktop chứa danh sách
+30 liên hệ với các cột: Tên, Email, Số điện thoại, Công ty.
+
+Giúp tôi nhập từng liên hệ vào CRM:
+1. Mở file Excel, đọc dòng đầu tiên
+2. Chuyển sang trình duyệt, vào CRM (đã đăng nhập sẵn)
+3. Nhấn "Add Contact", điền thông tin vào các trường tương ứng
+4. Nhấn "Save"
+5. Lặp lại cho dòng tiếp theo
+
+Sau mỗi 5 liên hệ, hãy dừng và cho tôi kiểm tra.</code></pre>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      Với các tác vụ lặp lại nhiều lần, hãy yêu cầu Claude <strong>dừng sau vài lần đầu</strong> để bạn kiểm tra. Sau khi xác nhận Claude làm đúng, bạn có thể cho tiếp tục toàn bộ.
+    </div>
+
+    <h2>Trường hợp sử dụng 3: Hỗ trợ quy trình phức tạp đa ứng dụng</h2>
+    <p>Cowork tỏa sáng khi tác vụ đòi hỏi phối hợp nhiều ứng dụng mà không có tích hợp tự động.</p>
+
+    <h3>Tình huống</h3>
+    <p>Mỗi sáng thứ Hai, bạn cần: kiểm tra email mới → ghi chú task vào Notion → cập nhật calendar → gửi tin nhắn tóm tắt cho team trên Slack.</p>
+
+    <h3>Prompt</h3>
+<pre><code>Giúp tôi làm quy trình tổng hợp sáng thứ Hai:
+
+1. Mở Gmail, đọc 10 email mới nhất chưa đọc
+2. Với mỗi email có action item, tạo task mới trên Notion
+   (database "Tasks" đã mở sẵn tab thứ 2)
+3. Nếu email nào yêu cầu meeting, mở Google Calendar
+   (tab thứ 3) và tạo sự kiện
+4. Cuối cùng, mở Slack (tab thứ 4) và gửi tin nhắn
+   vào kênh #team-updates tóm tắt: bao nhiêu email,
+   bao nhiêu task mới, bao nhiêu meeting đã tạo
+
+Hỏi tôi trước khi tạo bất kỳ task hoặc sự kiện nào.</code></pre>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Câu <em>"Hỏi tôi trước khi tạo bất kỳ task hoặc sự kiện nào"</em> rất quan trọng. Điều này đảm bảo Claude sẽ xác nhận với bạn trước khi thực hiện các hành động có tác động (tạo task, gửi tin nhắn, tạo sự kiện).
+    </div>
+
+    <h2>Giới hạn của Claude Cowork</h2>
+    <p>Cowork là tính năng mạnh mẽ nhưng có những giới hạn cần hiểu rõ:</p>
+
+    <h3>Giới hạn kỹ thuật</h3>
+    <ul>
+      <li><strong>Tốc độ:</strong> Claude thao tác chậm hơn con người vì phải chụp ảnh → phân tích → hành động cho mỗi bước. Một tác vụ bạn làm trong 2 phút, Claude có thể mất 5-10 phút.</li>
+      <li><strong>Nhận diện giao diện:</strong> Claude đôi khi nhận sai nút bấm hoặc click lệch vị trí, đặc biệt với giao diện phức tạp hoặc animation.</li>
+      <li><strong>Xử lý popup/dialog:</strong> Popup bất ngờ (quảng cáo, thông báo hệ thống) có thể làm Claude bối rối.</li>
+      <li><strong>CAPTCHA:</strong> Claude không thể giải CAPTCHA — nếu gặp, bạn cần can thiệp thủ công.</li>
+      <li><strong>Ứng dụng phức tạp:</strong> Phần mềm có giao diện đặc biệt (CAD, video editor) có thể hoạt động không ổn định.</li>
+    </ul>
+
+    <h3>Giới hạn về nội dung</h3>
+    <ul>
+      <li>Claude sẽ <strong>không thực hiện các hành động có hại</strong>: xóa file hệ thống, gửi spam, truy cập nội dung không phù hợp</li>
+      <li>Claude sẽ <strong>từ chối</strong> nếu bạn yêu cầu đăng nhập vào tài khoản của người khác hoặc thực hiện hành vi vi phạm quy định</li>
+    </ul>
+
+    <h2>Nguyên tắc an toàn khi sử dụng Cowork</h2>
+
+    <h3>1. Giám sát liên tục</h3>
+    <p>Luôn quan sát màn hình khi Claude đang thao tác. Đừng để Claude chạy rồi bỏ đi — bạn cần sẵn sàng can thiệp nếu có lỗi.</p>
+
+    <h3>2. Bắt đầu từ tác vụ đơn giản</h3>
+    <p>Đừng giao ngay tác vụ phức tạp. Hãy thử từ những việc nhỏ, đơn giản trước (mở file, tìm kiếm, copy-paste) để hiểu cách Claude thao tác.</p>
+
+    <h3>3. Yêu cầu xác nhận trước hành động quan trọng</h3>
+    <p>Luôn thêm câu: <code>"Hỏi tôi trước khi gửi email / xóa file / tạo bài đăng"</code>. Điều này tạo checkpoint an toàn.</p>
+
+    <h3>4. Đóng thông tin nhạy cảm</h3>
+    <p>Trước khi bật Cowork, hãy đóng các tab/ứng dụng có chứa thông tin nhạy cảm mà bạn không muốn Claude "nhìn thấy" (mật khẩu, tài khoản ngân hàng, thông tin y tế cá nhân).</p>
+
+    <h3>5. Sử dụng môi trường thử nghiệm</h3>
+    <p>Khi thử Cowork lần đầu, hãy dùng tài khoản thử nghiệm hoặc dữ liệu giả. Không nên thử nghiệm trực tiếp trên dữ liệu production quan trọng.</p>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      <strong>Computer Use vẫn đang trong giai đoạn phát triển.</strong> Anthropic liên tục cải thiện tính năng này. Hãy sử dụng với tinh thần thử nghiệm — Claude có thể mắc lỗi, đặc biệt với giao diện phức tạp hoặc tác vụ nhiều bước. Luôn kiểm tra kết quả trước khi phụ thuộc vào output.
+    </div>
+
+    <h2>So sánh: Khi nào dùng Cowork vs. Tích hợp (MCP)?</h2>
+
+    <table style="width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border-medium);text-align:left;">
+          <th style="padding:12px 16px;font-weight:600;">Tiêu chí</th>
+          <th style="padding:12px 16px;font-weight:600;">Cowork (Computer Use)</th>
+          <th style="padding:12px 16px;font-weight:600;">Tích hợp (MCP)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Cách hoạt động</td>
+          <td style="padding:10px 16px;">Thao tác giao diện như người dùng</td>
+          <td style="padding:10px 16px;">Kết nối trực tiếp qua API</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Tốc độ</td>
+          <td style="padding:10px 16px;">Chậm (phải chụp ảnh, phân tích)</td>
+          <td style="padding:10px 16px;">Nhanh (truyền dữ liệu trực tiếp)</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Độ tin cậy</td>
+          <td style="padding:10px 16px;">Có thể click nhầm, nhận sai</td>
+          <td style="padding:10px 16px;">Chính xác, đáng tin cậy</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Phạm vi ứng dụng</td>
+          <td style="padding:10px 16px;">Bất kỳ ứng dụng nào có giao diện</td>
+          <td style="padding:10px 16px;">Chỉ ứng dụng có MCP server/API</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Thiết lập</td>
+          <td style="padding:10px 16px;">Không cần cấu hình đặc biệt</td>
+          <td style="padding:10px 16px;">Cần cài đặt MCP server</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px;">Phù hợp khi</td>
+          <td style="padding:10px 16px;">Ứng dụng không có API/MCP</td>
+          <td style="padding:10px 16px;">Cần tốc độ và độ chính xác cao</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <strong>Quy tắc ưu tiên:</strong> Nếu ứng dụng có tích hợp MCP hoặc kết nối trực tiếp trên Claude.ai → dùng tích hợp. Chỉ dùng Cowork khi ứng dụng <strong>không có API/MCP</strong> hoặc khi tác vụ đòi hỏi tương tác giao diện mà API không hỗ trợ.
+    </div>
+
+    <h2>Tương lai của Cowork</h2>
+    <p>Computer Use là một trong những hướng phát triển quan trọng nhất của AI. Trong tương lai gần, bạn có thể kỳ vọng:</p>
+    <ul>
+      <li><strong>Tốc độ cải thiện:</strong> Thao tác nhanh hơn, ít phải chụp ảnh hơn</li>
+      <li><strong>Nhận diện tốt hơn:</strong> Ít click nhầm, hiểu giao diện phức tạp hơn</li>
+      <li><strong>Multi-task:</strong> Có thể chạy ngầm trong khi bạn làm việc khác</li>
+      <li><strong>Workflow lưu sẵn:</strong> Lưu các quy trình thường dùng và chạy lại chỉ bằng một lệnh</li>
+    </ul>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Khám phá cơ bản:</strong> Nếu bạn có Claude Desktop, hãy thử kích hoạt Cowork và yêu cầu Claude thực hiện một tác vụ đơn giản: mở trình duyệt, tìm kiếm một thông tin, và tóm tắt kết quả. Quan sát cách Claude thao tác.</li>
+      <li><strong>Thiết kế quy trình:</strong> Chọn một tác vụ lặp lại hàng ngày trong công việc. Viết prompt chi tiết cho Claude Cowork, bao gồm: mục tiêu, các bước cụ thể, điều kiện dừng, và checkpoint xác nhận. (Bạn có thể viết mà chưa cần chạy thực tế.)</li>
+      <li><strong>So sánh phương pháp:</strong> Chọn một tác vụ cụ thể. Mô tả cách bạn sẽ thực hiện nó bằng: (a) Claude chat thường, (b) Claude + MCP tích hợp, (c) Claude Cowork. Phân tích ưu nhược điểm của mỗi cách.</li>
+      <li><strong>Kế hoạch an toàn:</strong> Viết checklist an toàn cá nhân cho việc sử dụng Claude Cowork, dựa trên các nguyên tắc trong bài. Liệt kê: thông tin nào cần ẩn, tác vụ nào cần checkpoint, tình huống nào cần can thiệp ngay.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li>Claude Cowork cho phép Claude tương tác trực tiếp với máy tính: nhìn màn hình, click, gõ, thao tác file và ứng dụng</li>
+      <li>Hoạt động theo vòng lặp: chụp màn hình → phân tích → hành động → kiểm tra → lặp lại</li>
+      <li>Phù hợp cho: thu thập thông tin đa nguồn, tác vụ lặp trên ứng dụng, quy trình đa ứng dụng</li>
+      <li>Giới hạn: chậm hơn người, có thể click nhầm, không giải được CAPTCHA, cần giám sát</li>
+      <li>Nguyên tắc an toàn: luôn giám sát, bắt đầu từ đơn giản, yêu cầu xác nhận trước hành động quan trọng, ẩn thông tin nhạy cảm</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-11-tich-hop-cong-cu.html" class="nav-prev">← Bài 11</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-13-he-thong-lam-viec.html" class="nav-next">Bài 13 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

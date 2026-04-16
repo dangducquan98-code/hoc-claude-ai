@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 01: Claude không phải chatbot thông thường — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p1">Giai đoạn 1</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 01</div>
+    <h1>Claude không phải chatbot thông thường</h1>
+    <div class="lesson-meta">
+      <span class="tag">Khái niệm</span>
+      <span class="tag">30 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu Claude là gì và ai đã tạo ra nó</li>
+      <li>Phân biệt Claude với các chatbot truyền thống và các AI khác</li>
+      <li>Nắm được cách Claude "suy nghĩ" ở mức cơ bản</li>
+      <li>Biết các phiên bản Claude và khi nào nên dùng phiên bản nào</li>
+    </ul>
+
+    <h2>Claude là gì?</h2>
+    <p>Claude là một trợ lý AI được phát triển bởi <strong>Anthropic</strong> — công ty AI được thành lập bởi các cựu nhân viên của OpenAI. Khác với các chatbot truyền thống hoạt động theo kịch bản cố định, Claude là một <strong>Large Language Model (LLM)</strong> có khả năng hiểu ngữ cảnh, suy luận phức tạp và tạo ra nội dung sáng tạo.</p>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Khái niệm quan trọng</div>
+      <strong>LLM (Large Language Model)</strong> là mô hình ngôn ngữ lớn, được huấn luyện trên hàng tỷ văn bản để có khả năng hiểu và tạo ra ngôn ngữ tự nhiên. Claude là một trong những LLM tiên tiến nhất hiện nay.
+    </div>
+
+    <h2>Claude khác gì so với chatbot thông thường?</h2>
+    <p>Chatbot truyền thống (như bot hỗ trợ khách hàng trên website) hoạt động theo <strong>luật cố định</strong>: nếu người dùng nói A thì trả lời B. Claude hoạt động hoàn toàn khác:</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border-medium);text-align:left;">
+          <th style="padding:12px 16px;font-weight:600;">Tiêu chí</th>
+          <th style="padding:12px 16px;font-weight:600;">Chatbot truyền thống</th>
+          <th style="padding:12px 16px;font-weight:600;">Claude AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Cách hoạt động</td>
+          <td style="padding:10px 16px;">Theo kịch bản cố định</td>
+          <td style="padding:10px 16px;">Hiểu ngữ cảnh, suy luận</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Sáng tạo</td>
+          <td style="padding:10px 16px;">Không</td>
+          <td style="padding:10px 16px;">Viết văn, code, phân tích</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Hiểu ngữ cảnh</td>
+          <td style="padding:10px 16px;">Rất giới hạn</td>
+          <td style="padding:10px 16px;">Lên đến hàng trăm nghìn từ</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border-light);">
+          <td style="padding:10px 16px;">Xử lý đa ngôn ngữ</td>
+          <td style="padding:10px 16px;">Cần cấu hình riêng</td>
+          <td style="padding:10px 16px;">Tự nhiên, bao gồm tiếng Việt</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px;">Khả năng học</td>
+          <td style="padding:10px 16px;">Không tự học</td>
+          <td style="padding:10px 16px;">Có Memory, Projects, context</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Claude khác gì so với ChatGPT?</h2>
+    <p>Cả Claude và ChatGPT đều là LLM, nhưng có những khác biệt quan trọng:</p>
+    <ul>
+      <li><strong>An toàn và trung thực:</strong> Anthropic đặt trọng tâm vào việc làm AI an toàn. Claude được thiết kế để thừa nhận khi không biết, thay vì bịa ra câu trả lời.</li>
+      <li><strong>Context window lớn:</strong> Claude có thể đọc và xử lý rất nhiều văn bản cùng lúc (lên đến 200.000 token, tương đương ~500 trang sách).</li>
+      <li><strong>Tính cách nhất quán:</strong> Claude có xu hướng trả lời cẩn thận, có nuance hơn — đặc biệt với các chủ đề phức tạp hoặc nhạy cảm.</li>
+      <li><strong>Extended Thinking:</strong> Claude có chế độ "suy nghĩ sâu" cho phép giải quyết các vấn đề phức tạp hơn (bạn sẽ học ở Bài 4).</li>
+    </ul>
+
+    <h2>Cách Claude "suy nghĩ"</h2>
+    <p>Khi bạn gửi một tin nhắn cho Claude, quá trình diễn ra như sau:</p>
+    <ol>
+      <li><strong>Đọc toàn bộ ngữ cảnh:</strong> Claude đọc tất cả tin nhắn trước đó trong cuộc trò chuyện, cùng với system prompt và tài liệu đã upload.</li>
+      <li><strong>Dự đoán token tiếp theo:</strong> Dựa trên ngữ cảnh, Claude sinh ra từng từ (token) một — mỗi từ được chọn dựa trên xác suất cao nhất phù hợp ngữ cảnh.</li>
+      <li><strong>Tự kiểm tra:</strong> Với Extended Thinking, Claude có thể "suy nghĩ" trước khi trả lời, cân nhắc nhiều góc độ.</li>
+    </ol>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo thực tế</div>
+      Vì Claude dự đoán từng token dựa trên ngữ cảnh, nên <strong>prompt của bạn càng rõ ràng, cụ thể → câu trả lời càng chính xác</strong>. Đây là lý do tại sao "prompt engineering" quan trọng — bạn sẽ học sâu ở Bài 2.
+    </div>
+
+    <h2>Các phiên bản Claude</h2>
+    <p>Anthropic cung cấp nhiều phiên bản Claude phù hợp với từng nhu cầu:</p>
+    <ul>
+      <li><strong>Claude Opus</strong> — Mạnh nhất, suy luận phức tạp, phân tích sâu. Phù hợp cho nghiên cứu, code phức tạp, viết chuyên sâu.</li>
+      <li><strong>Claude Sonnet</strong> — Cân bằng giữa chất lượng và tốc độ. Phù hợp cho hầu hết công việc hàng ngày.</li>
+      <li><strong>Claude Haiku</strong> — Nhanh nhất, nhẹ nhất. Phù hợp cho tác vụ đơn giản, cần phản hồi nhanh.</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ thực tế</div>
+      <strong>Bạn viết một bài blog:</strong> Dùng Sonnet để brainstorm ý tưởng → Dùng Opus để viết bản nháp chất lượng cao → Dùng Haiku để kiểm tra chính tả nhanh.
+    </div>
+
+    <h2>Sử dụng Claude ở đâu?</h2>
+    <ul>
+      <li><strong>claude.ai</strong> — Giao diện web chính thức, miễn phí cho gói cơ bản</li>
+      <li><strong>Claude app</strong> — Ứng dụng desktop cho macOS và Windows</li>
+      <li><strong>Claude Code</strong> — CLI cho lập trình viên, tích hợp vào terminal</li>
+      <li><strong>API</strong> — Dành cho nhà phát triển, tích hợp Claude vào ứng dụng của bạn</li>
+    </ul>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li>Truy cập <strong>claude.ai</strong> và tạo tài khoản nếu chưa có.</li>
+      <li>Gửi cho Claude câu hỏi: <code>"Bạn là ai? Bạn khác gì so với ChatGPT?"</code> — đọc câu trả lời và so sánh với nội dung bài học.</li>
+      <li>Thử hỏi Claude một câu mà bạn biết nó không thể biết chắc (ví dụ về một sự kiện rất gần đây). Quan sát cách Claude xử lý — nó có bịa không?</li>
+      <li>Thử chuyển đổi giữa các model (nếu có Pro): gửi cùng 1 câu hỏi cho Opus, Sonnet, Haiku và so sánh kết quả.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li>Claude là LLM của Anthropic, không phải chatbot theo kịch bản</li>
+      <li>Claude nổi bật ở tính an toàn, trung thực, và context window lớn</li>
+      <li>Có 3 phiên bản chính: Opus (mạnh nhất), Sonnet (cân bằng), Haiku (nhanh nhất)</li>
+      <li>Prompt rõ ràng = kết quả tốt hơn — nguyên tắc cốt lõi khi làm việc với Claude</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <span class="nav-prev"></span>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-02-prompt-co-ban.html" class="nav-next">Bài 2 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

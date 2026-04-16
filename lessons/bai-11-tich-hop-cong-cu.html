@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 11: Tích hợp công cụ — Google Drive, Notion, v.v. — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p3">Giai đoạn 3</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 11</div>
+    <h1>Tích hợp công cụ — Google Drive, Notion, v.v.</h1>
+    <div class="lesson-meta">
+      <span class="tag">Thực hành</span>
+      <span class="tag">60 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu MCP (Model Context Protocol) — cách Claude kết nối với các công cụ bên ngoài</li>
+      <li>Biết cách tích hợp Claude với Google Drive, Notion, và các ứng dụng hàng ngày</li>
+      <li>Thực hành quy trình: đọc dữ liệu từ công cụ → phân tích bằng Claude → tạo output</li>
+      <li>Xây dựng workflow tự động hóa thực tế cho công việc</li>
+    </ul>
+
+    <h2>Tại sao cần tích hợp công cụ?</h2>
+    <p>Ở các bài trước, bạn đã dùng Claude chủ yếu trong giao diện chat: gõ prompt, nhận câu trả lời. Nhưng trong công việc thực tế, dữ liệu của bạn nằm ở <strong>nhiều nơi khác nhau</strong>:</p>
+    <ul>
+      <li>Tài liệu trên <strong>Google Drive</strong></li>
+      <li>Ghi chú và database trên <strong>Notion</strong></li>
+      <li>Code trên <strong>GitHub</strong></li>
+      <li>Dữ liệu trên <strong>Google Sheets</strong></li>
+      <li>Email trên <strong>Gmail</strong></li>
+    </ul>
+    <p>Nếu mỗi lần cần Claude phân tích, bạn phải copy-paste thủ công thì rất mất thời gian. Tích hợp công cụ cho phép Claude <strong>trực tiếp đọc và ghi dữ liệu</strong> từ các ứng dụng này.</p>
+
+    <h2>MCP — Model Context Protocol là gì?</h2>
+    <p>MCP (Model Context Protocol) là tiêu chuẩn mở do Anthropic phát triển, cho phép các ứng dụng AI kết nối với nguồn dữ liệu và công cụ bên ngoài. Hãy hình dung MCP như <strong>ổ cắm USB chuẩn</strong> — bất kỳ thiết bị nào hỗ trợ USB đều có thể kết nối, và MCP làm điều tương tự cho AI.</p>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      <strong>MCP là tiêu chuẩn mở:</strong> Không chỉ Claude, mà các AI khác cũng có thể hỗ trợ MCP. Anthropic xây dựng MCP như một tiêu chuẩn chung cho toàn ngành, giúp bạn không bị khóa vào một nền tảng.
+    </div>
+
+    <h3>MCP hoạt động như thế nào?</h3>
+    <p>Kiến trúc MCP gồm 3 phần:</p>
+    <ol>
+      <li><strong>MCP Server:</strong> Chương trình kết nối với một dịch vụ cụ thể (Google Drive, Notion, v.v.). Server này "biết" cách đọc/ghi dữ liệu từ dịch vụ đó.</li>
+      <li><strong>MCP Client:</strong> Ứng dụng AI (Claude Desktop, Claude Code) giao tiếp với MCP Server để lấy dữ liệu hoặc thực hiện hành động.</li>
+      <li><strong>Giao thức (Protocol):</strong> Quy chuẩn cách Client và Server nói chuyện với nhau — đảm bảo mọi thứ hoạt động trơn tru.</li>
+    </ol>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ</div>
+      <p>Khi bạn yêu cầu Claude "Đọc file báo cáo tuần trên Google Drive và tóm tắt":</p>
+      <ol>
+        <li>Claude (MCP Client) gửi yêu cầu đến Google Drive MCP Server</li>
+        <li>MCP Server kết nối với Google Drive API, lấy nội dung file</li>
+        <li>Nội dung file được gửi lại cho Claude</li>
+        <li>Claude phân tích và tóm tắt cho bạn</li>
+      </ol>
+    </div>
+
+    <h2>Các tích hợp phổ biến trên Claude.ai</h2>
+    <p>Trên giao diện web Claude.ai, bạn có thể kết nối trực tiếp với một số dịch vụ phổ biến:</p>
+
+    <h3>Google Drive</h3>
+    <ul>
+      <li><strong>Đọc:</strong> Google Docs, Sheets, Slides, PDF</li>
+      <li><strong>Cách dùng:</strong> Trong cuộc trò chuyện, nhấn biểu tượng đính kèm → chọn Google Drive → chọn file</li>
+      <li><strong>Ứng dụng:</strong> Tóm tắt tài liệu dài, phân tích dữ liệu bảng tính, trích xuất thông tin từ slide</li>
+    </ul>
+
+    <h3>Google Docs kết hợp với Claude</h3>
+    <ul>
+      <li><strong>Đọc và phân tích:</strong> Claude có thể đọc nội dung Google Docs và phân tích, góp ý, tóm tắt</li>
+      <li><strong>Ứng dụng:</strong> Review tài liệu, trích xuất action items từ biên bản họp, so sánh nhiều phiên bản</li>
+    </ul>
+
+    <h3>Notion (qua MCP)</h3>
+    <ul>
+      <li><strong>Đọc:</strong> Pages, databases, comments</li>
+      <li><strong>Ghi:</strong> Tạo page mới, cập nhật database</li>
+      <li><strong>Ứng dụng:</strong> Đọc task board → tóm tắt tiến độ, phân tích database khách hàng, tạo trang wiki từ ghi chú</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      Khi kết nối với các dịch vụ, Claude sẽ hỏi quyền truy cập. Hãy chỉ cấp quyền <strong>tối thiểu cần thiết</strong> — ví dụ nếu chỉ cần đọc thì không cần cấp quyền ghi. Đây là nguyên tắc bảo mật quan trọng.
+    </div>
+
+    <h2>Thiết lập tích hợp từng bước</h2>
+
+    <h3>Bước 1: Kết nối Google Drive với Claude</h3>
+    <ol>
+      <li>Mở <strong>claude.ai</strong> và bắt đầu cuộc trò chuyện mới</li>
+      <li>Nhấn biểu tượng <strong>đính kèm (attach)</strong> trong ô nhập tin nhắn</li>
+      <li>Chọn <strong>Google Drive</strong></li>
+      <li>Đăng nhập tài khoản Google và cấp quyền truy cập</li>
+      <li>Duyệt và chọn file bạn muốn Claude đọc</li>
+    </ol>
+
+    <h3>Bước 2: Sử dụng trong Project</h3>
+    <p>Bạn có thể thêm file từ Google Drive vào <strong>Project Knowledge</strong> để Claude luôn có sẵn context:</p>
+    <ol>
+      <li>Vào Project → Add Content</li>
+      <li>Chọn nguồn Google Drive</li>
+      <li>Chọn các file cần thêm</li>
+      <li>File sẽ được đồng bộ — khi bạn cập nhật file trên Drive, Claude cũng có dữ liệu mới</li>
+    </ol>
+
+    <h3>Bước 3: Thiết lập MCP cho ứng dụng nâng cao</h3>
+    <p>Nếu bạn dùng Claude Desktop app, bạn có thể cài đặt thêm các MCP server:</p>
+<pre><code>// Ví dụ cấu hình MCP trong Claude Desktop
+// File: claude_desktop_config.json
+
+{
+  "mcpServers": {
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-notion"],
+      "env": {
+        "NOTION_API_KEY": "your-notion-api-key"
+      }
+    },
+    "google-drive": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-google-drive"]
+    }
+  }
+}</code></pre>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      Cấu hình MCP server đòi hỏi kiến thức kỹ thuật cơ bản (biết dùng terminal, cài Node.js). Nếu bạn không quen, hãy bắt đầu với các tích hợp có sẵn trên Claude.ai trước — chúng đủ mạnh cho hầu hết nhu cầu.
+    </div>
+
+    <h2>Workflow thực tế: Từ Notion đến báo cáo</h2>
+    <p>Hãy xem một workflow hoàn chỉnh — từ lúc đọc dữ liệu đến tạo output:</p>
+
+    <h3>Tình huống</h3>
+    <p>Bạn quản lý dự án trên Notion. Mỗi tuần, bạn cần tóm tắt tiến độ cho sếp. Thay vì mở Notion → đọc → tự viết, hãy để Claude giúp.</p>
+
+    <h3>Bước 1: Đọc dữ liệu từ Notion</h3>
+    <p>Prompt: <code>"Đọc database 'Sprint Board' trên Notion. Liệt kê các task theo trạng thái: Done, In Progress, Blocked."</code></p>
+
+    <h3>Bước 2: Phân tích</h3>
+    <p>Prompt: <code>"Dựa trên dữ liệu vừa đọc: (1) Tính % hoàn thành sprint, (2) Liệt kê task bị blocked và lý do, (3) So sánh tiến độ với sprint trước."</code></p>
+
+    <h3>Bước 3: Tạo báo cáo</h3>
+    <p>Prompt: <code>"Viết email báo cáo tuần cho anh Minh (PM Director) dựa trên phân tích trên. Tone chuyên nghiệp, ngắn gọn, nêu rõ risks."</code></p>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      Kết hợp workflow này với <strong>Custom Skills</strong> (Bài 9): viết Skill "Báo cáo tuần" trong Project Instructions, thì mỗi tuần bạn chỉ cần nói <em>"Tạo báo cáo tuần"</em> — Claude tự biết đọc Notion, phân tích, và viết email theo đúng format.
+    </div>
+
+    <h2>Workflow thực tế: Google Sheets → Phân tích → Slide</h2>
+    <p>Một ví dụ khác cho team kinh doanh:</p>
+
+    <h3>Bước 1: Đọc dữ liệu bán hàng từ Google Sheets</h3>
+    <p><code>"Đọc file 'Sales Q1 2026' trên Google Drive. Đây là dữ liệu doanh số theo tháng của 5 khu vực."</code></p>
+
+    <h3>Bước 2: Phân tích chuyên sâu</h3>
+    <p><code>"Phân tích: Khu vực nào tăng trưởng tốt nhất? Khu vực nào cần chú ý? Có pattern gì đặc biệt? So sánh với target."</code></p>
+
+    <h3>Bước 3: Tạo nội dung thuyết trình</h3>
+    <p><code>"Tạo outline cho bài thuyết trình 10 slide về kết quả Q1, bao gồm: highlight, phân tích từng khu vực, và đề xuất cho Q2."</code></p>
+
+    <h2>Các tích hợp hữu ích khác</h2>
+
+    <h3>GitHub</h3>
+    <p>Kết nối để Claude đọc code, review pull request, tạo documentation từ codebase.</p>
+
+    <h3>Slack (qua MCP)</h3>
+    <p>Claude có thể đọc tin nhắn kênh, tóm tắt thảo luận, trả lời câu hỏi dựa trên lịch sử chat.</p>
+
+    <h3>Zapier / Make (qua API)</h3>
+    <p>Kết nối Claude với hàng nghìn ứng dụng thông qua các nền tảng automation. Ví dụ: khi có email mới → Claude phân tích → tạo task trên Notion.</p>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Hệ sinh thái MCP đang phát triển rất nhanh. Cộng đồng liên tục tạo thêm các MCP server mới. Bạn có thể theo dõi tại <strong>github.com/modelcontextprotocol</strong> để cập nhật các tích hợp mới nhất.
+    </div>
+
+    <h2>Bảo mật khi tích hợp</h2>
+    <p>Khi cho Claude truy cập dữ liệu công ty, hãy lưu ý:</p>
+    <ul>
+      <li><strong>Nguyên tắc quyền tối thiểu:</strong> Chỉ cấp quyền đọc nếu không cần ghi. Chỉ chia sẻ folder cần thiết, không chia sẻ toàn bộ Drive.</li>
+      <li><strong>Không chia sẻ dữ liệu nhạy cảm:</strong> Tránh cho Claude truy cập file chứa mật khẩu, thông tin thẻ tín dụng, dữ liệu cá nhân nhạy cảm của khách hàng.</li>
+      <li><strong>Kiểm tra chính sách công ty:</strong> Một số công ty có quy định về việc sử dụng AI với dữ liệu nội bộ. Hãy kiểm tra trước khi kết nối.</li>
+      <li><strong>Review quyền định kỳ:</strong> Mỗi tháng, kiểm tra lại các kết nối đã cấp quyền và thu hồi những quyền không còn cần.</li>
+    </ul>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Kết nối Google Drive:</strong> Kết nối Claude với Google Drive. Upload hoặc chọn một tài liệu có sẵn. Yêu cầu Claude tóm tắt, rồi phân tích điểm mạnh/yếu của tài liệu.</li>
+      <li><strong>Workflow hoàn chỉnh:</strong> Thực hiện một workflow 3 bước: (1) cho Claude đọc dữ liệu từ một nguồn (Drive/upload file), (2) yêu cầu phân tích, (3) tạo output có cấu trúc (báo cáo, email, hoặc outline thuyết trình).</li>
+      <li><strong>Tích hợp vào Project:</strong> Tạo một Project, thêm file từ Google Drive vào Knowledge. Viết System Prompt bao gồm Skill xử lý dữ liệu từ file đó. Kiểm tra bằng cách gửi yêu cầu.</li>
+      <li><strong>Lên kế hoạch tích hợp:</strong> Liệt kê 5 tác vụ lặp đi lặp lại trong công việc của bạn mà có thể tự động hóa bằng cách kết nối Claude với các công cụ. Với mỗi tác vụ, mô tả: nguồn dữ liệu → phân tích cần làm → output mong muốn.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li>MCP (Model Context Protocol) là tiêu chuẩn mở cho phép Claude kết nối với các công cụ bên ngoài như Google Drive, Notion, GitHub</li>
+      <li>Trên Claude.ai, tích hợp Google Drive có sẵn — chỉ cần vài click để kết nối</li>
+      <li>Workflow hiệu quả: đọc dữ liệu từ công cụ → phân tích bằng Claude → tạo output có cấu trúc</li>
+      <li>Kết hợp tích hợp với Projects và Skills để tự động hóa tác vụ lặp lại</li>
+      <li>Luôn tuân thủ nguyên tắc bảo mật: quyền tối thiểu, không chia sẻ dữ liệu nhạy cảm, review định kỳ</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-10-web-search-deep-research.html" class="nav-prev">← Bài 10</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-12-claude-cowork.html" class="nav-next">Bài 12 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

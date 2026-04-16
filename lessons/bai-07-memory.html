@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 07: Memory — Claude nhớ gì về bạn — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p2">Giai đoạn 2</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 07</div>
+    <h1>Memory — Claude nhớ gì về bạn</h1>
+    <div class="lesson-meta">
+      <span class="tag">Khái niệm</span>
+      <span class="tag">30 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu tính năng Memory trên claude.ai hoạt động như thế nào</li>
+      <li>Biết Claude nhớ những loại thông tin gì và không nhớ gì</li>
+      <li>Nắm cách kiểm tra, chỉnh sửa và xóa memories</li>
+      <li>Phân biệt rõ Memory với Project context — hai thứ khác nhau hoàn toàn</li>
+      <li>Hiểu các khía cạnh quyền riêng tư liên quan đến Memory</li>
+    </ul>
+
+    <h2>Memory là gì?</h2>
+    <p>Memory (Trí nhớ) là tính năng cho phép Claude <strong>tự động ghi nhớ thông tin về bạn qua nhiều cuộc hội thoại</strong>. Khác với Project context (bạn chủ động tải tài liệu lên), Memory được Claude tự động tạo ra khi phát hiện thông tin quan trọng trong quá trình trò chuyện.</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Hình dung dễ hiểu</div>
+      <p><strong>Project context</strong> giống như bạn đưa cho trợ lý một hồ sơ tài liệu để đọc — rất chi tiết, cho một mục đích cụ thể.</p>
+      <p><strong>Memory</strong> giống như trợ lý tự ghi chú những điều quan trọng về bạn vào sổ tay cá nhân — ngắn gọn, tích lũy dần qua thời gian, áp dụng cho mọi cuộc trò chuyện.</p>
+    </div>
+
+    <h2>Cách Memory hoạt động</h2>
+
+    <h3>Tự động lưu</h3>
+    <p>Khi bạn trò chuyện với Claude, Claude sẽ tự phát hiện và ghi nhớ những thông tin có vẻ quan trọng. Bạn không cần ra lệnh "hãy nhớ điều này" (mặc dù bạn có thể làm vậy).</p>
+
+    <p><strong>Ví dụ cuộc hội thoại:</strong></p>
+    <pre><code>Bạn: Giúp tôi viết email bằng tiếng Anh cho đối tác Nhật.
+      Tôi là project manager ở công ty phần mềm tại Đà Nẵng.
+
+Claude: [viết email...]
+
+→ Claude có thể tự động lưu memory:
+  "Là project manager tại công ty phần mềm ở Đà Nẵng"</code></pre>
+
+    <p>Khi Claude lưu một memory, bạn sẽ thấy một <strong>thông báo nhỏ</strong> xuất hiện trong cuộc chat, cho biết Claude đã ghi nhớ điều gì. Bạn có thể click để xem chi tiết.</p>
+
+    <h3>Tự động sử dụng</h3>
+    <p>Ở các cuộc hội thoại sau (kể cả ngoài Project), Claude sẽ tự động áp dụng những gì đã nhớ:</p>
+    <pre><code>Bạn (chat mới, tuần sau): Viết email xin nghỉ phép.
+
+Claude: [viết email phù hợp với vai trò project manager,
+        có thể nhắc bối cảnh công ty phần mềm]
+
+→ Claude dùng memory mà không cần bạn nhắc lại nghề nghiệp</code></pre>
+
+    <h2>Claude nhớ những gì?</h2>
+    <p>Memory thường ghi nhớ các loại thông tin sau:</p>
+
+    <h3>Thông tin cá nhân cơ bản</h3>
+    <ul>
+      <li>Tên, nghề nghiệp, vị trí công việc</li>
+      <li>Nơi sinh sống, múi giờ</li>
+      <li>Ngôn ngữ ưa thích</li>
+    </ul>
+
+    <h3>Sở thích và phong cách</h3>
+    <ul>
+      <li>Bạn thích câu trả lời ngắn gọn hay chi tiết</li>
+      <li>Giọng văn ưa thích (chuyên nghiệp, thoải mái, hài hước)</li>
+      <li>Lĩnh vực quan tâm</li>
+    </ul>
+
+    <h3>Bối cảnh công việc và học tập</h3>
+    <ul>
+      <li>Dự án đang làm</li>
+      <li>Công nghệ và công cụ thường dùng</li>
+      <li>Mục tiêu dài hạn</li>
+    </ul>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      <p>Memory lưu thông tin dưới dạng <strong>ghi chú ngắn</strong> — mỗi memory thường chỉ 1-2 câu. Đây không phải nơi lưu tài liệu dài. Nếu bạn cần Claude nhớ một tài liệu 10 trang, hãy dùng Project Knowledge thay vì Memory.</p>
+    </div>
+
+    <h2>Claude KHÔNG nhớ gì?</h2>
+    <p>Memory có giới hạn. Claude <strong>không</strong> nhớ:</p>
+    <ul>
+      <li><strong>Toàn bộ nội dung cuộc hội thoại:</strong> Memory chỉ lưu "điểm chính", không lưu nguyên đoạn chat</li>
+      <li><strong>Thông tin nhạy cảm:</strong> Claude được thiết kế để tránh lưu mật khẩu, số tài khoản ngân hàng, thông tin y tế chi tiết</li>
+      <li><strong>File bạn đã gửi:</strong> Nếu bạn gửi một file PDF trong chat thường (không phải Project), Claude không lưu file đó vào memory</li>
+      <li><strong>Câu trả lời Claude đã đưa ra:</strong> Claude nhớ thông tin về bạn, không nhớ những gì chính Claude đã nói</li>
+    </ul>
+
+    <h2>Kiểm tra và quản lý Memory</h2>
+
+    <h3>Xem danh sách memories</h3>
+    <p>Để xem Claude đã nhớ gì về bạn:</p>
+    <ol>
+      <li>Vào <strong>claude.ai</strong></li>
+      <li>Click vào biểu tượng tên bạn hoặc avatar (góc dưới bên trái)</li>
+      <li>Chọn <strong>"Settings"</strong></li>
+      <li>Tìm mục <strong>"Memory"</strong></li>
+    </ol>
+    <p>Bạn sẽ thấy danh sách tất cả những gì Claude đã ghi nhớ, mỗi mục là một dòng ngắn.</p>
+
+    <h3>Chỉnh sửa memory</h3>
+    <p>Nếu Claude nhớ sai hoặc thông tin đã lỗi thời, bạn có thể:</p>
+    <ul>
+      <li><strong>Xóa từng memory:</strong> Click nút xóa bên cạnh mỗi mục</li>
+      <li><strong>Xóa tất cả:</strong> Chọn "Clear all memories" để xóa sạch</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <p>Bạn cũng có thể yêu cầu Claude cập nhật memory ngay trong cuộc chat:</p>
+      <ul>
+        <li><em>"Hãy nhớ rằng tôi đã chuyển sang làm ở Hà Nội"</em> — Claude cập nhật memory</li>
+        <li><em>"Quên đi việc tôi đang học Python, giờ tôi chuyển sang học Go"</em> — Claude sửa memory</li>
+        <li><em>"Đừng nhớ thông tin cá nhân của tôi nữa"</em> — Claude dừng lưu memory cho phiên đó</li>
+      </ul>
+    </div>
+
+    <h3>Tắt Memory hoàn toàn</h3>
+    <p>Nếu bạn không muốn Claude nhớ gì về bạn, vào <strong>Settings → Memory</strong> và tắt tính năng này. Khi tắt:</p>
+    <ul>
+      <li>Claude không tự động lưu thông tin mới</li>
+      <li>Memories cũ vẫn còn (bạn cần xóa thủ công nếu muốn)</li>
+      <li>Mỗi cuộc chat trở nên hoàn toàn độc lập (trừ khi trong Project)</li>
+    </ul>
+
+    <h2>Memory vs Project Context: Khác nhau thế nào?</h2>
+
+    <table>
+      <tr>
+        <th></th>
+        <th>Memory</th>
+        <th>Project Context</th>
+      </tr>
+      <tr>
+        <td><strong>Ai tạo?</strong></td>
+        <td>Claude tự động tạo (hoặc bạn yêu cầu)</td>
+        <td>Bạn chủ động tải lên</td>
+      </tr>
+      <tr>
+        <td><strong>Phạm vi</strong></td>
+        <td>Áp dụng cho <strong>tất cả</strong> cuộc chat</td>
+        <td>Chỉ áp dụng trong <strong>Project cụ thể</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Dung lượng</strong></td>
+        <td>Ghi chú ngắn (1-2 câu mỗi mục)</td>
+        <td>Tài liệu dài, nhiều file</td>
+      </tr>
+      <tr>
+        <td><strong>Loại thông tin</strong></td>
+        <td>Sở thích, phong cách, bối cảnh cá nhân</td>
+        <td>Tài liệu chuyên sâu, data, hướng dẫn chi tiết</td>
+      </tr>
+      <tr>
+        <td><strong>Cập nhật</strong></td>
+        <td>Tự động khi chat</td>
+        <td>Bạn phải tải lên hoặc xóa thủ công</td>
+      </tr>
+      <tr>
+        <td><strong>Phù hợp cho</strong></td>
+        <td>Cá nhân hóa trải nghiệm tổng thể</td>
+        <td>Một dự án hoặc mục đích cụ thể</td>
+      </tr>
+    </table>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ kết hợp Memory và Project</div>
+      <p><strong>Memory</strong> biết rằng bạn là giáo viên dạy Toán cấp 3, thích giải thích đơn giản, và sống ở Huế.</p>
+      <p><strong>Project "Soạn đề thi"</strong> có tài liệu: chương trình Toán 12, bộ đề thi mẫu, quy chế thi của Sở GD&amp;ĐT Thừa Thiên Huế.</p>
+      <p>Khi bạn mở chat trong Project này, Claude vừa biết bạn là ai (từ Memory) vừa có tài liệu chuyên sâu (từ Project) — kết quả rất chính xác và cá nhân hóa.</p>
+    </div>
+
+    <h2>Quyền riêng tư và Memory</h2>
+    <p>Memory lưu thông tin cá nhân, vì vậy cần quan tâm đến quyền riêng tư:</p>
+
+    <h3>Những điều nên biết</h3>
+    <ul>
+      <li><strong>Bạn có toàn quyền kiểm soát:</strong> Xem, sửa, xóa memories bất cứ lúc nào</li>
+      <li><strong>Memory riêng tư cho mỗi tài khoản:</strong> Người khác dùng cùng máy tính nhưng khác tài khoản sẽ không thấy memory của bạn</li>
+      <li><strong>Claude tránh lưu thông tin nhạy cảm:</strong> Được thiết kế để không ghi nhớ mật khẩu, số thẻ, thông tin y tế chi tiết</li>
+      <li><strong>Có thể tắt hoàn toàn:</strong> Nếu không thoải mái, tắt Memory trong Settings</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      <p>Dù Claude được thiết kế để tránh lưu thông tin nhạy cảm, <strong>không nên hoàn toàn phụ thuộc vào điều này</strong>. Tránh chia sẻ mật khẩu, số CMND/CCCD, thông tin tài chính chi tiết trong chat — dù có Memory hay không. Đây là thực hành tốt khi dùng bất kỳ AI nào.</p>
+    </div>
+
+    <h3>Khi dùng tài khoản chung</h3>
+    <p>Nếu bạn chia sẻ tài khoản Claude với người khác (ví dụ: tài khoản Team), hãy lưu ý:</p>
+    <ul>
+      <li>Memory có thể chứa thông tin từ nhiều người</li>
+      <li>Xem xét tắt Memory nếu nhiều người dùng cùng tài khoản</li>
+      <li>Dùng Project riêng thay vì Memory để tách ngữ cảnh</li>
+    </ul>
+
+    <h2>Mẹo sử dụng Memory hiệu quả</h2>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <ul>
+        <li><strong>Chủ động "dạy" Claude:</strong> Đầu tiên, mở chat và giới thiệu về bản thân — tên, nghề nghiệp, sở thích, phong cách làm việc. Claude sẽ lưu những thông tin này.</li>
+        <li><strong>Định kỳ kiểm tra:</strong> Mỗi tháng vào Settings xem Claude nhớ gì — xóa những gì sai hoặc lỗi thời.</li>
+        <li><strong>Nói rõ sở thích phản hồi:</strong> <em>"Tôi thích câu trả lời dùng bullet points, ngắn gọn, có ví dụ cụ thể"</em> — Claude sẽ nhớ và áp dụng.</li>
+        <li><strong>Cập nhật khi có thay đổi:</strong> Đổi việc, chuyển nhà, bắt đầu dự án mới? Nói với Claude để cập nhật.</li>
+      </ul>
+    </div>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Kiểm tra Memory hiện tại:</strong> Vào Settings → Memory trên claude.ai. Xem Claude đã nhớ gì về bạn (nếu có). Ghi lại danh sách.</li>
+      <li><strong>Giới thiệu bản thân:</strong> Mở chat mới và giới thiệu đầy đủ: tên, nghề nghiệp, sở thích, phong cách làm việc, ngôn ngữ ưa thích. Kiểm tra xem Claude lưu memory nào.</li>
+      <li><strong>Kiểm tra Memory hoạt động:</strong> Mở chat mới (khác chat ở bước 2). Hỏi Claude một câu liên quan đến nghề nghiệp mà bạn vừa giới thiệu — xem Claude có tự động sử dụng memory không.</li>
+      <li><strong>Dọn dẹp:</strong> Xóa bất kỳ memory nào không chính xác hoặc không cần thiết.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li><strong>Memory</strong> là tính năng Claude tự động ghi nhớ thông tin về bạn qua các cuộc hội thoại — không cần tải tài liệu</li>
+      <li>Claude nhớ thông tin cơ bản (tên, nghề, sở thích) và sở thích phản hồi — không nhớ toàn bộ nội dung chat hay file đính kèm</li>
+      <li>Bạn có <strong>toàn quyền kiểm soát</strong>: xem, sửa, xóa, hoặc tắt Memory hoàn toàn</li>
+      <li>Memory khác Project context: Memory áp dụng cho mọi chat và lưu ghi chú ngắn; Project context chỉ cho một Project cụ thể và chứa tài liệu dài</li>
+      <li>Kết hợp Memory + Project context = trải nghiệm cá nhân hóa tốt nhất</li>
+      <li>Luôn lưu ý quyền riêng tư: không chia sẻ thông tin nhạy cảm dù có Memory hay không</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-06-thiet-ke-project.html" class="nav-prev">← Bài 6</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-08-artifacts.html" class="nav-next">Bài 8 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

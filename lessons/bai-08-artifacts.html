@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 08: Artifacts — tạo output có thể tương tác — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p2">Giai đoạn 2</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 08</div>
+    <h1>Artifacts — tạo output có thể tương tác</h1>
+    <div class="lesson-meta">
+      <span class="tag">Thực hành</span>
+      <span class="tag">60 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu Artifacts là gì và tại sao chúng khác biệt so với câu trả lời thông thường</li>
+      <li>Biết các loại Artifact: HTML, code, SVG, React component, tài liệu Markdown</li>
+      <li>Phân biệt khi nào Claude tạo Artifact và khi nào trả lời inline</li>
+      <li>Thực hành tạo 5 loại Artifact khác nhau</li>
+      <li>Nắm mẹo để Claude tạo Artifact chất lượng cao</li>
+    </ul>
+
+    <h2>Artifacts là gì?</h2>
+    <p>Artifacts là tính năng trên claude.ai cho phép Claude tạo ra <strong>nội dung độc lập hiển thị trong một panel riêng</strong> bên phải màn hình. Thay vì hiện mọi thứ trong khung chat, Claude "đẩy" nội dung có cấu trúc sang một cửa sổ riêng — nơi bạn có thể xem, tương tác, copy, và tải về.</p>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Hình dung dễ hiểu</div>
+      <p>Chat thường giống như Claude <strong>nói cho bạn nghe</strong> câu trả lời.</p>
+      <p>Artifacts giống như Claude <strong>đưa cho bạn một tài liệu hoặc sản phẩm</strong> — bạn có thể mở ra, xem, sửa, tải về, thậm chí chạy ngay trên trình duyệt.</p>
+    </div>
+
+    <h3>Ví dụ trực quan</h3>
+    <p>Khi bạn nói: <em>"Tạo cho tôi một trang web giới thiệu bản thân đơn giản"</em></p>
+    <ul>
+      <li><strong>Không có Artifacts:</strong> Claude hiển thị code HTML trong khung chat — bạn phải copy, paste vào file, rồi mở trên trình duyệt</li>
+      <li><strong>Có Artifacts:</strong> Claude tạo một Artifact hiển thị ngay trang web hoàn chỉnh bên phải — bạn thấy giao diện ngay lập tức, có thể click thử, và tải file HTML về</li>
+    </ul>
+
+    <h2>Các loại Artifact</h2>
+
+    <h3>1. HTML — Trang web tương tác</h3>
+    <p>Đây là loại Artifact phổ biến và mạnh nhất. Claude tạo ra trang web hoàn chỉnh (HTML + CSS + JavaScript) chạy trực tiếp trên trình duyệt.</p>
+    <p><strong>Phù hợp cho:</strong></p>
+    <ul>
+      <li>Landing page, portfolio cá nhân</li>
+      <li>Công cụ tính toán (máy tính BMI, tính lãi suất, tính thuế)</li>
+      <li>Game đơn giản (quiz, flashcard, Tic-tac-toe)</li>
+      <li>Dashboard, biểu đồ trực quan</li>
+      <li>Form thu thập thông tin</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ prompt</div>
+      <p><em>"Tạo một công cụ tính thuế thu nhập cá nhân Việt Nam 2026. Giao diện tiếng Việt, cho nhập thu nhập hàng tháng, số người phụ thuộc, tự động tính thuế phải nộp. Giao diện đẹp, màu xanh dương."</em></p>
+    </div>
+
+    <h3>2. Code — Mã nguồn</h3>
+    <p>Claude tạo file code với syntax highlighting. Bạn có thể copy toàn bộ code chỉ bằng một click.</p>
+    <p><strong>Phù hợp cho:</strong></p>
+    <ul>
+      <li>Script Python, JavaScript, hoặc bất kỳ ngôn ngữ nào</li>
+      <li>File cấu hình (JSON, YAML, .env)</li>
+      <li>SQL queries</li>
+      <li>Đoạn code dài mà bạn cần copy nguyên vẹn</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ prompt</div>
+      <p><em>"Viết script Python đọc file Excel bán hàng, tính tổng doanh thu theo tháng, và xuất ra biểu đồ cột. Dùng pandas và matplotlib."</em></p>
+    </div>
+
+    <h3>3. SVG — Hình vẽ vector</h3>
+    <p>Claude có thể tạo hình ảnh vector (SVG) — từ icon đơn giản đến sơ đồ phức tạp.</p>
+    <p><strong>Phù hợp cho:</strong></p>
+    <ul>
+      <li>Logo đơn giản, icon</li>
+      <li>Sơ đồ quy trình, flowchart</li>
+      <li>Infographic đơn giản</li>
+      <li>Hình minh họa cho bài thuyết trình</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ prompt</div>
+      <p><em>"Vẽ sơ đồ quy trình tuyển dụng gồm 6 bước: Đăng tin → Sàng lọc CV → Phỏng vấn vòng 1 → Phỏng vấn vòng 2 → Offer → Onboarding. Dùng SVG, phong cách chuyên nghiệp, màu xanh lá."</em></p>
+    </div>
+
+    <h3>4. React Component — Ứng dụng web nâng cao</h3>
+    <p>Đối với ứng dụng phức tạp hơn HTML thuần, Claude có thể tạo React component với thư viện hỗ trợ (ví dụ: recharts cho biểu đồ, lucide-react cho icon).</p>
+    <p><strong>Phù hợp cho:</strong></p>
+    <ul>
+      <li>Dashboard dữ liệu với biểu đồ tương tác</li>
+      <li>Ứng dụng có state phức tạp (quản lý todo, kanban board)</li>
+      <li>Công cụ có nhiều tính năng và tương tác phức tạp</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ prompt</div>
+      <p><em>"Tạo dashboard theo dõi chi tiêu cá nhân. Có thể nhập khoản chi (tên, số tiền, danh mục). Hiển thị biểu đồ tròn phân bổ theo danh mục và biểu đồ đường theo thời gian. Giao diện tiếng Việt."</em></p>
+    </div>
+
+    <h3>5. Tài liệu Markdown</h3>
+    <p>Đối với nội dung dạng văn bản dài có cấu trúc, Claude tạo Artifact dạng tài liệu — hiển thị đẹp, dễ đọc, dễ tải về.</p>
+    <p><strong>Phù hợp cho:</strong></p>
+    <ul>
+      <li>Báo cáo, bài phân tích dài</li>
+      <li>Kế hoạch dự án, proposal</li>
+      <li>Hướng dẫn sử dụng, tài liệu kỹ thuật</li>
+      <li>Nội dung bài viết blog dài</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Ví dụ prompt</div>
+      <p><em>"Viết kế hoạch marketing 3 tháng cho quán cà phê mới mở tại quận 3, TP.HCM. Bao gồm: phân tích đối thủ, chiến lược online/offline, ngân sách dự kiến, timeline từng tuần, KPI cần đo."</em></p>
+    </div>
+
+    <h2>Khi nào Claude tạo Artifact vs trả lời inline?</h2>
+    <p>Claude không phải lúc nào cũng tạo Artifact. Dưới đây là quy tắc chung:</p>
+
+    <h3>Claude SẼ tạo Artifact khi:</h3>
+    <ul>
+      <li>Nội dung đủ dài và có cấu trúc (thường trên 15-20 dòng)</li>
+      <li>Nội dung là code, HTML, hoặc SVG hoàn chỉnh</li>
+      <li>Bạn yêu cầu tạo "trang web", "ứng dụng", "tool", "tài liệu"</li>
+      <li>Nội dung có thể đứng độc lập (tự đủ ý nghĩa khi tách khỏi cuộc chat)</li>
+    </ul>
+
+    <h3>Claude sẽ KHÔNG tạo Artifact khi:</h3>
+    <ul>
+      <li>Câu trả lời ngắn, chỉ vài dòng</li>
+      <li>Đoạn code nhỏ minh họa trong giải thích</li>
+      <li>Câu trả lời gắn chặt với ngữ cảnh cuộc chat (không có ý nghĩa khi tách ra)</li>
+      <li>Bạn chỉ hỏi câu hỏi thông thường</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <p>Nếu bạn muốn Claude tạo Artifact, hãy dùng các từ khóa gợi ý:</p>
+      <ul>
+        <li><em>"Tạo một trang web..."</em></li>
+        <li><em>"Viết một ứng dụng..."</em></li>
+        <li><em>"Tạo tool tính toán..."</em></li>
+        <li><em>"Viết tài liệu hoàn chỉnh về..."</em></li>
+      </ul>
+      <p>Ngược lại, nếu không muốn Artifact: <em>"Giải thích ngắn gọn trong chat..."</em> hoặc <em>"Trả lời trực tiếp, không cần tạo artifact."</em></p>
+    </div>
+
+    <h2>Thực hành: Tạo 5 Artifact khác nhau</h2>
+    <p>Hãy mở claude.ai và thực hành tạo từng loại Artifact dưới đây. Mỗi Artifact, hãy thử tương tác, chỉnh sửa, và tải về.</p>
+
+    <h3>Thực hành 1: Trang web cá nhân (HTML)</h3>
+    <p>Copy và gửi prompt này cho Claude:</p>
+    <pre><code>Tạo một trang web portfolio cá nhân cho một lập trình viên Việt Nam. Gồm:
+- Header với tên và tiêu đề nghề nghiệp
+- Phần "Về tôi" với ảnh placeholder
+- Phần "Kỹ năng" hiển thị dạng progress bar
+- Phần "Dự án" với 3 card sản phẩm
+- Footer với link social media
+Thiết kế tối giản, hiện đại, responsive. Dùng font system.
+Nội dung mẫu bằng tiếng Việt.</code></pre>
+    <p><strong>Sau khi nhận Artifact:</strong> Thử resize cửa sổ để kiểm tra responsive. Click các link. Tải HTML về và mở trên máy tính.</p>
+
+    <h3>Thực hành 2: Công cụ tính toán (HTML + JS)</h3>
+    <pre><code>Tạo công cụ tính lãi suất tiết kiệm ngân hàng. Cho nhập:
+- Số tiền gửi (VND)
+- Kỳ hạn (1, 3, 6, 12, 24 tháng)
+- Lãi suất (%/năm)
+
+Hiển thị kết quả:
+- Tiền lãi nhận được
+- Tổng tiền nhận khi đáo hạn
+- Bảng so sánh nếu gửi ở các kỳ hạn khác nhau
+
+Giao diện tiếng Việt, format số tiền có dấu chấm phân cách hàng nghìn.
+Thiết kế chuyên nghiệp, dễ dùng trên điện thoại.</code></pre>
+    <p><strong>Sau khi nhận Artifact:</strong> Nhập số tiền thử và kiểm tra kết quả bằng máy tính. Thử trên điện thoại.</p>
+
+    <h3>Thực hành 3: Sơ đồ quy trình (SVG)</h3>
+    <pre><code>Vẽ sơ đồ quy trình xử lý đơn hàng online gồm các bước:
+1. Khách đặt hàng trên website
+2. Hệ thống xác nhận đơn hàng
+3. Kiểm tra tồn kho (nếu hết hàng → thông báo khách, kết thúc)
+4. Đóng gói
+5. Giao cho đơn vị vận chuyển
+6. Giao hàng thành công
+7. Khách xác nhận nhận hàng
+
+Dùng SVG. Hình chữ nhật bo tròn cho bước thường, hình thoi cho điều kiện.
+Phong cách: flat design, màu xanh dương và xám.</code></pre>
+    <p><strong>Sau khi nhận Artifact:</strong> Xem sơ đồ có đúng logic không. Thử yêu cầu Claude sửa màu hoặc thêm bước.</p>
+
+    <h3>Thực hành 4: Dashboard dữ liệu (React)</h3>
+    <pre><code>Tạo dashboard quản lý quán cà phê với dữ liệu mẫu, gồm:
+- Tổng doanh thu hôm nay, tuần này, tháng này (hiển thị số lớn)
+- Biểu đồ cột: doanh thu 7 ngày gần nhất
+- Biểu đồ tròn: tỷ lệ doanh thu theo loại đồ uống (cà phê, trà, sinh tố, khác)
+- Bảng 5 sản phẩm bán chạy nhất
+
+Dùng dữ liệu mẫu thực tế (đơn vị VND).
+Giao diện tiếng Việt, phong cách hiện đại, nền tối (dark mode).</code></pre>
+    <p><strong>Sau khi nhận Artifact:</strong> Hover lên biểu đồ xem có tooltip không. Thử yêu cầu Claude đổi sang light mode hoặc thêm biểu đồ mới.</p>
+
+    <h3>Thực hành 5: Tài liệu có cấu trúc (Markdown)</h3>
+    <pre><code>Viết tài liệu hướng dẫn onboarding cho nhân viên mới tại một công ty
+phần mềm Việt Nam. Gồm:
+
+1. Chào mừng và giới thiệu công ty
+2. Tuần đầu tiên — checklist việc cần làm
+3. Công cụ và tài khoản cần setup (email, Slack, Jira, Git)
+4. Quy trình làm việc hàng ngày (standup, code review, deploy)
+5. Văn hóa công ty và quy tắc ứng xử
+6. Danh sách người liên hệ khi cần hỗ trợ
+7. FAQ cho nhân viên mới
+
+Nội dung chi tiết, thực tế, phù hợp với công ty phần mềm
+tầm 50-100 người ở Việt Nam.</code></pre>
+    <p><strong>Sau khi nhận Artifact:</strong> Đọc qua nội dung, kiểm tra cấu trúc. Tải về dùng làm template thực tế.</p>
+
+    <h2>Chỉnh sửa và lặp lại Artifact</h2>
+    <p>Một trong những điểm mạnh của Artifacts là bạn có thể <strong>yêu cầu Claude chỉnh sửa</strong> ngay trên Artifact đã tạo:</p>
+
+    <ul>
+      <li><em>"Đổi màu nền thành xanh đậm"</em></li>
+      <li><em>"Thêm cột 'Ghi chú' vào bảng"</em></li>
+      <li><em>"Thay font chữ thành Roboto"</em></li>
+      <li><em>"Thêm animation khi hover vào button"</em></li>
+      <li><em>"Sửa phần tính thuế — quên trừ giảm trừ gia cảnh"</em></li>
+    </ul>
+
+    <p>Claude sẽ cập nhật Artifact hiện tại thay vì tạo mới — bạn thấy thay đổi ngay lập tức.</p>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      <p>Bạn có thể yêu cầu chỉnh sửa nhiều lần. Artifact cũng có <strong>version history</strong> — bạn có thể quay lại phiên bản trước nếu chỉnh sửa không ưng ý.</p>
+    </div>
+
+    <h2>Mẹo để Claude tạo Artifact tốt nhất</h2>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Mẹo</div>
+      <ul>
+        <li><strong>Mô tả càng cụ thể càng tốt:</strong> Thay vì "tạo trang web đẹp", hãy nói "tạo trang web tối giản, nền trắng, font sans-serif, màu chủ đạo xanh dương #2563EB"</li>
+        <li><strong>Nêu rõ đối tượng sử dụng:</strong> "Cho người dùng Việt Nam, hiển thị tiền VND, tên tiếng Việt có dấu"</li>
+        <li><strong>Nêu rõ thiết bị:</strong> "Cần responsive, hoạt động tốt trên điện thoại" hoặc "chỉ cần chạy trên desktop"</li>
+        <li><strong>Cung cấp dữ liệu mẫu:</strong> Nếu có, đưa dữ liệu thật hoặc gần thật — Claude sẽ tạo Artifact chân thực hơn</li>
+        <li><strong>Chia nhỏ yêu cầu phức tạp:</strong> Nếu muốn ứng dụng lớn, hãy bắt đầu với phiên bản đơn giản rồi thêm tính năng dần</li>
+        <li><strong>Nói rõ phong cách:</strong> "Phong cách Material Design", "giống giao diện Notion", "tối giản kiểu Apple" — giúp Claude hiểu aesthetic bạn muốn</li>
+      </ul>
+    </div>
+
+    <h2>Giới hạn của Artifacts</h2>
+    <p>Artifacts rất mạnh nhưng có giới hạn:</p>
+    <ul>
+      <li><strong>Không kết nối internet:</strong> Artifact HTML/React chạy sandboxed — không gọi được API bên ngoài, không tải hình từ URL bên ngoài</li>
+      <li><strong>Không lưu dữ liệu:</strong> Khi refresh, dữ liệu bạn nhập vào Artifact sẽ mất (không có database)</li>
+      <li><strong>Độ phức tạp có giới hạn:</strong> Artifact phù hợp cho prototype và công cụ đơn giản — không thay thế được ứng dụng production</li>
+      <li><strong>Một số thư viện không hỗ trợ:</strong> Trong React Artifact, chỉ một số thư viện phổ biến được hỗ trợ sẵn</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Cảnh báo</div>
+      <p>Đừng kỳ vọng Artifact thay thế developer thực thụ. Artifact tuyệt vời cho: prototype nhanh, công cụ nội bộ đơn giản, demo ý tưởng, và học lập trình. Nếu cần ứng dụng production phức tạp, hãy dùng Artifact làm bản nháp rồi nhờ developer phát triển tiếp.</p>
+    </div>
+
+    <h2>Ứng dụng thực tế cho người Việt</h2>
+    <p>Dưới đây là các ý tưởng Artifact hữu ích mà bạn có thể tạo ngay:</p>
+
+    <h3>Cho công việc</h3>
+    <ul>
+      <li>Máy tính thuế TNCN, thuế GTGT</li>
+      <li>Template báo cáo tuần hoặc tháng</li>
+      <li>Dashboard KPI đội nhóm</li>
+      <li>Công cụ chuyển đổi đơn vị, tiền tệ</li>
+      <li>Trang landing page cho sản phẩm mới (demo trước khi code thật)</li>
+    </ul>
+
+    <h3>Cho học tập</h3>
+    <ul>
+      <li>Flashcard ôn từ vựng tiếng Anh</li>
+      <li>Quiz trắc nghiệm cho bất kỳ môn nào</li>
+      <li>Sơ đồ tư duy (mind map) cho bài học</li>
+      <li>Bảng so sánh các khái niệm</li>
+    </ul>
+
+    <h3>Cho cá nhân</h3>
+    <ul>
+      <li>Công cụ theo dõi chi tiêu</li>
+      <li>Lịch lên kế hoạch du lịch</li>
+      <li>Thiệp mời sinh nhật, thiệp Tết</li>
+      <li>CV hoặc portfolio cá nhân đơn giản</li>
+      <li>Mini game giải trí</li>
+    </ul>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li><strong>Tạo 5 Artifact:</strong> Hoàn thành tất cả 5 bài thực hành phía trên. Mỗi Artifact, thử chỉnh sửa ít nhất 2 lần.</li>
+      <li><strong>Sáng tạo Artifact riêng:</strong> Nghĩ ra một công cụ hoặc trang web mà bạn thực sự cần trong công việc hoặc cuộc sống. Mô tả chi tiết cho Claude và tạo Artifact.</li>
+      <li><strong>Thử giới hạn:</strong> Yêu cầu Claude tạo một Artifact phức tạp (ví dụ: ứng dụng Kanban board có drag-and-drop). Quan sát Claude xử lý đến đâu và giới hạn ở đâu.</li>
+      <li><strong>Tải và sử dụng:</strong> Tải ít nhất 1 Artifact HTML về máy tính, mở trong trình duyệt, và thử dùng như một công cụ thực sự.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li><strong>Artifacts</strong> là tính năng Claude tạo nội dung độc lập trong panel riêng — có thể tương tác, copy, tải về</li>
+      <li>5 loại chính: <strong>HTML</strong> (trang web), <strong>Code</strong> (mã nguồn), <strong>SVG</strong> (hình vector), <strong>React</strong> (ứng dụng nâng cao), <strong>Markdown</strong> (tài liệu)</li>
+      <li>Claude tự quyết định tạo Artifact khi nội dung đủ dài, có cấu trúc, và có thể đứng độc lập</li>
+      <li>Có thể <strong>chỉnh sửa lặp lại</strong> nhiều lần — Claude cập nhật trực tiếp trên Artifact hiện tại</li>
+      <li>Mô tả càng cụ thể (màu sắc, bố cục, đối tượng, dữ liệu mẫu) thì Artifact càng đúng ý</li>
+      <li>Artifacts phù hợp cho prototype, công cụ đơn giản, demo ý tưởng — <strong>không thay thế ứng dụng production</strong></li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-07-memory.html" class="nav-prev">← Bài 7</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-09-skills.html" class="nav-next">Bài 9 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài 03: System prompt &amp; vai trò người dùng — Lộ trình học Claude AI</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/lesson.css">
+</head>
+<body>
+
+<main class="lesson-page">
+  <nav class="lesson-nav-top">
+    <a href="../index.html" class="back-link">← Lộ trình học Claude AI</a>
+    <span class="phase-badge p1">Giai đoạn 1</span>
+  </nav>
+
+  <header class="lesson-header">
+    <div class="lesson-number">Bài 03</div>
+    <h1>System prompt &amp; vai trò người dùng</h1>
+    <div class="lesson-meta">
+      <span class="tag">Khái niệm</span>
+      <span class="tag">30 phút</span>
+    </div>
+  </header>
+
+  <article class="lesson-body">
+
+    <h2>Mục tiêu bài học</h2>
+    <ul>
+      <li>Hiểu sự khác biệt giữa system prompt, user message và assistant message</li>
+      <li>Biết cách dùng system prompt để "đặt tính cách" cho Claude</li>
+      <li>Nắm được khi nào nên và không nên dùng system prompt</li>
+      <li>Thực hành viết system prompt hiệu quả</li>
+    </ul>
+
+    <h2>3 loại message trong cuộc trò chuyện</h2>
+    <p>Mỗi cuộc trò chuyện với Claude có 3 loại tin nhắn:</p>
+    <ul>
+      <li><strong>System prompt:</strong> Hướng dẫn "ngầm" mà Claude luôn tuân theo trong suốt cuộc trò chuyện. Người dùng cuối thường không thấy nội dung này.</li>
+      <li><strong>User message:</strong> Tin nhắn của bạn — câu hỏi, yêu cầu, dữ liệu bạn gửi.</li>
+      <li><strong>Assistant message:</strong> Câu trả lời của Claude.</li>
+    </ul>
+
+    <div class="callout callout-example">
+      <div class="callout-label">Hình dung dễ hiểu</div>
+      Nếu Claude là một nhân viên mới, thì:<br>
+      <strong>System prompt</strong> = bản mô tả công việc (JD) mà bạn giao từ đầu<br>
+      <strong>User message</strong> = từng yêu cầu cụ thể hàng ngày<br>
+      <strong>Assistant message</strong> = kết quả nhân viên trả về
+    </div>
+
+    <h2>System prompt hoạt động thế nào?</h2>
+    <p>System prompt được đặt <strong>trước tất cả</strong> các tin nhắn khác. Claude đọc nó đầu tiên và coi đó là "luật chơi" cho toàn bộ cuộc trò chuyện. Điều này có nghĩa:</p>
+    <ul>
+      <li>Claude sẽ tuân theo system prompt trong <strong>mọi câu trả lời</strong></li>
+      <li>Bạn không cần nhắc lại yêu cầu mỗi lần gửi tin nhắn</li>
+      <li>System prompt ảnh hưởng đến giọng văn, phong cách, kiến thức và giới hạn của Claude</li>
+    </ul>
+
+    <h2>Cách đặt system prompt trên Claude.ai</h2>
+    <p>Trên claude.ai, bạn có thể đặt system prompt thông qua tính năng <strong>Projects</strong>:</p>
+    <ol>
+      <li>Tạo một Project mới (hoặc mở project có sẵn)</li>
+      <li>Trong phần <strong>"Project instructions"</strong>, nhập system prompt</li>
+      <li>Mọi cuộc trò chuyện trong project đó sẽ tự động sử dụng system prompt này</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <div class="callout-label">Lưu ý</div>
+      Nếu dùng Claude qua API, system prompt được truyền qua tham số <code>system</code> trong mỗi request. Nếu dùng trên claude.ai ở chế độ chat thông thường (không trong Project), bạn có thể đặt hướng dẫn ngay ở tin nhắn đầu tiên — tuy không phải system prompt thật sự nhưng hiệu quả tương đương cho hầu hết trường hợp.
+    </div>
+
+    <h2>Ví dụ system prompt thực tế</h2>
+
+    <h3>Trợ lý viết content tiếng Việt</h3>
+    <pre><code>Bạn là trợ lý viết content chuyên nghiệp cho thị trường Việt Nam.
+
+Quy tắc:
+- Luôn viết tiếng Việt tự nhiên, tránh dịch máy
+- Giọng văn: thân thiện, dễ hiểu, không quá trang trọng
+- Mỗi đoạn văn không quá 3-4 câu
+- Luôn đề xuất tiêu đề hấp dẫn trước khi viết nội dung
+- Khi được hỏi về chủ đề bạn không chắc, hãy nói rõ thay vì bịa</code></pre>
+
+    <h3>Gia sư toán cho học sinh cấp 3</h3>
+    <pre><code>Bạn là gia sư toán cho học sinh cấp 3 Việt Nam.
+
+Phương pháp:
+- Luôn hỏi học sinh đã hiểu đến đâu trước khi giải thích
+- Giải thích từng bước, không nhảy cóc
+- Dùng ví dụ từ cuộc sống để minh họa khái niệm trừu tượng
+- Khi học sinh sai, không chê — hướng dẫn tìm lỗi sai
+- Cuối mỗi bài, đặt 1-2 câu hỏi kiểm tra hiểu bài
+
+Giới hạn:
+- Chỉ hỗ trợ toán cấp 3 (lớp 10-12)
+- Không làm bài thay — chỉ hướng dẫn cách làm</code></pre>
+
+    <h3>Trợ lý phân tích dữ liệu</h3>
+    <pre><code>Bạn là data analyst chuyên phân tích dữ liệu kinh doanh.
+
+Khi nhận dữ liệu:
+1. Tóm tắt những điểm nổi bật trước
+2. Chỉ ra xu hướng và anomaly
+3. Đề xuất hành động cụ thể
+
+Format output:
+- Luôn dùng bảng khi so sánh số liệu
+- Dùng bullet points cho insights
+- Kết thúc bằng phần "Đề xuất tiếp theo"
+
+Nếu dữ liệu không đủ để kết luận, hãy nói rõ cần thêm gì.</code></pre>
+
+    <h2>System prompt tốt vs tệ</h2>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Tệ — Quá mơ hồ</div>
+      <code>Hãy trả lời tốt và hữu ích.</code>
+      <br><br>→ Claude đã được thiết kế để làm điều này rồi. System prompt này không thêm giá trị gì.
+    </div>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">Tệ — Quá dài và mâu thuẫn</div>
+      <code>Luôn trả lời ngắn gọn. Giải thích chi tiết mọi khái niệm. Dùng nhiều ví dụ nhưng giữ câu trả lời dưới 100 từ.</code>
+      <br><br>→ Các yêu cầu mâu thuẫn khiến Claude bối rối.
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">Tốt — Rõ ràng, có cấu trúc</div>
+      System prompt tốt nên có:
+      <ul>
+        <li><strong>Vai trò:</strong> Claude là ai trong cuộc trò chuyện này</li>
+        <li><strong>Quy tắc:</strong> Những gì nên và không nên làm</li>
+        <li><strong>Phong cách:</strong> Giọng văn, format output</li>
+        <li><strong>Giới hạn:</strong> Phạm vi Claude nên hoạt động</li>
+      </ul>
+    </div>
+
+    <h2>Bài tập thực hành</h2>
+    <ol>
+      <li>Viết system prompt cho một trợ lý viết email công việc hàng ngày. Thử trong Project trên claude.ai.</li>
+      <li>Viết system prompt cho một "đầu bếp AI" chỉ gợi ý món ăn Việt Nam với nguyên liệu bạn có sẵn.</li>
+      <li>Tạo 2 cuộc trò chuyện riêng biệt: một có system prompt, một không — gửi cùng câu hỏi và so sánh kết quả.</li>
+    </ol>
+
+    <h2>Tổng kết</h2>
+    <ul>
+      <li>System prompt = "luật chơi" áp dụng cho toàn bộ cuộc trò chuyện</li>
+      <li>Đặt qua Project instructions trên claude.ai, hoặc tham số <code>system</code> qua API</li>
+      <li>Nên rõ ràng, có cấu trúc: vai trò → quy tắc → phong cách → giới hạn</li>
+      <li>Tránh mơ hồ hoặc mâu thuẫn — Claude sẽ cố gắng tuân theo mọi thứ bạn viết</li>
+    </ul>
+
+  </article>
+
+  <nav class="lesson-nav-bottom">
+    <a href="bai-02-prompt-co-ban.html" class="nav-prev">← Bài 2</a>
+    <a href="../index.html" class="nav-home">Lộ trình</a>
+    <a href="bai-04-extended-thinking.html" class="nav-next">Bài 4 →</a>
+  </nav>
+</main>
+
+<script src="../js/lesson.js"></script>
+</body>
+</html>
